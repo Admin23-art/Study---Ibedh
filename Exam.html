@@ -166,7 +166,9 @@ footer{max-width:1100px;margin:auto;padding:0 22px 35px;color:#8a91a2;font-size:
     <div>Examen - Interactivo</div>
 </div>
     
-    <span style="font-size:13px;color:var(--muted);font-weight:600;">100 Preguntas | 15 por Intento</span>
+   <span style="font-size:13px;color:var(--muted);font-weight:600;">
+    Examen Simulado | <span style="color:#D4AF37;">ABBYS</span>
+</span>
   </div>
 </header>
 
@@ -183,18 +185,195 @@ footer{max-width:1100px;margin:auto;padding:0 22px 35px;color:#8a91a2;font-size:
       <div class="stat-box"><div class="stat-val">Variado</div><div class="stat-lbl">Opción Múltiple & V/F</div></div>
     </div>
 
-    <button class="btn-primary" onclick="startQuiz()">¡Comenzar Examen! →</button>
+<style>
+.stats-grid {
+    position: relative;
+    width: 300px;
+    max-width: 90%;
+    height: 100px;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #000;
+    border-radius: 999px;
+
+    box-sizing: border-box;
+
+    /* Espacio debajo de la cápsula */
+    margin: 0 auto 25px auto;
+}
+
+/* TARJETAS */
+.stats-grid .stat-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateX(55px) scale(.97);
+
+    transition:
+        transform .75s cubic-bezier(.22, 1, .36, 1),
+        opacity .75s ease,
+        visibility 0s linear .75s;
+}
+
+
+/* ACTIVA */
+.stats-grid .stat-box.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) scale(1);
+
+    transition:
+        transform .75s cubic-bezier(.22, 1, .36, 1),
+        opacity .75s ease;
+}
+
+
+/* SALIENDO */
+.stats-grid .stat-box.exit {
+    opacity: 0;
+    visibility: visible;
+    transform: translateX(-55px) scale(.97);
+
+    transition:
+        transform .75s cubic-bezier(.22, 1, .36, 1),
+        opacity .75s ease;
+}
+
+
+/* NÚMERO */
+.stats-grid .stat-val {
+    position: relative;
+
+    font-size: 34px;
+    font-weight: 850;
+    line-height: 1;
+
+    margin: 0 0 10px 0;
+
+    letter-spacing: -1.2px;
+
+    background: linear-gradient(
+        135deg,
+        #111827,
+        #4f46e5
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* Línea decorativa */
+.stats-grid .stat-val::after {
+    content: "";
+
+    position: absolute;
+
+    width: 22px;
+    height: 3px;
+
+    left: 50%;
+    bottom: -6px;
+
+    transform: translateX(-50%);
+
+    border-radius: 999px;
+
+    background: #4f46e5;
+}
+
+
+/* TEXTO */
+.stats-grid .stat-lbl {
+    font-size: 13px;
+    font-weight: 500;
+
+    line-height: 1.3;
+
+    margin: 0;
+
+    text-align: center;
+
+    letter-spacing: .2px;
+
+    color: #6b7280;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const stats = document.querySelectorAll(".stats-grid .stat-box");
+
+    let current = 0;
+
+    // Mostrar la primera
+    stats[current].classList.add("active");
+
+
+    function changeStat() {
+
+        const oldStat = stats[current];
+
+        // La actual sale
+        oldStat.classList.remove("active");
+        oldStat.classList.add("exit");
+
+
+        // Siguiente
+        current++;
+
+        if (current >= stats.length) {
+            current = 0;
+        }
+
+
+        const newStat = stats[current];
+
+        // La siguiente entra
+        newStat.classList.add("active");
+
+
+        // Limpiar la anterior después de la animación
+        setTimeout(function () {
+            oldStat.classList.remove("exit");
+        }, 700);
+    }
+
+
+    // Cambia cada 5 segundos
+    setInterval(changeStat, 5000);
+
+});
+</script>
+
+    <button class="btn-primary" onclick="startQuiz()">¡Comenzar!</button>
     <button class="btn-exam" onclick="window.location.href='index.html'">
-    Regresar →
+    Regresar
 </button>
   </div>
 
-  <style>
-    .btn-exam {
-    position: relative;
-    left: 80px;
-}
-  </style>
+
 
   <!-- QUIZ SCREEN -->
   <div id="quizScreen" class="hidden">
@@ -441,6 +620,1286 @@ const questionBank = [
     a: 0,
     exp: "El VCM aumentado indica eritrocitos de tamaño mayor al habitual."
 },
+
+{
+    type: "Completar",
+    q: "_____ es la principal proteína plasmática responsable de mantener la presión oncótica.",
+    opts: [
+        "Albúmina",
+        "Fibrinógeno",
+        "Hemoglobina",
+        "Transferrina",
+        "Globulina",
+        "Insulina",
+        "Actina",
+        "Colágeno"
+    ],
+    a: 0,
+    exp: "La albúmina es la principal proteína plasmática responsable de mantener la presión oncótica."
+},
+
+{
+    type: "Completar",
+    q: "En una anemia hemolítica, el aumento de la destrucción de eritrocitos provoca un incremento de _____.",
+    opts: [
+        "Bilirrubina indirecta",
+        "Albúmina",
+        "Fibrinógeno",
+        "Calcio",
+        "Glucosa",
+        "Sodio",
+        "Insulina",
+        "Transferrina"
+    ],
+    a: 0,
+    exp: "La destrucción aumentada de eritrocitos incrementa el metabolismo de la hemoglobina y puede elevar la bilirrubina indirecta."
+},
+
+{
+    type: "Completar",
+    q: "La proteína que se une a la hemoglobina libre en plasma es la _____, por lo que puede disminuir durante la hemólisis intravascular.",
+    opts: [
+        "Haptoglobina",
+        "Albúmina",
+        "Fibrinógeno",
+        "Transferrina",
+        "Ferritina",
+        "Ceruloplasmina",
+        "Globulina",
+        "Hemoglobina"
+    ],
+    a: 0,
+    exp: "La haptoglobina se une a la hemoglobina libre y sus concentraciones pueden disminuir durante una hemólisis intravascular."
+},
+
+{
+    type: "Completar",
+    q: "_____ puede elevarse cuando existe destrucción celular, incluida la hemólisis.",
+    opts: [
+        "LDH",
+        "Albúmina",
+        "Hematocrito",
+        "Calcio",
+        "Sodio",
+        "Fibrinógeno",
+        "Insulina",
+        "Eritropoyetina"
+    ],
+    a: 0,
+    exp: "La lactato deshidrogenasa o LDH puede aumentar cuando existe destrucción celular."
+},
+
+{
+    type: "Completar",
+    q: "La presencia de un número elevado de _____ indica una respuesta aumentada de la médula ósea ante la pérdida de eritrocitos.",
+    opts: [
+        "Reticulocitos",
+        "Linfocitos",
+        "Plaquetas",
+        "Neutrófilos",
+        "Basófilos",
+        "Monocitos",
+        "Eosinófilos",
+        "Megacariocitos"
+    ],
+    a: 0,
+    exp: "Los reticulocitos son eritrocitos inmaduros que aumentan cuando la médula ósea responde ante una pérdida de eritrocitos."
+},
+
+{
+    type: "Completar",
+    q: "Una anemia con un VCM disminuido se clasifica inicialmente como anemia _____.",
+    opts: [
+        "Microcítica",
+        "Macrocítica",
+        "Normocítica",
+        "Hemolítica",
+        "Aplásica",
+        "Megaloblástica",
+        "Leucopénica",
+        "Trombocitopénica"
+    ],
+    a: 0,
+    exp: "Un VCM bajo indica que los eritrocitos tienen un volumen menor al esperado y se clasifican como microcíticos."
+},
+
+{
+    type: "Completar",
+    q: "Cuando el VCM está aumentado, la anemia puede clasificarse como _____.",
+    opts: [
+        "Macrocítica",
+        "Microcítica",
+        "Normocítica",
+        "Ferropénica",
+        "Hemolítica",
+        "Hipocrómica",
+        "Trombocitopénica",
+        "Leucopénica"
+    ],
+    a: 0,
+    exp: "El aumento del volumen corpuscular medio caracteriza a las anemias macrocíticas."
+},
+
+{
+    type: "Completar",
+    q: "La _____ representa la cantidad promedio de hemoglobina contenida en cada eritrocito.",
+    opts: [
+        "HCM",
+        "VCM",
+        "CHCM",
+        "Hematocrito",
+        "TP",
+        "TTPa",
+        "INR",
+        "Reticulocitos"
+    ],
+    a: 0,
+    exp: "La hemoglobina corpuscular media o HCM indica la cantidad promedio de hemoglobina por eritrocito."
+},
+
+{
+    type: "Completar",
+    q: "La concentración promedio de hemoglobina dentro de los eritrocitos se expresa mediante la _____.",
+    opts: [
+        "CHCM",
+        "VCM",
+        "HCM",
+        "Hematocrito",
+        "INR",
+        "TP",
+        "TTPa",
+        "Ferritina"
+    ],
+    a: 0,
+    exp: "La CHCM indica la concentración promedio de hemoglobina dentro de los eritrocitos."
+},
+
+{
+    type: "Completar",
+    q: "Durante una infección bacteriana aguda, los _____ participan principalmente en la fagocitosis de microorganismos.",
+    opts: [
+        "Neutrófilos",
+        "Linfocitos B",
+        "Eritrocitos",
+        "Plaquetas",
+        "Basófilos",
+        "Eosinófilos",
+        "Megacariocitos",
+        "Reticulocitos"
+    ],
+    a: 0,
+    exp: "Los neutrófilos son células importantes de la inmunidad innata y participan especialmente en la fagocitosis durante infecciones bacterianas."
+},
+
+{
+    type: "Completar",
+    q: "Los _____ pueden diferenciarse en células plasmáticas capaces de producir anticuerpos.",
+    opts: [
+        "Linfocitos B",
+        "Neutrófilos",
+        "Eritrocitos",
+        "Plaquetas",
+        "Basófilos",
+        "Eosinófilos",
+        "Monocitos",
+        "Megacariocitos"
+    ],
+    a: 0,
+    exp: "Los linfocitos B forman parte de la inmunidad adaptativa y pueden diferenciarse en células plasmáticas productoras de anticuerpos."
+},
+
+{
+    type: "Completar",
+    q: "Los linfocitos _____ participan principalmente en la inmunidad celular y pueden destruir células infectadas.",
+    opts: [
+        "T",
+        "B",
+        "Neutrófilos",
+        "Eritrocitos",
+        "Plaquetas",
+        "Basófilos",
+        "Eosinófilos",
+        "Monocitos"
+    ],
+    a: 0,
+    exp: "Los linfocitos T participan en la inmunidad celular y algunos subtipos pueden destruir células infectadas."
+},
+
+{
+    type: "Completar",
+    q: "La inmunoglobulina que puede atravesar la placenta y proporcionar inmunidad pasiva al feto es la _____.",
+    opts: [
+        "IgG",
+        "IgM",
+        "IgA",
+        "IgE",
+        "IgD",
+        "IgF",
+        "IgC",
+        "IgH"
+    ],
+    a: 0,
+    exp: "La IgG es la principal inmunoglobulina que atraviesa la placenta y proporciona inmunidad pasiva al feto."
+},
+
+{
+    type: "Completar",
+    q: "Durante una respuesta inmunitaria primaria, la primera inmunoglobulina que suele producirse es la _____.",
+    opts: [
+        "IgM",
+        "IgG",
+        "IgA",
+        "IgE",
+        "IgD",
+        "IgF",
+        "IgC",
+        "IgH"
+    ],
+    a: 0,
+    exp: "La IgM suele ser la primera inmunoglobulina producida durante una respuesta inmunitaria primaria."
+},
+
+{
+    type: "Completar",
+    q: "La _____ está principalmente relacionada con las reacciones alérgicas inmediatas.",
+    opts: [
+        "IgE",
+        "IgG",
+        "IgM",
+        "IgA",
+        "IgD",
+        "IgF",
+        "IgC",
+        "IgH"
+    ],
+    a: 0,
+    exp: "La IgE participa principalmente en las reacciones de hipersensibilidad inmediata."
+},
+
+{
+    type: "Completar",
+    q: "En las secreciones de las mucosas, como saliva y lágrimas, predomina la inmunoglobulina _____.",
+    opts: [
+        "IgA",
+        "IgG",
+        "IgM",
+        "IgE",
+        "IgD",
+        "IgF",
+        "IgC",
+        "IgH"
+    ],
+    a: 0,
+    exp: "La IgA secretora desempeña un papel importante en la protección de las superficies mucosas."
+},
+
+{
+    type: "Completar",
+    q: "La inmunidad _____ se caracteriza por especificidad y capacidad de generar memoria inmunológica.",
+    opts: [
+        "Adaptativa",
+        "Innata",
+        "Metabólica",
+        "Mecánica",
+        "Hemostática",
+        "Inflamatoria",
+        "Eritropoyética",
+        "Vascular"
+    ],
+    a: 0,
+    exp: "La inmunidad adaptativa posee especificidad y memoria inmunológica."
+},
+
+{
+    type: "Completar",
+    q: "En el sistema ABO, los eritrocitos del grupo sanguíneo _____ presentan antígeno A.",
+    opts: [
+        "A",
+        "B",
+        "AB",
+        "O",
+        "Rh",
+        "D",
+        "H",
+        "K"
+    ],
+    a: 0,
+    exp: "Los eritrocitos del grupo A presentan el antígeno A en su superficie."
+},
+
+{
+    type: "Completar",
+    q: "Una persona del grupo sanguíneo B normalmente presenta anticuerpos _____ en su plasma.",
+    opts: [
+        "Anti-A",
+        "Anti-B",
+        "Anti-AB",
+        "Anti-O",
+        "Anti-D",
+        "Anti-Rh",
+        "Anti-H",
+        "Anti-K"
+    ],
+    a: 0,
+    exp: "Las personas del grupo B presentan antígeno B y normalmente tienen anticuerpos anti-A en el plasma."
+},
+
+{
+    type: "Completar",
+    q: "Los eritrocitos del grupo O carecen de los antígenos _____ y _____.",
+    opts: [
+        "A y B",
+        "B y D",
+        "A y D",
+        "AB y D",
+        "H y A",
+        "D y K",
+        "M y N",
+        "Rh y K"
+    ],
+    a: 0,
+    exp: "En el sistema ABO, los eritrocitos del grupo O no expresan los antígenos A ni B."
+},
+
+{
+    type: "Completar",
+    q: "El principal antígeno utilizado para determinar si una persona es Rh positiva o negativa es el antígeno _____.",
+    opts: [
+        "D",
+        "A",
+        "B",
+        "O",
+        "M",
+        "N",
+        "K",
+        "H"
+    ],
+    a: 0,
+    exp: "El antígeno D es el principal antígeno del sistema Rh utilizado para clasificar a una persona como Rh positiva o Rh negativa."
+},
+
+{
+    type: "Completar",
+    q: "La unión de anticuerpos con antígenos presentes en los eritrocitos puede producir _____.",
+    opts: [
+        "Aglutinación",
+        "Fibrinólisis",
+        "Quimiotaxis",
+        "Diapédesis",
+        "Eritropoyesis",
+        "Hemopoyesis",
+        "Pinocitosis",
+        "Osmosis"
+    ],
+    a: 0,
+    exp: "La unión de anticuerpos con antígenos de los eritrocitos puede generar aglutinación, utilizada en pruebas de tipificación sanguínea."
+},
+
+{
+    type: "Completar",
+    q: "Después de una lesión vascular, las _____ se adhieren al sitio de daño y participan en la formación del tapón hemostático.",
+    opts: [
+        "Plaquetas",
+        "Eritrocitos",
+        "Linfocitos",
+        "Neutrófilos",
+        "Monocitos",
+        "Eosinófilos",
+        "Basófilos",
+        "Células plasmáticas"
+    ],
+    a: 0,
+    exp: "Las plaquetas se adhieren, activan y agregan en el sitio de lesión para formar el tapón plaquetario."
+},
+
+{
+    type: "Completar",
+    q: "Durante la coagulación, la trombina transforma el fibrinógeno en _____.",
+    opts: [
+        "Fibrina",
+        "Plasmina",
+        "Protrombina",
+        "Trombopoyetina",
+        "Eritropoyetina",
+        "Albúmina",
+        "Colágeno",
+        "Elastina"
+    ],
+    a: 0,
+    exp: "La trombina convierte el fibrinógeno soluble en fibrina, formando la estructura que estabiliza el coágulo."
+},
+
+{
+    type: "Completar",
+    q: "La enzima que convierte directamente el fibrinógeno en fibrina es la _____.",
+    opts: [
+        "Trombina",
+        "Plasmina",
+        "Heparina",
+        "Trombopoyetina",
+        "Eritropoyetina",
+        "Renina",
+        "Pepsina",
+        "Tripsina"
+    ],
+    a: 0,
+    exp: "La trombina es la enzima que transforma el fibrinógeno en fibrina durante la coagulación."
+},
+
+{
+    type: "Completar",
+    q: "Durante la fibrinólisis, la _____ degrada la red de fibrina que forma parte del coágulo.",
+    opts: [
+        "Plasmina",
+        "Trombina",
+        "Protrombina",
+        "Trombopoyetina",
+        "Eritropoyetina",
+        "Fibrinógeno",
+        "Albúmina",
+        "Hemoglobina"
+    ],
+    a: 0,
+    exp: "La plasmina es la principal enzima encargada de degradar la fibrina durante la fibrinólisis."
+},
+
+{
+    type: "Completar",
+    q: "El TP evalúa principalmente la vía _____ y la vía común de la coagulación.",
+    opts: [
+        "Extrínseca",
+        "Intrínseca",
+        "Plaquetaria",
+        "Fibrinolítica",
+        "Inmunitaria",
+        "Eritropoyética",
+        "ABO",
+        "Rh"
+    ],
+    a: 0,
+    exp: "El tiempo de protrombina evalúa principalmente la vía extrínseca y la vía común de la coagulación."
+},
+
+{
+    type: "Completar",
+    q: "La vía _____ de la coagulación se evalúa principalmente mediante el TTPa.",
+    opts: [
+        "Intrínseca",
+        "Extrínseca",
+        "ABO",
+        "Rh",
+        "Eritropoyética",
+        "Fibrinolítica",
+        "Inmunitaria",
+        "Plaquetaria"
+    ],
+    a: 0,
+    exp: "El TTPa evalúa principalmente la vía intrínseca y la vía común de la coagulación."
+},
+
+{
+    type: "Completar",
+    q: "Un paciente presenta anemia, reticulocitos elevados, bilirrubina indirecta elevada, LDH elevada y haptoglobina disminuida. El patrón de laboratorio sugiere principalmente _____.",
+    opts: [
+        "Hemólisis",
+        "Ferropenia sin hemólisis",
+        "Leucopenia",
+        "Trombocitosis",
+        "Deshidratación",
+        "Hiperglucemia",
+        "Policitemia",
+        "Leucemia"
+    ],
+    a: 0,
+    exp: "La combinación de reticulocitosis, bilirrubina indirecta elevada, LDH elevada y haptoglobina disminuida es compatible con hemólisis."
+},
+
+{
+    type: "Completar",
+    q: "Un paciente presenta un VCM de 70 fL y hemoglobina disminuida. La alteración morfológica predominante corresponde a eritrocitos _____.",
+    opts: [
+        "Microcíticos",
+        "Macrocíticos",
+        "Normocíticos",
+        "Esferocíticos",
+        "Fragmentados",
+        "Falciformes",
+        "Policromáticos",
+        "Hipercromáticos"
+    ],
+    a: 0,
+    exp: "Un VCM de 70 fL indica microcitosis, es decir, eritrocitos con un volumen promedio reducido."
+},
+
+{
+    type: "Interpretación de laboratorio",
+    q: `Paciente:
+
+Hb: 9.2 g/dL
+VCM: 68 fL
+HCM: baja
+Ferritina: baja
+Reticulocitos: normales
+
+¿Qué patrón es más compatible?`,
+    opts: [
+        "Anemia microcítica",
+        "Anemia macrocítica",
+        "Hemólisis aguda",
+        "Policitemia"
+    ],
+    a: 0,
+    exp: "La hemoglobina disminuida indica anemia y el VCM bajo indica microcitosis. La ferritina baja apoya una deficiencia de hierro."
+},
+
+{
+    type: "Interpretación de laboratorio",
+    q: `Paciente:
+
+Hb: 8.5 g/dL
+VCM: 115 fL
+HCM: elevada
+Vitamina B12: baja
+Reticulocitos: bajos
+
+¿Qué patrón es más compatible?`,
+    opts: [
+        "Anemia macrocítica",
+        "Anemia microcítica",
+        "Anemia hemolítica",
+        "Policitemia"
+    ],
+    a: 0,
+    exp: "El VCM elevado indica macrocitosis y la vitamina B12 baja puede asociarse con anemia macrocítica."
+},
+
+{
+    type: "Interpretación de laboratorio",
+    q: `Paciente:
+
+Hb: 8.1 g/dL
+VCM: 90 fL
+Reticulocitos: elevados
+Bilirrubina indirecta: elevada
+LDH: elevada
+Haptoglobina: baja
+
+¿Qué proceso es más compatible?`,
+    opts: [
+        "Hemólisis",
+        "Deficiencia de hierro",
+        "Leucopenia",
+        "Policitemia"
+    ],
+    a: 0,
+    exp: "La anemia acompañada de reticulocitosis, bilirrubina indirecta y LDH elevadas, además de haptoglobina baja, es compatible con hemólisis."
+},
+
+{
+    type: "Interpretación de laboratorio",
+    q: `Paciente:
+
+Leucocitos: 18,500/µL
+Neutrófilos: 82%
+Linfocitos: 12%
+Plaquetas: normales
+Hb: normal
+
+¿Qué alteración destaca principalmente?`,
+    opts: [
+        "Neutrofilia",
+        "Neutropenia",
+        "Trombocitopenia",
+        "Anemia"
+    ],
+    a: 0,
+    exp: "El aumento de leucocitos acompañado de un predominio elevado de neutrófilos corresponde a neutrofilia."
+},
+
+{
+    type: "Interpretación de laboratorio",
+    q: `Paciente:
+
+Plaquetas: 65,000/µL
+Hb: 13.5 g/dL
+Leucocitos: 7,800/µL
+TP: normal
+TTPa: normal
+
+¿Qué alteración se observa principalmente?`,
+    opts: [
+        "Trombocitopenia",
+        "Trombocitosis",
+        "Anemia",
+        "Leucopenia"
+    ],
+    a: 0,
+    exp: "El recuento plaquetario está disminuido, mientras que los demás parámetros indicados se encuentran conservados."
+},
+
+{
+    type: "Interpretación de laboratorio",
+    q: `Paciente:
+
+TP: prolongado
+TTPa: normal
+Plaquetas: normales
+
+¿Qué vía de la coagulación debe evaluarse principalmente?`,
+    opts: [
+        "Vía extrínseca",
+        "Vía intrínseca",
+        "Sistema ABO",
+        "Fibrinólisis exclusivamente"
+    ],
+    a: 0,
+    exp: "El TP evalúa principalmente la vía extrínseca y la vía común de la coagulación."
+},
+
+{
+    type: "Interpretación de laboratorio",
+    q: `Paciente:
+
+TP: normal
+TTPa: prolongado
+Plaquetas: normales
+
+¿Qué vía está principalmente relacionada con este resultado?`,
+    opts: [
+        "Vía intrínseca",
+        "Vía extrínseca",
+        "Eritropoyesis",
+        "Sistema Rh"
+    ],
+    a: 0,
+    exp: "El TTPa evalúa principalmente la vía intrínseca y la vía común."
+},
+
+{
+    type: "Interpretación de laboratorio",
+    q: `Paciente:
+
+Hb: 17.8 g/dL
+Hto: 55%
+Eritrocitos: elevados
+VCM: normal
+
+¿Qué patrón es más compatible?`,
+    opts: [
+        "Policitemia",
+        "Anemia microcítica",
+        "Anemia macrocítica",
+        "Leucopenia"
+    ],
+    a: 0,
+    exp: "La elevación de hemoglobina, hematocrito y masa eritrocitaria es compatible con policitemia."
+},
+
+{
+    type: "Interpretación de laboratorio",
+    q: `Paciente:
+
+VCM: 72 fL
+HCM: baja
+Ferritina: baja
+Transferrina: elevada
+Hb: 8.9 g/dL
+
+¿Qué patrón es más compatible?`,
+    opts: [
+        "Anemia ferropénica",
+        "Anemia por vitamina B12",
+        "Hemólisis",
+        "Policitemia"
+    ],
+    a: 0,
+    exp: "La microcitosis, hipocromía, ferritina baja y aumento de transferrina son compatibles con deficiencia de hierro."
+},
+
+{
+    type: "Interpretación de laboratorio",
+    q: `Paciente:
+
+Hb: 9.5 g/dL
+VCM: 91 fL
+Reticulocitos: bajos
+Ferritina: normal
+Bilirrubina indirecta: normal
+
+¿Qué patrón es más compatible?`,
+    opts: [
+        "Anemia normocítica con baja respuesta reticulocitaria",
+        "Anemia hemolítica",
+        "Anemia microcítica ferropénica",
+        "Policitemia"
+    ],
+    a: 0,
+    exp: "La Hb baja con VCM normal indica anemia normocítica y los reticulocitos bajos sugieren una respuesta eritropoyética insuficiente."
+},
+
+{
+    type: "Interpretación de laboratorio",
+    q: `Paciente:
+
+Hb: 10.1 g/dL
+VCM: 68 fL
+Reticulocitos: elevados
+Bilirrubina indirecta: elevada
+LDH: elevada
+
+¿Cuál dato hace menos probable que se trate de una anemia ferropénica aislada?`,
+    opts: [
+        "Reticulocitos elevados y marcadores de hemólisis",
+        "VCM disminuido",
+        "Hemoglobina disminuida",
+        "Presencia de microcitosis"
+    ],
+    a: 0,
+    exp: "La reticulocitosis junto con bilirrubina indirecta y LDH elevadas orienta hacia destrucción eritrocitaria."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si aumenta el CO₂ y disminuye el pH en un tejido:
+
+¿Qué ocurrirá con la hemoglobina?`,
+    opts: [
+        "Aumentará su afinidad por O₂",
+        "Disminuirá su afinidad por O₂",
+        "No cambiará",
+        "Dejará de transportar CO₂"
+    ],
+    a: 1,
+    exp: "El aumento de CO₂ y H+ disminuye la afinidad de la hemoglobina por O₂ y favorece su liberación en los tejidos."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si aumenta la concentración de 2,3-BPG dentro del eritrocito:
+
+¿Qué ocurrirá con la hemoglobina?`,
+    opts: [
+        "Aumentará su afinidad por O₂",
+        "Disminuirá su afinidad por O₂",
+        "Se convertirá en fibrina",
+        "Dejará de transportar oxígeno"
+    ],
+    a: 1,
+    exp: "El 2,3-BPG se une a la hemoglobina y disminuye su afinidad por O₂, facilitando su liberación a los tejidos."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si disminuye la disponibilidad de oxígeno en los tejidos:
+
+¿Qué ocurrirá con la producción de eritropoyetina?`,
+    opts: [
+        "Disminuirá",
+        "Aumentará",
+        "No cambiará",
+        "Se detendrá completamente"
+    ],
+    a: 1,
+    exp: "La hipoxia estimula principalmente al riñón para aumentar la producción de eritropoyetina."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si aumenta la eritropoyetina en un paciente durante un periodo prolongado:
+
+¿Qué ocurrirá principalmente?`,
+    opts: [
+        "Disminuirá la producción de eritrocitos",
+        "Aumentará la eritropoyesis",
+        "Disminuirá el número de reticulocitos",
+        "Se detendrá la producción de hemoglobina"
+    ],
+    a: 1,
+    exp: "La eritropoyetina estimula la médula ósea para aumentar la producción de eritrocitos."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si disminuye significativamente la producción de eritropoyetina:
+
+¿Qué podría ocurrir con los eritrocitos?`,
+    opts: [
+        "Aumentarían rápidamente",
+        "Disminuiría su producción",
+        "Aumentaría su deformabilidad",
+        "Se convertirían en leucocitos"
+    ],
+    a: 1,
+    exp: "Una disminución de eritropoyetina reduce el estímulo para la producción de eritrocitos en la médula ósea."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si aumenta la destrucción de eritrocitos:
+
+¿Qué respuesta esperaría de la médula ósea si conserva su capacidad funcional?`,
+    opts: [
+        "Disminución de reticulocitos",
+        "Aumento de reticulocitos",
+        "Desaparición de leucocitos",
+        "Disminución inmediata de plaquetas"
+    ],
+    a: 1,
+    exp: "Ante una mayor destrucción eritrocitaria, la médula ósea puede aumentar la producción y liberar más reticulocitos."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si una persona presenta una deficiencia importante de hierro:
+
+¿Qué ocurrirá inicialmente con la síntesis de hemoglobina?`,
+    opts: [
+        "Aumentará considerablemente",
+        "Disminuirá",
+        "No requerirá hierro",
+        "Se transformará en síntesis de anticuerpos"
+    ],
+    a: 1,
+    exp: "El hierro es necesario para la síntesis del grupo hemo, por lo que su deficiencia limita la producción de hemoglobina."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si disminuyen las reservas de hierro durante un periodo prolongado:
+
+¿Qué cambio puede aparecer en los eritrocitos?`,
+    opts: [
+        "Microcitosis e hipocromía",
+        "Macrocitosis intensa",
+        "Aumento obligatorio de su núcleo",
+        "Aumento de su capacidad de división"
+    ],
+    a: 0,
+    exp: "La deficiencia de hierro puede producir eritrocitos más pequeños y con menor contenido de hemoglobina."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si aumenta la destrucción de eritrocitos dentro del organismo:
+
+¿Qué ocurrirá con la bilirrubina indirecta?`,
+    opts: [
+        "Disminuirá siempre",
+        "Puede aumentar",
+        "Se convertirá directamente en hemoglobina",
+        "No tendrá ninguna relación con la destrucción eritrocitaria"
+    ],
+    a: 1,
+    exp: "La degradación de hemoglobina durante la hemólisis aumenta la producción de bilirrubina no conjugada."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si aumenta la hemólisis intravascular:
+
+¿Qué ocurrirá con la haptoglobina plasmática?`,
+    opts: [
+        "Puede disminuir",
+        "Aumentará siempre",
+        "Se convertirá en albúmina",
+        "No cambiará nunca"
+    ],
+    a: 0,
+    exp: "La haptoglobina se une a la hemoglobina libre, por lo que puede disminuir durante la hemólisis intravascular."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si aumenta la destrucción celular:
+
+¿Qué puede ocurrir con la concentración de LDH?`,
+    opts: [
+        "Puede aumentar",
+        "Siempre disminuirá",
+        "Se convertirá en hemoglobina",
+        "Desaparecerá del plasma"
+    ],
+    a: 0,
+    exp: "La LDH se encuentra dentro de las células y puede liberarse al plasma cuando existe destrucción celular."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si disminuye el número de plaquetas de manera importante:
+
+¿Qué ocurrirá con la hemostasia primaria?`,
+    opts: [
+        "Puede alterarse",
+        "Aumentará considerablemente",
+        "No tendrá ninguna modificación",
+        "Se convertirá en coagulación secundaria"
+    ],
+    a: 0,
+    exp: "Las plaquetas son esenciales para la formación del tapón plaquetario durante la hemostasia primaria."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si las plaquetas no pueden adherirse correctamente al sitio de lesión vascular:
+
+¿Qué proceso se verá afectado principalmente?`,
+    opts: [
+        "Formación del tapón plaquetario",
+        "Producción de eritrocitos",
+        "Transporte de oxígeno",
+        "Producción de anticuerpos"
+    ],
+    a: 0,
+    exp: "La adhesión plaquetaria es uno de los primeros pasos de la hemostasia primaria."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si se activa la trombina durante la coagulación:
+
+¿Qué ocurrirá con el fibrinógeno?`,
+    opts: [
+        "Se convertirá en fibrina",
+        "Se convertirá en hemoglobina",
+        "Se degradará en eritrocitos",
+        "Se transformará en plaquetas"
+    ],
+    a: 0,
+    exp: "La trombina convierte el fibrinógeno soluble en fibrina, que forma parte de la estructura del coágulo."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si disminuye significativamente la actividad de la trombina:
+
+¿Qué proceso se verá afectado directamente?`,
+    opts: [
+        "Formación de fibrina",
+        "Producción de eritropoyetina",
+        "Transporte de oxígeno",
+        "Producción de linfocitos"
+    ],
+    a: 0,
+    exp: "La trombina es necesaria para convertir el fibrinógeno en fibrina durante la coagulación."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si se activa la plasmina durante la fibrinólisis:
+
+¿Qué ocurrirá con la fibrina del coágulo?`,
+    opts: [
+        "Será degradada",
+        "Aumentará su producción",
+        "Se convertirá en hemoglobina",
+        "Se transformará en plaquetas"
+    ],
+    a: 0,
+    exp: "La plasmina degrada la fibrina y participa en la eliminación del coágulo."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si disminuye la actividad fibrinolítica después de formarse un coágulo:
+
+¿Qué podría ocurrir?`,
+    opts: [
+        "El coágulo podría permanecer durante más tiempo",
+        "El coágulo desaparecería inmediatamente",
+        "Aumentaría la producción de eritrocitos",
+        "Disminuiría automáticamente la hemoglobina"
+    ],
+    a: 0,
+    exp: "La fibrinólisis participa en la eliminación del coágulo; si disminuye, su resolución puede retrasarse."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si una persona tiene grupo sanguíneo A:
+
+¿Qué ocurrirá si sus eritrocitos entran en contacto con anticuerpos anti-A?`,
+    opts: [
+        "Puede producirse aglutinación",
+        "No ocurrirá ninguna reacción",
+        "Los eritrocitos producirán anticuerpos",
+        "Los eritrocitos se convertirán en plaquetas"
+    ],
+    a: 0,
+    exp: "Los eritrocitos del grupo A poseen el antígeno A, que puede reaccionar con anticuerpos anti-A."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si una persona del grupo B recibe eritrocitos que poseen antígeno A:
+
+¿Qué podría ocurrir?`,
+    opts: [
+        "Puede producirse una reacción transfusional por incompatibilidad ABO",
+        "Los eritrocitos se adaptarán inmediatamente",
+        "Aumentará la producción de hemoglobina",
+        "No existirá ninguna posibilidad de reacción"
+    ],
+    a: 0,
+    exp: "Los anticuerpos presentes en el receptor pueden reaccionar contra antígenos ABO presentes en los eritrocitos transfundidos."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si una persona Rh negativa recibe eritrocitos Rh positivos:
+
+¿Qué puede ocurrir?`,
+    opts: [
+        "Puede generarse una respuesta inmunitaria contra el antígeno D",
+        "Desaparecerá el antígeno D",
+        "Los eritrocitos se convertirán en Rh negativos",
+        "No puede existir ninguna respuesta inmunitaria"
+    ],
+    a: 0,
+    exp: "La exposición de una persona Rh negativa al antígeno D puede producir sensibilización y formación de anticuerpos anti-D."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si un linfocito B reconoce un antígeno y recibe las señales necesarias para activarse:
+
+¿Qué ocurrirá posteriormente?`,
+    opts: [
+        "Puede diferenciarse en células plasmáticas productoras de anticuerpos",
+        "Se convertirá en eritrocito",
+        "Se transformará en plaqueta",
+        "Perderá toda capacidad inmunitaria"
+    ],
+    a: 0,
+    exp: "Los linfocitos B activados pueden diferenciarse en células plasmáticas capaces de producir anticuerpos."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si se activa un linfocito T citotóxico:
+
+¿Qué función puede realizar?`,
+    opts: [
+        "Destruir células diana infectadas o alteradas",
+        "Transportar oxígeno",
+        "Formar fibrina",
+        "Producir hemoglobina"
+    ],
+    a: 0,
+    exp: "Los linfocitos T citotóxicos pueden reconocer y destruir células infectadas o alteradas."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si aumenta la concentración de IgE específica frente a un alérgeno:
+
+¿Qué respuesta puede facilitar?`,
+    opts: [
+        "Una respuesta de hipersensibilidad tipo I",
+        "La formación de eritrocitos",
+        "La coagulación secundaria",
+        "La producción de fibrina"
+    ],
+    a: 0,
+    exp: "La IgE participa principalmente en las reacciones de hipersensibilidad tipo I."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si se activa un mastocito durante una reacción alérgica mediada por IgE:
+
+¿Qué puede ocurrir?`,
+    opts: [
+        "Liberación de mediadores inflamatorios",
+        "Producción de hemoglobina",
+        "Formación de eritrocitos",
+        "Conversión de fibrinógeno en plaquetas"
+    ],
+    a: 0,
+    exp: "La activación de mastocitos mediada por IgE puede provocar liberación de histamina y otros mediadores."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si disminuye el pH sanguíneo y aumenta el CO₂:
+
+¿Qué efecto tendrá sobre la curva de disociación de la hemoglobina?`,
+    opts: [
+        "Se desplazará hacia la derecha",
+        "Se desplazará hacia la izquierda",
+        "Desaparecerá",
+        "No tendrá ninguna relación con el pH"
+    ],
+    a: 0,
+    exp: "El aumento de CO₂ y H+ desplaza la curva hacia la derecha y favorece la liberación de O₂."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si aumenta la temperatura de un tejido metabólicamente activo:
+
+¿Qué efecto puede producir sobre la hemoglobina?`,
+    opts: [
+        "Disminuir su afinidad por O₂",
+        "Aumentar su afinidad por O₂",
+        "Dejar de transportar oxígeno",
+        "Convertirse en fibrina"
+    ],
+    a: 0,
+    exp: "El aumento de temperatura favorece la disminución de la afinidad de la hemoglobina por O₂ y facilita su liberación."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si aumenta la afinidad de la hemoglobina por el oxígeno:
+
+¿Qué ocurrirá con la liberación de O₂ en los tejidos?`,
+    opts: [
+        "Disminuirá",
+        "Aumentará",
+        "No tendrá ninguna relación",
+        "Se detendrá el transporte de CO₂"
+    ],
+    a: 0,
+    exp: "Una mayor afinidad mantiene al oxígeno más unido a la hemoglobina y dificulta su liberación a los tejidos."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si un paciente presenta una disminución importante de la concentración de hemoglobina:
+
+¿Qué ocurrirá con la capacidad de transporte de oxígeno de la sangre?`,
+    opts: [
+        "Disminuirá",
+        "Aumentará",
+        "No cambiará nunca",
+        "Se convertirá en transporte de dióxido de carbono exclusivamente"
+    ],
+    a: 0,
+    exp: "La hemoglobina es el principal transportador de oxígeno en la sangre, por lo que una disminución importante reduce la capacidad de transporte de O₂."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si aumenta considerablemente el hematocrito debido a un aumento de la masa eritrocitaria:
+
+¿Qué parámetro se encontrará elevado?`,
+    opts: [
+        "La proporción de eritrocitos en el volumen sanguíneo",
+        "El número de linfocitos exclusivamente",
+        "El tiempo de coagulación exclusivamente",
+        "La concentración de anticuerpos necesariamente"
+    ],
+    a: 0,
+    exp: "El hematocrito representa la proporción del volumen sanguíneo ocupada por los eritrocitos."
+},
+
+{
+    type: "¿Qué pasaría si...?",
+    q: `Si disminuye la producción de plaquetas en la médula ósea:
+
+¿Qué resultado puede observarse en sangre periférica?`,
+    opts: [
+        "Trombocitopenia",
+        "Policitemia",
+        "Leucocitosis obligatoria",
+        "Macrocitosis obligatoria"
+    ],
+    a: 0,
+    exp: "Una disminución de la producción de plaquetas puede provocar una reducción de su número en sangre periférica."
+},
+
+{
+    type: "Interpretación de laboratorio",
+    q: `Paciente:
+
+IgM: elevada
+IgG: inicialmente negativa
+Síntomas recientes
+Prueba serológica positiva para un antígeno específico
+
+¿Qué interpretación es más compatible?`,
+    opts: [
+        "Respuesta inmunitaria primaria reciente",
+        "Ausencia de respuesta inmunitaria",
+        "Respuesta exclusivamente alérgica",
+        "Inmunidad celular aislada"
+    ],
+    a: 0,
+    exp: "La IgM suele predominar durante las primeras etapas de una respuesta inmunitaria primaria."
+},
+
+{
+    type: "Interpretación de laboratorio",
+    q: `Tipificación sanguínea:
+
+Anti-A: aglutinación
+Anti-B: sin aglutinación
+Anti-D: aglutinación
+
+¿Cuál es el grupo sanguíneo?`,
+    opts: [
+        "A positivo",
+        "A negativo",
+        "B positivo",
+        "AB positivo"
+    ],
+    a: 0,
+    exp: "La reacción con anti-A indica antígeno A, la ausencia de reacción con anti-B indica ausencia de B y la reacción con anti-D indica Rh positivo."
+},
+
+{
+    type: "Interpretación de laboratorio",
+    q: `Tipificación sanguínea:
+
+Anti-A: aglutinación
+Anti-B: aglutinación
+Anti-D: sin aglutinación
+
+¿Cuál es el grupo sanguíneo?`,
+    opts: [
+        "AB negativo",
+        "AB positivo",
+        "O negativo",
+        "A negativo"
+    ],
+    a: 0,
+    exp: "La aglutinación con anti-A y anti-B indica grupo AB, mientras que la ausencia de aglutinación con anti-D indica Rh negativo."
+},
+
+{
+    type: "Completar",
+    q: "Un paciente presenta un VCM de 110 fL. Este resultado indica que sus eritrocitos presentan _____.",
+    opts: [
+        "Macrocitosis",
+        "Microcitosis",
+        "Normocitosis",
+        "Trombocitosis",
+        "Leucopenia",
+        "Neutropenia",
+        "Hipovolemia",
+        "Hemoconcentración"
+    ],
+    a: 0,
+    exp: "Un VCM de 110 fL indica un volumen eritrocitario aumentado, compatible con macrocitosis."
+},
+
+{
+    type: "Completar",
+    q: "En una reacción alérgica inmediata mediada por IgE, los _____ liberan histamina después de activarse.",
+    opts: [
+        "Mastocitos",
+        "Eritrocitos",
+        "Megacariocitos",
+        "Hepatocitos",
+        "Eritroblastos",
+        "Neutrófilos",
+        "Linfocitos B",
+        "Monocitos"
+    ],
+    a: 0,
+    exp: "Los mastocitos poseen receptores para IgE y pueden liberar histamina y otros mediadores durante las reacciones de hipersensibilidad inmediata."
+},
+
 
 {
     type: "Opción Múltiple",
