@@ -164,7 +164,38 @@ footer{max-width:1100px;margin:auto;padding:0 22px 35px;color:#8a91a2;font-size:
         <img src="Snoopy.png" alt="Study - Ibedh">
     </div>
     <div>Examen - Interactivo</div>
+
+     <button
+            class="back-btn"
+            onclick="window.location.href='Selec.html'"
+        >
+            ← Regresar
+        </button>
 </div>
+
+<style>
+    
+.back-btn{
+    border:2px solid #391db9;
+    background:#fff;
+    color:#000;
+
+    padding:9px 18px;
+    border-radius:50px;
+
+    font-size:13px;
+    font-weight:700;
+
+    cursor:pointer;
+    transition:.25s;
+}
+
+.back-btn:hover{
+    background:#391db9;
+    color:#fff;
+    transform:translateY(-2px);
+}
+</style>
     
    <span style="font-size:13px;color:var(--muted);font-weight:600;">
     Examen Simulado | <span style="color:#D4AF37;">ABBYS</span>
@@ -368,7 +399,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
     <button class="btn-primary" onclick="startQuiz()">¡Comenzar!</button>
-    <button class="btn-exam" onclick="window.location.href='index.html'">
+    <button class="btn-exam" style="display: none;" onclick="window.location.href='Selec.html'">
     Regresar
 </button>
   </div>
@@ -704,193 +735,6 @@ const questionBank = [
     ],
     a: 0,
     exp: "Los reticulocitos son eritrocitos inmaduros que aumentan cuando la médula ósea responde ante una pérdida de eritrocitos."
-},
-
-{
-    type: "Completar",
-    q: "Una anemia con un VCM disminuido se clasifica inicialmente como anemia _____.",
-    opts: [
-        "Microcítica",
-        "Macrocítica",
-        "Normocítica",
-        "Hemolítica",
-        "Aplásica",
-        "Megaloblástica",
-        "Leucopénica",
-        "Trombocitopénica"
-    ],
-    a: 0,
-    exp: "Un VCM bajo indica que los eritrocitos tienen un volumen menor al esperado y se clasifican como microcíticos."
-},
-
-{
-    type: "Completar",
-    q: "Cuando el VCM está aumentado, la anemia puede clasificarse como _____.",
-    opts: [
-        "Macrocítica",
-        "Microcítica",
-        "Normocítica",
-        "Ferropénica",
-        "Hemolítica",
-        "Hipocrómica",
-        "Trombocitopénica",
-        "Leucopénica"
-    ],
-    a: 0,
-    exp: "El aumento del volumen corpuscular medio caracteriza a las anemias macrocíticas."
-},
-
-{
-    type: "Completar",
-    q: "La _____ representa la cantidad promedio de hemoglobina contenida en cada eritrocito.",
-    opts: [
-        "HCM",
-        "VCM",
-        "CHCM",
-        "Hematocrito",
-        "TP",
-        "TTPa",
-        "INR",
-        "Reticulocitos"
-    ],
-    a: 0,
-    exp: "La hemoglobina corpuscular media o HCM indica la cantidad promedio de hemoglobina por eritrocito."
-},
-
-{
-    type: "Completar",
-    q: "La concentración promedio de hemoglobina dentro de los eritrocitos se expresa mediante la _____.",
-    opts: [
-        "CHCM",
-        "VCM",
-        "HCM",
-        "Hematocrito",
-        "INR",
-        "TP",
-        "TTPa",
-        "Ferritina"
-    ],
-    a: 0,
-    exp: "La CHCM indica la concentración promedio de hemoglobina dentro de los eritrocitos."
-},
-
-{
-    type: "Completar",
-    q: "Durante una infección bacteriana aguda, los _____ participan principalmente en la fagocitosis de microorganismos.",
-    opts: [
-        "Neutrófilos",
-        "Linfocitos B",
-        "Eritrocitos",
-        "Plaquetas",
-        "Basófilos",
-        "Eosinófilos",
-        "Megacariocitos",
-        "Reticulocitos"
-    ],
-    a: 0,
-    exp: "Los neutrófilos son células importantes de la inmunidad innata y participan especialmente en la fagocitosis durante infecciones bacterianas."
-},
-
-{
-    type: "Completar",
-    q: "Los _____ pueden diferenciarse en células plasmáticas capaces de producir anticuerpos.",
-    opts: [
-        "Linfocitos B",
-        "Neutrófilos",
-        "Eritrocitos",
-        "Plaquetas",
-        "Basófilos",
-        "Eosinófilos",
-        "Monocitos",
-        "Megacariocitos"
-    ],
-    a: 0,
-    exp: "Los linfocitos B forman parte de la inmunidad adaptativa y pueden diferenciarse en células plasmáticas productoras de anticuerpos."
-},
-
-{
-    type: "Completar",
-    q: "Los linfocitos _____ participan principalmente en la inmunidad celular y pueden destruir células infectadas.",
-    opts: [
-        "T",
-        "B",
-        "Neutrófilos",
-        "Eritrocitos",
-        "Plaquetas",
-        "Basófilos",
-        "Eosinófilos",
-        "Monocitos"
-    ],
-    a: 0,
-    exp: "Los linfocitos T participan en la inmunidad celular y algunos subtipos pueden destruir células infectadas."
-},
-
-{
-    type: "Completar",
-    q: "La inmunoglobulina que puede atravesar la placenta y proporcionar inmunidad pasiva al feto es la _____.",
-    opts: [
-        "IgG",
-        "IgM",
-        "IgA",
-        "IgE",
-        "IgD",
-        "IgF",
-        "IgC",
-        "IgH"
-    ],
-    a: 0,
-    exp: "La IgG es la principal inmunoglobulina que atraviesa la placenta y proporciona inmunidad pasiva al feto."
-},
-
-{
-    type: "Completar",
-    q: "Durante una respuesta inmunitaria primaria, la primera inmunoglobulina que suele producirse es la _____.",
-    opts: [
-        "IgM",
-        "IgG",
-        "IgA",
-        "IgE",
-        "IgD",
-        "IgF",
-        "IgC",
-        "IgH"
-    ],
-    a: 0,
-    exp: "La IgM suele ser la primera inmunoglobulina producida durante una respuesta inmunitaria primaria."
-},
-
-{
-    type: "Completar",
-    q: "La _____ está principalmente relacionada con las reacciones alérgicas inmediatas.",
-    opts: [
-        "IgE",
-        "IgG",
-        "IgM",
-        "IgA",
-        "IgD",
-        "IgF",
-        "IgC",
-        "IgH"
-    ],
-    a: 0,
-    exp: "La IgE participa principalmente en las reacciones de hipersensibilidad inmediata."
-},
-
-{
-    type: "Completar",
-    q: "En las secreciones de las mucosas, como saliva y lágrimas, predomina la inmunoglobulina _____.",
-    opts: [
-        "IgA",
-        "IgG",
-        "IgM",
-        "IgE",
-        "IgD",
-        "IgF",
-        "IgC",
-        "IgH"
-    ],
-    a: 0,
-    exp: "La IgA secretora desempeña un papel importante en la protección de las superficies mucosas."
 },
 
 {
@@ -2560,6 +2404,112 @@ Anti-D: sin aglutinación
     a: 0,
     exp: "Las células madre hematopoyéticas generan las diferentes líneas celulares de la sangre."
 },
+
+
+{
+    type: "Caso Clínico",
+    q: "Un paciente presenta una reacción inmunitaria retardada. ¿Qué característica la distingue?",
+    opts: [
+        "Predominio de mecanismos celulares mediados por linfocitos T",
+        "Dependencia exclusiva de IgE",
+        "Dependencia exclusiva de plaquetas",
+        "Dependencia exclusiva de eritrocitos"
+    ],
+    a: 0,
+    exp: "La hipersensibilidad tipo IV es mediada principalmente por linfocitos T."
+},
+
+{
+    type: "Caso Clínico",
+    q: "Un paciente presenta una reacción transfusional por incompatibilidad ABO. ¿Qué componente de la sangre del receptor es fundamental?",
+    opts: [
+        "Anticuerpos plasmáticos",
+        "Eritropoyetina",
+        "Plaquetas exclusivamente",
+        "Hemoglobina libre"
+    ],
+    a: 0,
+    exp: "Los anticuerpos ABO del receptor pueden reaccionar con antígenos eritrocitarios incompatibles."
+},
+
+{
+    type: "Caso Clínico",
+    q: "Un paciente de grupo B recibe eritrocitos del grupo A. ¿Qué anticuerpos del receptor pueden reaccionar?",
+    opts: [
+        "Anti-A",
+        "Anti-B",
+        "Anti-D obligatoriamente",
+        "Anti-AB exclusivamente"
+    ],
+    a: 0,
+    exp: "Una persona del grupo B normalmente presenta anticuerpos anti-A."
+},
+
+{
+    type: "Caso Clínico",
+    q: "Un paciente de grupo O recibe eritrocitos del grupo A. ¿Qué anticuerpo del receptor puede producir una reacción?",
+    opts: [
+        "Anti-A",
+        "Anti-B únicamente",
+        "Anti-D necesariamente",
+        "Ninguno"
+    ],
+    a: 0,
+    exp: "El plasma del grupo O normalmente contiene anti-A y anti-B."
+},
+
+{
+    type: "Caso Clínico",
+    q: "Un paciente presenta sangre AB. ¿Qué antígenos se encuentran en sus eritrocitos?",
+    opts: [
+        "A y B",
+        "Solo A",
+        "Solo B",
+        "Ninguno"
+    ],
+    a: 0,
+    exp: "El grupo AB expresa ambos antígenos ABO."
+},
+
+{
+    type: "Caso Clínico",
+    q: "Un paciente presenta sangre O. ¿Qué antígenos A/B se encuentran en sus eritrocitos?",
+    opts: [
+        "Ninguno",
+        "A solamente",
+        "B solamente",
+        "A y B"
+    ],
+    a: 0,
+    exp: "Los eritrocitos del grupo O no expresan antígenos A ni B."
+},
+
+{
+    type: "Caso Clínico",
+    q: "Una mujer Rh negativa está sensibilizada y desarrolla anticuerpos anti-D. ¿Qué clase de inmunoglobulina puede atravesar la placenta?",
+    opts: [
+        "IgG",
+        "IgM",
+        "IgA exclusivamente",
+        "IgE"
+    ],
+    a: 0,
+    exp: "La IgG atraviesa la placenta y puede participar en la enfermedad hemolítica fetal."
+},
+
+{
+    type: "Caso Clínico",
+    q: "Un paciente Rh negativo nunca ha tenido exposición al antígeno D. ¿Qué afirmación es más adecuada?",
+    opts: [
+        "No necesariamente tiene anti-D de forma natural",
+        "Siempre tiene anti-D",
+        "Siempre tiene anti-A",
+        "Siempre tiene anti-B"
+    ],
+    a: 0,
+    exp: "Los anticuerpos anti-D suelen desarrollarse después de sensibilización."
+},
+
 
 {
     type: "Opción Múltiple",
@@ -7462,6 +7412,194 @@ Anti-D: sin aglutinación
     exp: "Una respuesta eritroide insuficiente pese a señal adecuada puede indicar un problema medular."
 },
 
+
+{
+    type: "Completar",
+    q: "Una anemia con un VCM disminuido se clasifica inicialmente como anemia _____.",
+    opts: [
+        "Microcítica",
+        "Macrocítica",
+        "Normocítica",
+        "Hemolítica",
+        "Aplásica",
+        "Megaloblástica",
+        "Leucopénica",
+        "Trombocitopénica"
+    ],
+    a: 0,
+    exp: "Un VCM bajo indica que los eritrocitos tienen un volumen menor al esperado y se clasifican como microcíticos."
+},
+
+{
+    type: "Completar",
+    q: "Cuando el VCM está aumentado, la anemia puede clasificarse como _____.",
+    opts: [
+        "Macrocítica",
+        "Microcítica",
+        "Normocítica",
+        "Ferropénica",
+        "Hemolítica",
+        "Hipocrómica",
+        "Trombocitopénica",
+        "Leucopénica"
+    ],
+    a: 0,
+    exp: "El aumento del volumen corpuscular medio caracteriza a las anemias macrocíticas."
+},
+
+{
+    type: "Completar",
+    q: "La _____ representa la cantidad promedio de hemoglobina contenida en cada eritrocito.",
+    opts: [
+        "HCM",
+        "VCM",
+        "CHCM",
+        "Hematocrito",
+        "TP",
+        "TTPa",
+        "INR",
+        "Reticulocitos"
+    ],
+    a: 0,
+    exp: "La hemoglobina corpuscular media o HCM indica la cantidad promedio de hemoglobina por eritrocito."
+},
+
+{
+    type: "Completar",
+    q: "La concentración promedio de hemoglobina dentro de los eritrocitos se expresa mediante la _____.",
+    opts: [
+        "CHCM",
+        "VCM",
+        "HCM",
+        "Hematocrito",
+        "INR",
+        "TP",
+        "TTPa",
+        "Ferritina"
+    ],
+    a: 0,
+    exp: "La CHCM indica la concentración promedio de hemoglobina dentro de los eritrocitos."
+},
+
+{
+    type: "Completar",
+    q: "Durante una infección bacteriana aguda, los _____ participan principalmente en la fagocitosis de microorganismos.",
+    opts: [
+        "Neutrófilos",
+        "Linfocitos B",
+        "Eritrocitos",
+        "Plaquetas",
+        "Basófilos",
+        "Eosinófilos",
+        "Megacariocitos",
+        "Reticulocitos"
+    ],
+    a: 0,
+    exp: "Los neutrófilos son células importantes de la inmunidad innata y participan especialmente en la fagocitosis durante infecciones bacterianas."
+},
+
+{
+    type: "Completar",
+    q: "Los _____ pueden diferenciarse en células plasmáticas capaces de producir anticuerpos.",
+    opts: [
+        "Linfocitos B",
+        "Neutrófilos",
+        "Eritrocitos",
+        "Plaquetas",
+        "Basófilos",
+        "Eosinófilos",
+        "Monocitos",
+        "Megacariocitos"
+    ],
+    a: 0,
+    exp: "Los linfocitos B forman parte de la inmunidad adaptativa y pueden diferenciarse en células plasmáticas productoras de anticuerpos."
+},
+
+{
+    type: "Completar",
+    q: "Los linfocitos _____ participan principalmente en la inmunidad celular y pueden destruir células infectadas.",
+    opts: [
+        "T",
+        "B",
+        "Neutrófilos",
+        "Eritrocitos",
+        "Plaquetas",
+        "Basófilos",
+        "Eosinófilos",
+        "Monocitos"
+    ],
+    a: 0,
+    exp: "Los linfocitos T participan en la inmunidad celular y algunos subtipos pueden destruir células infectadas."
+},
+
+{
+    type: "Completar",
+    q: "La inmunoglobulina que puede atravesar la placenta y proporcionar inmunidad pasiva al feto es la _____.",
+    opts: [
+        "IgG",
+        "IgM",
+        "IgA",
+        "IgE",
+        "IgD",
+        "IgF",
+        "IgC",
+        "IgH"
+    ],
+    a: 0,
+    exp: "La IgG es la principal inmunoglobulina que atraviesa la placenta y proporciona inmunidad pasiva al feto."
+},
+
+{
+    type: "Completar",
+    q: "Durante una respuesta inmunitaria primaria, la primera inmunoglobulina que suele producirse es la _____.",
+    opts: [
+        "IgM",
+        "IgG",
+        "IgA",
+        "IgE",
+        "IgD",
+        "IgF",
+        "IgC",
+        "IgH"
+    ],
+    a: 0,
+    exp: "La IgM suele ser la primera inmunoglobulina producida durante una respuesta inmunitaria primaria."
+},
+
+{
+    type: "Completar",
+    q: "La _____ está principalmente relacionada con las reacciones alérgicas inmediatas.",
+    opts: [
+        "IgE",
+        "IgG",
+        "IgM",
+        "IgA",
+        "IgD",
+        "IgF",
+        "IgC",
+        "IgH"
+    ],
+    a: 0,
+    exp: "La IgE participa principalmente en las reacciones de hipersensibilidad inmediata."
+},
+
+{
+    type: "Completar",
+    q: "En las secreciones de las mucosas, como saliva y lágrimas, predomina la inmunoglobulina _____.",
+    opts: [
+        "IgA",
+        "IgG",
+        "IgM",
+        "IgE",
+        "IgD",
+        "IgF",
+        "IgC",
+        "IgH"
+    ],
+    a: 0,
+    exp: "La IgA secretora desempeña un papel importante en la protección de las superficies mucosas."
+},
+
 {
     type: "Caso Clínico",
     q: "Un paciente presenta una disminución de todos los elementos formes por fallo medular. ¿Qué función global está comprometida?",
@@ -7954,110 +8092,6 @@ Anti-D: sin aglutinación
     ],
     a: 0,
     exp: "La IgE unida a células efectoras permite una respuesta rápida ante el reencuentro con el alérgeno."
-},
-
-{
-    type: "Caso Clínico",
-    q: "Un paciente presenta una reacción inmunitaria retardada. ¿Qué característica la distingue?",
-    opts: [
-        "Predominio de mecanismos celulares mediados por linfocitos T",
-        "Dependencia exclusiva de IgE",
-        "Dependencia exclusiva de plaquetas",
-        "Dependencia exclusiva de eritrocitos"
-    ],
-    a: 0,
-    exp: "La hipersensibilidad tipo IV es mediada principalmente por linfocitos T."
-},
-
-{
-    type: "Caso Clínico",
-    q: "Un paciente presenta una reacción transfusional por incompatibilidad ABO. ¿Qué componente de la sangre del receptor es fundamental?",
-    opts: [
-        "Anticuerpos plasmáticos",
-        "Eritropoyetina",
-        "Plaquetas exclusivamente",
-        "Hemoglobina libre"
-    ],
-    a: 0,
-    exp: "Los anticuerpos ABO del receptor pueden reaccionar con antígenos eritrocitarios incompatibles."
-},
-
-{
-    type: "Caso Clínico",
-    q: "Un paciente de grupo B recibe eritrocitos del grupo A. ¿Qué anticuerpos del receptor pueden reaccionar?",
-    opts: [
-        "Anti-A",
-        "Anti-B",
-        "Anti-D obligatoriamente",
-        "Anti-AB exclusivamente"
-    ],
-    a: 0,
-    exp: "Una persona del grupo B normalmente presenta anticuerpos anti-A."
-},
-
-{
-    type: "Caso Clínico",
-    q: "Un paciente de grupo O recibe eritrocitos del grupo A. ¿Qué anticuerpo del receptor puede producir una reacción?",
-    opts: [
-        "Anti-A",
-        "Anti-B únicamente",
-        "Anti-D necesariamente",
-        "Ninguno"
-    ],
-    a: 0,
-    exp: "El plasma del grupo O normalmente contiene anti-A y anti-B."
-},
-
-{
-    type: "Caso Clínico",
-    q: "Un paciente presenta sangre AB. ¿Qué antígenos se encuentran en sus eritrocitos?",
-    opts: [
-        "A y B",
-        "Solo A",
-        "Solo B",
-        "Ninguno"
-    ],
-    a: 0,
-    exp: "El grupo AB expresa ambos antígenos ABO."
-},
-
-{
-    type: "Caso Clínico",
-    q: "Un paciente presenta sangre O. ¿Qué antígenos A/B se encuentran en sus eritrocitos?",
-    opts: [
-        "Ninguno",
-        "A solamente",
-        "B solamente",
-        "A y B"
-    ],
-    a: 0,
-    exp: "Los eritrocitos del grupo O no expresan antígenos A ni B."
-},
-
-{
-    type: "Caso Clínico",
-    q: "Una mujer Rh negativa está sensibilizada y desarrolla anticuerpos anti-D. ¿Qué clase de inmunoglobulina puede atravesar la placenta?",
-    opts: [
-        "IgG",
-        "IgM",
-        "IgA exclusivamente",
-        "IgE"
-    ],
-    a: 0,
-    exp: "La IgG atraviesa la placenta y puede participar en la enfermedad hemolítica fetal."
-},
-
-{
-    type: "Caso Clínico",
-    q: "Un paciente Rh negativo nunca ha tenido exposición al antígeno D. ¿Qué afirmación es más adecuada?",
-    opts: [
-        "No necesariamente tiene anti-D de forma natural",
-        "Siempre tiene anti-D",
-        "Siempre tiene anti-A",
-        "Siempre tiene anti-B"
-    ],
-    a: 0,
-    exp: "Los anticuerpos anti-D suelen desarrollarse después de sensibilización."
 },
 
 {
