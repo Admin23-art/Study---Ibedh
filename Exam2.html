@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen Interactivo — Fisiología Cardiovascular y Respiratoria</title>
+<style>
+:root{
+  --bg:#f5f7fb; --card:#ffffff; --text:#172033; --muted:#687287;
+  --primary:#6757d9; --primary2:#8b7cf0; --border:#e5e8f0;
+  --shadow:0 12px 35px rgba(35,42,70,.08); --success:#277544;
+  --success-bg:#eaf8ef; --danger:#a23b49; --danger-bg:#fff0f2;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#f8f9fd 0%,#f1f3fa 100%);
+font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);min-height:100vh}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.nav{max-width:1000px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:18px}
+.logo{width:45px;height:45px;border-radius:50%;overflow:hidden;flex-shrink:0;}
+.logo img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;}
+.container{max-width:1000px;margin:30px auto;padding:0 22px 60px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:var(--shadow);margin-bottom:20px}
+.hero-title{font-size:28px;margin:0 0 10px;letter-spacing:-.5px}
+.hero-desc{color:var(--muted);font-size:15px;line-height:1.6;margin:0 0 20px}
+
+.stats-grid {
+    position: relative;
+    width: 300px;
+    max-width: 90%;
+    height: 100px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-radius: 999px;
+    box-sizing: border-box;
+    margin: 0 auto 25px auto;
+}
+
+.stats-grid .stat-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(55px) scale(.97);
+    transition: transform .75s cubic-bezier(.22, 1, .36, 1), opacity .75s ease, visibility 0s linear .75s;
+}
+
+.stats-grid .stat-box.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) scale(1);
+    transition: transform .75s cubic-bezier(.22, 1, .36, 1), opacity .75s ease;
+}
+
+.stats-grid .stat-box.exit {
+    opacity: 0;
+    visibility: visible;
+    transform: translateX(-55px) scale(.97);
+    transition: transform .75s cubic-bezier(.22, 1, .36, 1), opacity .75s ease;
+}
+
+.stats-grid .stat-val {
+    position: relative;
+    font-size: 34px;
+    font-weight: 850;
+    line-height: 1;
+    margin: 0 0 10px 0;
+    letter-spacing: -1.2px;
+    background: linear-gradient(135deg, #111827, #4f46e5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stats-grid .stat-val::after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 3px;
+    left: 50%;
+    bottom: -6px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: #4f46e5;
+}
+
+.stats-grid .stat-lbl {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0;
+    text-align: center;
+    letter-spacing: .2px;
+    color: #6b7280;
+}
+
+.btn-primary {
+    padding: 14px 28px;
+    border: 2px solid #391db9;
+    border-radius: 50px;
+    background: #6757d9;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.btn-primary:hover {
+    background: #6757d9;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.45);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-exam {
+    padding: 14px 28px;
+    border: 2px solid #000000;
+    border-radius: 50px;
+    background: #ffffff;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.btn-exam:hover {
+    background: #6757d9;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.45);
+}
+
+.btn-exam:active {
+    transform: translateY(0);
+}
+
+.back-btn{
+    border:2px solid #391db9;
+    background:#fff;
+    color:#000;
+    padding:9px 18px;
+    border-radius:50px;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.back-btn:hover{
+    background:#391db9;
+    color:#fff;
+    transform:translateY(-2px);
+}
+
+.btn-ghost{border:1px solid var(--border);background:white;color:var(--text);border-radius:12px;padding:12px 20px;font-weight:700;font-size:14px}
+.btn-ghost:hover{background:#f8f9fe}
+.progress-bar-wrap{height:10px;background:#eceef4;border-radius:999px;overflow:hidden;margin:15px 0 25px}
+.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--primary),var(--primary2));transition:width .3s ease}
+.q-card{background:white;border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:18px;position:relative;transition:.2s}
+.q-tag{display:inline-block;font-size:11px;font-weight:800;color:var(--primary);background:#eeeafd;padding:4px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase}
+.q-text{font-size:16px;font-weight:750;line-height:1.5;margin-bottom:16px}
+.options-grid{display:grid;gap:10px}
+.options-grid.grid-2col{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.option-item{position:relative}
+.option-item input{position:absolute;opacity:0;pointer-events:none}
+.option-label{display:block;border:1px solid var(--border);border-radius:12px;padding:12px 16px;cursor:pointer;color:#4b5567;font-size:14px;line-height:1.4;transition:.15s;background:#fff}
+.option-label:hover{background:#fafaff;border-color:#cfc9f7}
+.option-item input:checked + .option-label{background:#eeeafd;border-color:#aaa0f4;color:var(--primary);font-weight:700}
+.q-card.correct .option-item input:checked + .option-label,.q-card.correct .option-label.is-correct{background:var(--success-bg);border-color:#83c69a;color:var(--success);font-weight:700}
+.q-card.incorrect .option-item input:checked + .option-label{background:var(--danger-bg);border-color:#e08a94;color:var(--danger);font-weight:700}
+.q-card.incorrect .option-label.is-correct{background:var(--success-bg);border-color:#83c69a;color:var(--success);font-weight:700}
+.explanation{margin-top:14px;padding:12px 16px;border-radius:10px;font-size:13px;line-height:1.5;display:none}
+.q-card.correct .explanation{display:block;background:var(--success-bg);color:var(--success)}
+.q-card.incorrect .explanation{display:block;background:var(--danger-bg);color:var(--danger)}
+.hidden{display:none!important}
+.result-header{text-align:center;padding:20px 0}
+.score-circle{width:130px;height:130px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary),var(--primary2));color:white;font-size:36px;font-weight:900;box-shadow:0 10px 25px rgba(103,87,217,.3)}
+.review-item{border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;font-size:13px;line-height:1.5}
+.review-item.bad{border-color:#e08a94;background:var(--danger-bg)}
+.review-item.good{border-color:#83c69a;background:var(--success-bg)}
+footer{max-width:1100px;margin:auto;padding:0 22px 35px;color:#8a91a2;font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="nav">
+    <div class="brand">
+      <div class="logo">
+        <img src="Snoopy.png" alt="Study - Ibedh" onerror="this.src='https://placehold.co/45x45/6757d9/ffffff?text=SN'">
+      </div>
+      <div>Examen - Interactivo</div>
+    </div>
+    <button class="back-btn" onclick="window.location.href='Selec.html'">← Regresar</button>
+  </div>
+</header>
+
+<main class="container">
+  <!-- START SCREEN -->
+  <div id="startScreen" class="card">
+    <h1 class="hero-title">Examen de Fisiología</h1>
+    <p class="hero-desc">El sistema seleccionará <b>10 preguntas de forma aleatoria</b> únicamente del banco de <b>46 preguntas</b> basadas en tu material de estudio de Sistema Cardiovascular, Sistema Respiratorio, Ventilación y Volúmenes Pulmonares.</p>
+    
+    <div class="stats-grid">
+      <div class="stat-box"><div class="stat-val">46</div><div class="stat-lbl">Preguntas Totales</div></div>
+      <div class="stat-box"><div class="stat-val">10</div><div class="stat-lbl">Preguntas por Intento</div></div>
+      <div class="stat-box"><div class="stat-val">4 Op.</div><div class="stat-lbl">Opción Múltiple</div></div>
+      <div class="stat-box"><div class="stat-val">100%</div><div class="stat-lbl">Fisiología Médica</div></div>
+    </div>
+
+    <button class="btn-primary" onclick="startQuiz()" style="display: block; margin: 0 auto;">
+        ¡Comenzar!
+    </button>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="quizScreen" class="hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-weight:800;font-size:18px;">Progreso del Examen</span>
+      <span id="progressText" style="font-size:14px;color:var(--muted);font-weight:700;">0 de 10 respondidas</span>
+    </div>
+    <div class="progress-bar-wrap">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div id="questionsContainer"></div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:20px;">
+      <button class="btn-ghost" onclick="cancelQuiz()" style="opacity: 0; background: transparent; border: none;">
+          Cancelar Intento
+      </button>
+      <button id="submitBtn" class="btn-primary" onclick="finishQuiz()" disabled>Finalizar y Calificar</button>
+    </div>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div id="resultScreen" class="card hidden">
+    <div class="result-header">
+      <div id="scoreCircle" class="score-circle">0%</div>
+      <h2 id="resultTitle" style="margin:0 0 8px;">¡Examen Finalizado!</h2>
+      <p id="resultSub" style="color:var(--muted);margin:0 0 20px;"></p>
+    </div>
+
+    <div style="display:flex;justify-content:center;gap:12px;margin-bottom:24px;">
+      <button class="btn-primary" onclick="startQuiz()">↻ Nuevo Intento (Otras 10 Preguntas)</button>
+      <button class="btn-ghost" onclick="showStartScreen()" style="border-radius: 999px; padding: 14px 30px; border: 2px solid black; cursor: pointer;">
+          Volver al Inicio
+      </button>
+    </div>
+
+    <h3 style="margin-bottom:12px;">Desglose de Respuestas:</h3>
+    <div id="reviewContainer"></div>
+  </div>
+</main>
+
+<script>
+// Banco ampliado de 46 preguntas
+const questionBank = [
+  // Preguntas Iniciales
+  {
+    "q": "¿Qué describe correctamente deflexión positiva en un registro eléctrico?",
+    "a": "La onda eléctrica se acerca al electrodo",
+    "exp": "Deflexión positiva: La onda eléctrica se acerca al electrodo."
+  },
+  {
+    "q": "¿Qué describe correctamente deflexión negativa en un registro eléctrico?",
+    "a": "La onda eléctrica se aleja del electrodo",
+    "exp": "Deflexión negativa: La onda eléctrica se aleja del electrodo."
+  },
+  {
+    "q": "¿Qué registran las derivaciones bipolares?",
+    "a": "La diferencia entre dos electrodos",
+    "exp": "Las derivaciones bipolares registran la diferencia entre dos electrodos."
+  },
+  {
+    "q": "¿Qué registran las derivaciones monopolares?",
+    "a": "Se registra el potencial de un electrodo explorador con respecto a un punto de referencia eléctrico",
+    "exp": "Las derivaciones monopolares miden el potencial de un electrodo explorador relativo a un punto de referencia."
+  },
+  {
+    "q": "¿Qué representa el triángulo de Einthoven?",
+    "a": "Representa las tres derivaciones bipolares de las extremidades",
+    "exp": "El triángulo de Einthoven representa las derivaciones bipolares DI, DII y DIII."
+  },
+  {
+    "q": "¿Qué es Hemodinámica?",
+    "a": "Estudia los principios físicos que determinan el movimiento de la sangre por el sistema cardiovascular",
+    "exp": "La hemodinámica estudia los principios físicos del flujo sanguíneo."
+  },
+  {
+    "q": "¿Qué nos dice el efecto Windkessel durante la sístole ventricular?",
+    "a": "Las arterias se expanden y almacenan energía",
+    "exp": "En sístole, la elasticidad arterial permite expandir las paredes y almacenar energía elástica."
+  },
+  {
+    "q": "¿Qué nos dice el efecto Windkessel durante la diástole?",
+    "a": "Las arterias se retraen, liberan energía y mantienen el flujo sanguíneo",
+    "exp": "En diástole, las arterias se retraen liberando la energía almacenada para mantener la perfusión continua."
+  },
+  {
+    "q": "¿Qué es el gasto cardíaco?",
+    "a": "Es la cantidad de sangre que el corazón bombea a la aorta cada minuto",
+    "exp": "Gasto cardíaco = Volumen sistólico × Frecuencia cardíaca (expresado en L/min)."
+  },
+  {
+    "q": "¿Qué es el retorno venoso?",
+    "a": "Es la cantidad de sangre que fluye desde las venas hacia la aurícula derecha por unidad de tiempo",
+    "exp": "El retorno venoso determina el llenado ventricular diastólico."
+  },
+  {
+    "q": "¿Qué nos dice el mecanismo de Frank-Starling?",
+    "a": "Cuanto mayor sea el llenado de los ventrículos durante la diástole mayor será la fuerza de contracción, por lo que mayor será el volumen de sangre expulsado en la sístole",
+    "exp": "A mayor precarga (estiramiento miocárdico), mayor es la fuerza contráctil sistólica."
+  },
+  {
+    "q": "¿Qué es el Sistema respiratorio?",
+    "a": "Conjunto de órganos y estructuras que permiten la entrada y salida de aire y hacen posible el intercambio de oxígeno y dióxido de carbono entre el organismo y el ambiente",
+    "exp": "Su función principal es la ventilación y la hematosis o intercambio gaseoso."
+  },
+  {
+    "q": "¿Cuáles son las estructuras de las vías aéreas superiores?",
+    "a": "Nariz, cavidades nasales, faringe y laringe",
+    "exp": "Las vías aéreas superiores abarcan desde la nariz hasta la laringe."
+  },
+  {
+    "q": "¿Cuál es la función de las vías aéreas superiores?",
+    "a": "Recibir el aire y contribuir a filtrarlo, calentarlo y humidificarlo",
+    "exp": "Acondicionan el aire ambiental antes de que alcance el árbol traqueobronquial."
+  },
+  {
+    "q": "¿Cuáles son las estructuras de las vías aéreas inferiores?",
+    "a": "Tráquea, bronquios y bronquiolos",
+    "exp": "Comprenden la zona de conducción inferior hasta la unidad alveolo-capilar."
+  },
+  {
+    "q": "¿Cuál es la función de las vías aéreas inferiores?",
+    "a": "Distribuir el aire desde la vía superior hasta los alvéolos",
+    "exp": "Conducen el aire inspirado hacia el parénquima pulmonar."
+  },
+  {
+    "q": "¿Qué es el flujo laminar?",
+    "a": "Las capas de aire se desplazan de forma ordenada y paralela con poca mezcla entre ellas",
+    "exp": "El flujo laminar se caracteriza por ser silencioso y de baja resistencia en vías pequeñas."
+  },
+  {
+    "q": "¿Qué es el flujo turbulento?",
+    "a": "El aire presenta remolinos y movimientos irregulares",
+    "exp": "Ocurre a altas velocidades o en ramificaciones de gran calibre provocando desorden molecular."
+  },
+  {
+    "q": "¿Qué es el sistema traqueobronquial?",
+    "a": "Sistema de conductos ramificados que distribuye el aire desde la tráquea hasta las unidades respiratorias",
+    "exp": "Estructura en árbol que ramifica las vías respiratorias para el transporte de gases."
+  },
+  {
+    "q": "¿Qué es la broncodilatación?",
+    "a": "Es cuando aumenta el diámetro y disminuye la resistencia al flujo",
+    "exp": "La broncodilatación facilita el paso del aire reduciendo la resistencia de las vías respiratorias."
+  },
+  {
+    "q": "¿Qué es la broncoconstricción?",
+    "a": "Es cuando se reduce el diámetro y aumenta la resistencia",
+    "exp": "Ocurre por contracción del músculo liso bronquial aumentando la resistencia respiratoria."
+  },
+  {
+    "q": "¿Cuáles son los componentes de la bomba respiratoria en inspiración normal?",
+    "a": "Diafragma (principal), músculos intercostales externos, caja torácica, pulmones",
+    "exp": "El diafragma es el músculo motor principal en la respiración de reposo."
+  },
+  {
+    "q": "¿Cuáles músculos participan en la inspiración forzada?",
+    "a": "Diafragma, intercostales internos, esternocleidomastoideo, escalenos, pectorales, serratos",
+    "exp": "Los músculos accesorios se reclutan cuando aumenta la demanda ventilatoria."
+  },
+  {
+    "q": "¿Qué es la presión atmosférica?",
+    "a": "Presión del aire ambiental",
+    "exp": "Presión ejercida por el aire que rodea al cuerpo (aproximadamente 760 mmHg a nivel del mar)."
+  },
+  {
+    "q": "¿Qué es la presión alveolar?",
+    "a": "Presión del gas dentro de los alvéolos",
+    "exp": "Presión intrapulmonar que fluctúa por debajo y por encima de la atmosférica en el ciclo respiratorio."
+  },
+  {
+    "q": "¿Qué es la presión intrapleural?",
+    "a": "Presión que hay dentro del espacio pleural",
+    "exp": "Normalmente es subatmosférica (negativa) para mantener los pulmones expandidos."
+  },
+  {
+    "q": "¿Qué es la presión transpulmonar?",
+    "a": "Presión alveolar menos presión intrapleural",
+    "exp": "Ptp = Palv - Pip; refleja la fuerza de distensión pulmonar."
+  },
+  {
+    "q": "¿En qué ayuda el complejo pre-Bötzinger?",
+    "a": "Genera el ritmo respiratorio, activa la inspiración, mantiene la respiración automática",
+    "exp": "Es el marcapasos primario del centro respiratorio del tronco encefálico."
+  },
+  {
+    "q": "¿Qué nos dice la ley de Boyle?",
+    "a": "Cambia el volumen y cambia la presión",
+    "exp": "A temperatura constante, la presión de un gas es inversamente proporcional a su volumen (P1V1 = P2V2)."
+  },
+  {
+    "q": "¿Qué nos dice la ley de Dalton?",
+    "a": "Suma las presiones de los gases",
+    "exp": "La presión total de una mezcla gaseosa es igual a la suma de las presiones parciales de cada gas."
+  },
+  {
+    "q": "¿Qué nos dice la ley de Henry?",
+    "a": "El gas se disuelve en un líquido",
+    "exp": "La cantidad de gas disuelto en un líquido es proporcional a su presión parcial y solubilidad."
+  },
+  {
+    "q": "¿Qué nos dice la ley de Laplace?",
+    "a": "La tensión superficial influye en la estabilidad alveolar",
+    "exp": "Relaciona la presión de colapso con la tensión superficial y el radio del alvéolo (P = 2T/r)."
+  },
+  {
+    "q": "¿Qué nos dice la ley de Fick?",
+    "a": "Explica qué tan rápido se difunden los gases",
+    "exp": "La tasa de difusión a través de una membrana depende del área, grosor y gradiente de presión."
+  },
+  {
+    "q": "¿Qué nos dice la ley de Poiseuille?",
+    "a": "El radio de las vías respiratorias determina la resistencia al flujo de aire",
+    "exp": "La resistencia al flujo varía inversamente con la cuarta potencia del radio del conducto."
+  },
+
+  // Preguntas Nuevas
+  {
+    "q": "¿Qué es la Ventilación Pulmonar Total?",
+    "a": "Es la cantidad de aire nuevo que llega por minuto a los alvéolos que participan en el intercambio gaseoso",
+    "exp": "Representa el volumen efectivo de aire fresco que llega a la zona respiratoria cada minuto."
+  },
+  {
+    "q": "¿Qué es el volumen corriente (VC o VT)?",
+    "a": "Aire inspirado o espirado en una respiración tranquila",
+    "exp": "Es el volumen de aire que entra o sale de los pulmones durante un ciclo respiratorio basal basal (~500 mL)."
+  },
+  {
+    "q": "¿Qué es el Volumen de Reserva Inspiratoria (VRI)?",
+    "a": "Aire adicional que puede inspirarse después de una inspiración corriente",
+    "exp": "Corresponde al volumen máximo extra de aire que se puede ingresar mediante esfuerzo forzado tras una inspiración normal."
+  },
+  {
+    "q": "¿Qué es el Volumen de Reserva Espiratoria (VRE)?",
+    "a": "Aire adicional que puede espirarse después de una espiración corriente",
+    "exp": "Es la cantidad máxima extra de aire que se puede expulsar forzadamente tras una espiración normal."
+  },
+  {
+    "q": "¿Qué es el Volumen Residual (VR)?",
+    "a": "Aire que permanece en los pulmones después de una espiración máxima",
+    "exp": "Es el aire restante que nunca puede expulsarse de los pulmones de forma voluntaria, evitando el colapso alveolar."
+  },
+  {
+    "q": "¿Qué es el Espacio Muerto Anatómico?",
+    "a": "Aire que permanece en las vías de conducción, como la nariz, la tráquea y los bronquios",
+    "exp": "Es el volumen de las vías respiratorias donde no existe superficie alveolar para el intercambio gaseoso (~150 mL)."
+  },
+  {
+    "q": "¿Qué es el Espacio Muerto Alveolar?",
+    "a": "Aire que llega a los alvéolos ventilados, pero con perfusión insuficiente para un intercambio gaseoso eficaz",
+    "exp": "Ocurre cuando hay alvéolos que reciben aire pero carecen del flujo sanguíneo capilar adecuado."
+  },
+  {
+    "q": "¿Qué es el Espacio Muerto Fisiológico?",
+    "a": "Suma del espacio muerto anatómico y alveolar",
+    "exp": "Representa el volumen total de aire en cada respiración que no realiza intercambio de gases."
+  },
+  {
+    "q": "¿Qué es la Capacidad Vital?",
+    "a": "Es el volumen máximo que se puede movilizar entre una inspiración máxima y una espiración máxima",
+    "exp": "CV = VRI + VC + VRE. Expresa la cantidad máxima utilizable de aire movilizable."
+  },
+  {
+    "q": "¿Qué es la Capacidad Residual Funcional?",
+    "a": "Es el volumen que queda en los pulmones al final de una espiración tranquila",
+    "exp": "CRF = VRE + VR. Es el equilibrio elástico de reposo del tórax y pulmón."
+  },
+  {
+    "q": "¿Qué es la Capacidad Pulmonar Total?",
+    "a": "Es el volumen contenido en los pulmones después de una inspiración máxima",
+    "exp": "CPT = CV + VR. Incluye la suma de todos los volúmenes pulmonares."
+  },
+  {
+    "q": "¿Qué es el Surfactante Pulmonar y cuál es su función?",
+    "a": "Producido por los neumocitos tipo II, disminuye la tensión superficial, facilita la expansión alveolar, reduce el trabajo respiratorio y ayuda a evitar el colapso de los alvéolos",
+    "exp": "Sustancia lipoproteica (dipalmitoilfosfatidilcolina) fundamental para la estabilidad y distensibilidad alveolar."
+  }
+];
+
+// Recopilar todas las respuestas del banco para usarlas como distractores
+const allAnswers = questionBank.map(item => item.a);
+
+// Variables de estado
+let currentExam = [];
+let userAnswers = {};
+
+function shuffle(array) {
+  let arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// Generar 3 distractores falsos del propio banco
+function getDistractors(correctAnswer) {
+  const incorrectCandidates = allAnswers.filter(ans => ans !== correctAnswer);
+  const shuffledCandidates = shuffle(incorrectCandidates);
+  return shuffledCandidates.slice(0, 3);
+}
+
+function startQuiz() {
+  // Selección aleatoria de EXACTAMENTE 10 preguntas
+  const selectedQuestions = shuffle(questionBank).slice(0, 10);
+  
+  currentExam = selectedQuestions.map(item => {
+    const wrongOpts = getDistractors(item.a);
+    const opts = shuffle([item.a, ...wrongOpts]);
+    const correctIdx = opts.indexOf(item.a);
+    return {
+      q: item.q,
+      opts: opts,
+      a: correctIdx,
+      exp: item.exp
+    };
+  });
+
+  userAnswers = {};
+
+  document.getElementById("startScreen").classList.add("hidden");
+  document.getElementById("resultScreen").classList.add("hidden");
+  document.getElementById("quizScreen").classList.remove("hidden");
+
+  renderQuestions();
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderQuestions() {
+  const container = document.getElementById("questionsContainer");
+  container.innerHTML = "";
+
+  currentExam.forEach((item, index) => {
+    const qCard = document.createElement("div");
+    qCard.className = "q-card";
+    qCard.id = `qCard_${index}`;
+
+    let optionsHtml = `<div class="options-grid grid-2col">`;
+    item.opts.forEach((optTxt, oIdx) => {
+      optionsHtml += `
+        <div class="option-item">
+          <input type="radio" name="q_${index}" id="q_${index}_opt_${oIdx}" value="${oIdx}" onchange="selectAnswer(${index}, ${oIdx})">
+          <label class="option-label" for="q_${index}_opt_${oIdx}">
+            <b>${String.fromCharCode(65 + oIdx)})</b> ${escapeHtml(optTxt)}
+          </label>
+        </div>
+      `;
+    });
+    optionsHtml += `</div>`;
+
+    qCard.innerHTML = `
+      <span class="q-tag">Pregunta ${index + 1} de 10 • Opción Múltiple</span>
+      <div class="q-text">${escapeHtml(item.q)}</div>
+      ${optionsHtml}
+      <div class="explanation" id="exp_${index}"><b>Explicación:</b> ${escapeHtml(item.exp)}</div>
+    `;
+
+    container.appendChild(qCard);
+  });
+}
+
+function selectAnswer(qIndex, answerIndex) {
+  userAnswers[qIndex] = answerIndex;
+  updateProgress();
+}
+
+function updateProgress() {
+  const answeredCount = Object.keys(userAnswers).length;
+  const total = currentExam.length;
+  const pct = (answeredCount / total) * 100;
+
+  document.getElementById("progressBar").style.width = pct + "%";
+  document.getElementById("progressText").textContent = `${answeredCount} de ${total} respondidas`;
+  document.getElementById("submitBtn").disabled = answeredCount < total;
+}
+
+function finishQuiz() {
+  let correctCount = 0;
+
+  currentExam.forEach((item, index) => {
+    const card = document.getElementById(`qCard_${index}`);
+    const chosen = userAnswers[index];
+    const isCorrect = chosen === item.a;
+
+    if (isCorrect) correctCount++;
+
+    card.classList.add(isCorrect ? "correct" : "incorrect");
+
+    const inputs = card.querySelectorAll(`input[name="q_${index}"]`);
+    inputs.forEach(input => {
+      input.disabled = true;
+      const label = card.querySelector(`label[for="${input.id}"]`);
+      if (parseInt(input.value) === item.a) {
+        label.classList.add("is-correct");
+      }
+    });
+  });
+
+  const total = currentExam.length;
+  const scorePct = Math.round((correctCount / total) * 100);
+
+  document.getElementById("scoreCircle").textContent = `${scorePct}%`;
+  document.getElementById("resultTitle").textContent = scorePct >= 80 ? "¡Excelente Trabajo! 🎉" : scorePct >= 60 ? "¡Buen Intento! 💪" : "Repasa los Conceptos 📚";
+  document.getElementById("resultSub").textContent = `Obtuviste ${correctCount} respuestas correctas de ${total} preguntas.`;
+
+  renderReview(correctCount);
+
+  document.getElementById("submitBtn").classList.add("hidden");
+  document.getElementById("resultScreen").classList.remove("hidden");
+
+  window.scrollTo({ top: document.getElementById("resultScreen").offsetTop - 40, behavior: 'smooth' });
+}
+
+function renderReview(correctCount) {
+  const container = document.getElementById("reviewContainer");
+  container.innerHTML = "";
+
+  currentExam.forEach((item, index) => {
+    const chosen = userAnswers[index];
+    const isCorrect = chosen === item.a;
+
+    const div = document.createElement("div");
+    div.className = `review-item ${isCorrect ? 'good' : 'bad'}`;
+    div.innerHTML = `
+      <b>${index + 1}. ${escapeHtml(item.q)}</b><br>
+      <span>Tu respuesta: ${escapeHtml(item.opts[chosen])} ${isCorrect ? '✓' : '✗'}</span><br>
+      ${!isCorrect ? `<span>Respuesta correcta: <b>${escapeHtml(item.opts[item.a])}</b></span><br>` : ''}
+      <i style="color:var(--muted);">${escapeHtml(item.exp)}</i>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function cancelQuiz() {
+  if (confirm("¿Seguro que deseas cancelar este intento? Se perderán las respuestas seleccionadas.")) {
+    showStartScreen();
+  }
+}
+
+function showStartScreen() {
+  document.getElementById("quizScreen").classList.add("hidden");
+  document.getElementById("resultScreen").classList.add("hidden");
+  document.getElementById("startScreen").classList.remove("hidden");
+  document.getElementById("submitBtn").classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function escapeHtml(str) {
+  return str.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c]));
+}
+
+// Control del banner interactivo
+document.addEventListener("DOMContentLoaded", function () {
+    const stats = document.querySelectorAll(".stats-grid .stat-box");
+    let current = 0;
+    if(stats.length > 0){
+      stats[current].classList.add("active");
+      setInterval(function changeStat() {
+          const oldStat = stats[current];
+          oldStat.classList.remove("active");
+          oldStat.classList.add("exit");
+          current = (current + 1) % stats.length;
+          const newStat = stats[current];
+          newStat.classList.add("active");
+          setTimeout(function () {
+              oldStat.classList.remove("exit");
+          }, 700);
+      }, 5000);
+    }
+});
+</script>
+
+<footer>
+  <p>© 2026 Alba. Todos los derechos reservados. Prohibida su reproducción total o parcial sin autorización previa.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen Interactivo — 50 Preguntas</title>
+<style>
+:root{
+  --bg:#f5f7fb; --card:#ffffff; --text:#172033; --muted:#687287;
+  --primary:#6757d9; --primary2:#8b7cf0; --border:#e5e8f0;
+  --shadow:0 12px 35px rgba(35,42,70,.08); --success:#277544;
+  --success-bg:#eaf8ef; --danger:#a23b49; --danger-bg:#fff0f2;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#f8f9fd 0%,#f1f3fa 100%);
+font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);min-height:100vh}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.nav{max-width:1000px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:18px}
+.logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary2));display:grid;place-items:center;color:white;font-size:20px}
+.container{max-width:1000px;margin:30px auto;padding:0 22px 60px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:var(--shadow);margin-bottom:20px}
+.hero-title{font-size:28px;margin:0 0 10px;letter-spacing:-.5px}
+.hero-desc{color:var(--muted);font-size:15px;line-height:1.6;margin:0 0 20px}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:24px}
+.stat-box{background:#f8f9fe;border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}
+.stat-val{font-size:22px;font-weight:800;color:var(--primary)}
+.stat-lbl{font-size:12px;color:var(--muted);margin-top:2px}
+.btn-primary{border:0;background:linear-gradient(135deg,var(--primary),var(--primary2));color:white;border-radius:12px;padding:14px 24px;font-weight:800;font-size:15px;box-shadow:0 8px 20px rgba(103,87,217,.25);transition:.2s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(103,87,217,.32)}
+.btn-ghost{border:1px solid var(--border);background:white;color:var(--text);border-radius:12px;padding:12px 20px;font-weight:700;font-size:14px}
+.btn-ghost:hover{background:#f8f9fe}
+.progress-bar-wrap{height:10px;background:#eceef4;border-radius:999px;overflow:hidden;margin:15px 0 25px}
+.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--primary),var(--primary2));transition:width .3s ease}
+.q-card{background:white;border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:18px;position:relative;transition:.2s}
+.q-tag{display:inline-block;font-size:11px;font-weight:800;color:var(--primary);background:#eeeafd;padding:4px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase}
+.q-text{font-size:16px;font-weight:750;line-height:1.5;margin-bottom:16px}
+.options-grid{display:grid;gap:10px}
+.options-grid.grid-2col{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.option-item{position:relative}
+.option-item input{position:absolute;opacity:0;pointer-events:none}
+.option-label{display:block;border:1px solid var(--border);border-radius:12px;padding:12px 16px;cursor:pointer;color:#4b5567;font-size:14px;line-height:1.4;transition:.15s;background:#fff}
+.option-label:hover{background:#fafaff;border-color:#cfc9f7}
+.option-item input:checked + .option-label{background:#eeeafd;border-color:#aaa0f4;color:var(--primary);font-weight:700}
+.q-card.correct .option-item input:checked + .option-label,.q-card.correct .option-label.is-correct{background:var(--success-bg);border-color:#83c69a;color:var(--success);font-weight:700}
+.q-card.incorrect .option-item input:checked + .option-label{background:var(--danger-bg);border-color:#e08a94;color:var(--danger);font-weight:700}
+.q-card.incorrect .option-label.is-correct{background:var(--success-bg);border-color:#83c69a;color:var(--success);font-weight:700}
+.explanation{margin-top:14px;padding:12px 16px;border-radius:10px;font-size:13px;line-height:1.5;display:none}
+.q-card.correct .explanation{display:block;background:var(--success-bg);color:var(--success)}
+.q-card.incorrect .explanation{display:block;background:var(--danger-bg);color:var(--danger)}
+.hidden{display:none!important}
+.result-header{text-align:center;padding:20px 0}
+.score-circle{width:130px;height:130px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary),var(--primary2));color:white;font-size:36px;font-weight:900;box-shadow:0 10px 25px rgba(103,87,217,.3)}
+.review-item{border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;font-size:13px;line-height:1.5}
+.review-item.bad{border-color:#e08a94;background:var(--danger-bg)}
+.review-item.good{border-color:#83c69a;background:var(--success-bg)}
+footer{max-width:1100px;margin:auto;padding:0 22px 35px;color:#8a91a2;font-size:12px;text-align:center}
+
+.btn-primary {
+    padding: 14px 28px;
+    border: 2px solid #391db9;
+    border-radius: 50px;
+    background: #6757d9;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.btn-primary:hover {
+    background: #6757d9;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.45);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+.btn-exam {
+    padding: 14px 28px;
+    border: 2px solid #000000;
+    border-radius: 50px;
+    background: #ffffff;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.btn-exam:hover {
+    background: #6757d9;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.45);
+}
+
+.btn-exam:active {
+    transform: translateY(0);
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.stat-box {
+    padding: 18px 25px;
+    border-radius: 50px;
+    background: #ffffff;
+    border: 2px solid #ffffff;
+    color: #000000;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(103, 87, 217, 0.35);
+}
+
+.stat-val {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.stat-lbl {
+    font-size: 14px;
+    margin-top: 4px;
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="nav">
+     <div class="brand">
+        <div class="logo">
+            <img src="Snoopy.png" alt="Study - Ibedh">
+        </div>
+        <div>
+            Examen - Interactivo
+        </div>
+     </div>
+     <button class="back-btn" onclick="window.location.href='Selec.html'">
+        ← Regresar
+     </button>
+  </div>
+</header>
+
+<style>
+.back-btn{
+    border:2px solid #391db9;
+    background:#fff;
+    color:#000;
+    padding:9px 18px;
+    border-radius:50px;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+.back-btn:hover{
+    background:#391db9;
+    color:#fff;
+    transform:translateY(-2px);
+}
+</style>
+
+<main class="container">
+  <!-- START SCREEN -->
+  <div id="startScreen" class="card">
+    <h1 class="hero-title">Evaluación de Conocimientos</h1>
+    <p class="hero-desc">El sistema seleccionará <b>10 preguntas de forma aleatoria</b> de un banco completo de <b>50 preguntas</b> extraídas de tu material de estudio sobre diversidad cultural, comunicación médico-paciente, redes de apoyo social y medicina familiar.</p>
+    
+    <div class="stats-grid">
+      <div class="stat-box"><div class="stat-val">50</div><div class="stat-lbl">Preguntas Totales</div></div>
+      <div class="stat-box"><div class="stat-val">10</div><div class="stat-lbl">Preguntas por Intento</div></div>
+      <div class="stat-box"><div class="stat-val">4 Op.</div><div class="stat-lbl">Opción Múltiple</div></div>
+      <div class="stat-box"><div class="stat-val">Variado</div><div class="stat-lbl">Salud & Sociedad</div></div>
+    </div>
+
+<style>
+.stats-grid {
+    position: relative;
+    width: 300px;
+    max-width: 90%;
+    height: 100px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-radius: 999px;
+    box-sizing: border-box;
+    margin: 0 auto 25px auto;
+}
+
+.stats-grid .stat-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(55px) scale(.97);
+    transition:
+        transform .75s cubic-bezier(.22, 1, .36, 1),
+        opacity .75s ease,
+        visibility 0s linear .75s;
+}
+
+.stats-grid .stat-box.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) scale(1);
+    transition:
+        transform .75s cubic-bezier(.22, 1, .36, 1),
+        opacity .75s ease;
+}
+
+.stats-grid .stat-box.exit {
+    opacity: 0;
+    visibility: visible;
+    transform: translateX(-55px) scale(.97);
+    transition:
+        transform .75s cubic-bezier(.22, 1, .36, 1),
+        opacity .75s ease;
+}
+
+.stats-grid .stat-val {
+    position: relative;
+    font-size: 34px;
+    font-weight: 850;
+    line-height: 1;
+    margin: 0 0 10px 0;
+    letter-spacing: -1.2px;
+    background: linear-gradient(135deg, #111827, #4f46e5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stats-grid .stat-val::after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 3px;
+    left: 50%;
+    bottom: -6px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: #4f46e5;
+}
+
+.stats-grid .stat-lbl {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0;
+    text-align: center;
+    letter-spacing: .2px;
+    color: #6b7280;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const stats = document.querySelectorAll(".stats-grid .stat-box");
+    let current = 0;
+    stats[current].classList.add("active");
+
+    function changeStat() {
+        const oldStat = stats[current];
+        oldStat.classList.remove("active");
+        oldStat.classList.add("exit");
+
+        current++;
+        if (current >= stats.length) {
+            current = 0;
+        }
+
+        const newStat = stats[current];
+        newStat.classList.add("active");
+
+        setTimeout(function () {
+            oldStat.classList.remove("exit");
+        }, 700);
+    }
+
+    setInterval(changeStat, 5000);
+});
+</script>
+
+    <button class="btn-primary" onclick="startQuiz()" style="display: block; margin: 0 auto;">
+        ¡Comenzar!
+    </button>
+    <button class="btn-exam" style="display: none;" onclick="window.location.href='Selec.html'">
+        Regresar
+    </button>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="quizScreen" class="hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-weight:800;font-size:18px;">Progreso del Examen</span>
+      <span id="progressText" style="font-size:14px;color:var(--muted);font-weight:700;">0 de 10 respondidas</span>
+    </div>
+    <div class="progress-bar-wrap">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div id="questionsContainer"></div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:20px;">
+      <button class="btn-ghost" onclick="cancelQuiz()" style="opacity: 0; background: transparent; border: none;">
+          Cancelar Intento
+      </button>
+      <button id="submitBtn" class="btn-primary" onclick="finishQuiz()" disabled>Finalizar y Calificar</button>
+    </div>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div id="resultScreen" class="card hidden">
+    <div class="result-header">
+      <div id="scoreCircle" class="score-circle">0%</div>
+      <h2 id="resultTitle" style="margin:0 0 8px;">¡Examen Finalizado!</h2>
+      <p id="resultSub" style="color:var(--muted);margin:0 0 20px;"></p>
+    </div>
+
+    <div style="display:flex;justify-content:center;gap:12px;margin-bottom:24px;">
+      <button class="btn-primary" onclick="startQuiz()">↻ Nuevo Intento (Otras 10 Preguntas)</button>
+      <button class="btn-ghost" onclick="showStartScreen()" style="border-radius: 999px; padding: 14px 30px; border: 2px solid black; cursor: pointer;">
+          Volver al Inicio
+      </button>
+    </div>
+
+    <h3 style="margin-bottom:12px;">Desglose de Respuestas:</h3>
+    <div id="reviewContainer"></div>
+  </div>
+</main>
+
+<script>
+const questionBank = [
+  {
+    type: "Opción Múltiple",
+    q: "¿A qué se refiere la diversidad cultural en los servicios de salud?",
+    opts: [
+      "A la convivencia de pacientes y profesionales con distintas costumbres, lenguas, religiones, valores y creencias sobre la salud, la enfermedad y los tratamientos.",
+      "A la aplicación estricta de un solo modelo médico estándar para todos los pacientes.",
+      "A la separación de pacientes según su origen étnico en salas distintas.",
+      "A la prohibición de medicinas tradicionales dentro de las instituciones públicas."
+    ],
+    a: 0,
+    exp: "La diversidad cultural implica la convivencia de pacientes y personal de salud con diversos trasfondos de creencias, costumbres y lenguas."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué protegen los derechos humanos?",
+    opts: [
+      "La dignidad, la vida, la libertad, la igualdad y el bienestar.",
+      "Únicamente los intereses económicos del sistema sanitario.",
+      "Exclusivamente el cumplimiento de reglamentos médicos.",
+      "Solo el acceso a seguros privados de salud."
+    ],
+    a: 0,
+    exp: "Los derechos humanos velan de forma integral por la dignidad, vida, libertad, igualdad y bienestar de todo ser humano."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué características tienen los derechos humanos?",
+    opts: [
+      "Son universales, inalienables e indivisibles.",
+      "Son temporales, modificables y optativos.",
+      "Dependen de la condición económica de cada ciudadano.",
+      "Son transferibles y renunciables según el contexto."
+    ],
+    a: 0,
+    exp: "Las tres características esenciales de los derechos humanos son su universalidad, inalienabilidad e indivisibilidad."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿En qué consiste el acceso equitativo?",
+    opts: [
+      "En que todas las personas puedan recibir servicios de salud de calidad, sin importar su cultura, idioma, religión o condición económica.",
+      "En atender únicamente a quienes puedan pagar tratamientos especializados.",
+      "En brindar preferencia de atención según la religión o costumbres.",
+      "En ofrecer medicamentos solo a comunidades urbanas."
+    ],
+    a: 0,
+    exp: "Acceso equitativo significa recibir atención de calidad eliminando cualquier tipo de barrera o discriminación."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué busca la atención intercultural?",
+    opts: [
+      "Adaptar la atención para comprender mejor las necesidades de cada comunidad.",
+      "Sustituir por completo la medicina moderna por prácticas ancestrales.",
+      "Unificar todos los dialectos de los pacientes bajo un solo idioma.",
+      "Imponer los valores del médico sobre la comunidad."
+    ],
+    a: 0,
+    exp: "La atención intercultural busca adaptar las prácticas médicas para comprender el contexto y necesidades específicas del paciente."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué establece el Artículo 4.º Constitucional de México?",
+    opts: [
+      "Que toda persona tiene derecho a la protección de la salud.",
+      "Que el servicio de salud es obligatorio solo en zonas rurales.",
+      "Que los médicos deciden de forma paternalista sobre el paciente.",
+      "Que la medicina tradicional queda prohibida por ley."
+    ],
+    a: 0,
+    exp: "El Artículo 4.º garantiza constitucionalmente el derecho de toda persona en México a la protección de la salud."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿A qué se refiere la calidad en el contexto sanitario?",
+    opts: [
+      "A una atención adecuada desde el punto de vista científico y médico.",
+      "Al costo elevado de los medicamentos y procedimientos.",
+      "A la rapidez sin importar el trato brindado.",
+      "A la exclusividad del servicio en hospitales privados."
+    ],
+    a: 0,
+    exp: "La calidad clínica hace referencia al apego a estándares científicos y médicos adecuados para el cuidado del paciente."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué es la falta de pertinencia cultural?",
+    opts: [
+      "La imposición de tratamientos sin considerar las creencias y necesidades del paciente.",
+      "La integración de medicina tradicional y occidental.",
+      "El uso de traductores profesionales en consulta.",
+      "El respeto irrestricto a los valores del usuario."
+    ],
+    a: 0,
+    exp: "Incurrir en falta de pertinencia cultural significa imponer tratamientos omitiendo las creencias del paciente."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué es la comunicación médico-paciente?",
+    opts: [
+      "El intercambio de información entre el profesional de la salud y el paciente para entender las necesidades de salud y tomar decisiones de manera conjunta para resolverlas.",
+      "Un diálogo donde el médico ordena las indicaciones sin escuchar al paciente.",
+      "El trámite administrativo para emitir una receta de medicamentos.",
+      "La lectura de la historia clínica en presencia de familiares únicamente."
+    ],
+    a: 0,
+    exp: "La comunicación efectiva requiere un diálogo participativo para entender necesidades y tomar decisiones mutuas."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Cómo se puede mejorar la relación médico-paciente?",
+    opts: [
+      "Con comunicación abierta, empatía, tiempo adecuado, uso de tecnología para seguimiento y competencia cultural.",
+      "Aumentando el uso de tecnicismos y reduciendo el tiempo de consulta.",
+      "Tomando decisiones sin consultar la opinión del enfermo.",
+      "Evitando preguntas sobre la vida social del paciente."
+    ],
+    a: 0,
+    exp: "Mejorar la relación exige empatía, tiempo de escucha, comunicación clara y respeto por la cultura del paciente."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué es la comunicación intercultural?",
+    opts: [
+      "Es el intercambio de información entre personas de diferentes culturas, creencias y costumbres.",
+      "La transmisión de conocimientos exclusivamente en un mismo idioma y grupo social.",
+      "La enseñanza de términos médicos a comunidades indígenas.",
+      "La imposición de la cultura occidental sobre grupos locales."
+    ],
+    a: 0,
+    exp: "La comunicación intercultural ocurre cuando interactúan miembros de culturas y cosmovisiones diversas."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Cuál es un beneficio de la comunicación intercultural en la salud?",
+    opts: [
+      "Fortalecer la confianza entre el médico y el paciente.",
+      "Aumentar el número de recetas expedidas por minuto.",
+      "Evitar la necesidad de consentimiento informado.",
+      "Eliminar el uso de la medicina alopática."
+    ],
+    a: 0,
+    exp: "Una comunicación respetuosa con el marco cultural del paciente refuerza sustancialmente la confianza mutua."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Cuáles son los dos tipos de comunicación principales?",
+    opts: [
+      "Verbal y no verbal.",
+      "Escrita y digital.",
+      "Directa e indirecta.",
+      "Médica y administrativa."
+    ],
+    a: 0,
+    exp: "La comunicación se divide fundamentalmente en sus formas verbales (palabras) y no verbales (gestos, postura)."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Cuál es el objetivo principal de la relación médico-paciente?",
+    opts: [
+      "Mejorar la calidad de vida del paciente.",
+      "Reducir los gastos administrativos del hospital.",
+      "Demostrar el conocimiento del personal médico.",
+      "Cumplir una meta numérica de atención."
+    ],
+    a: 0,
+    exp: "El fin máximo de la práctica médica es preservar y mejorar la calidad de vida del usuario."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Cuáles son los cuatro modelos clásicos de la relación médico-paciente?",
+    opts: [
+      "Paternalista, informativo, interpretativo y deliberativo.",
+      "Biológico, psicofísico, social y administrativo.",
+      "Tradicional, moderno, alternativo y mixto.",
+      "Autoritario, democrático, pasivo y neutro."
+    ],
+    a: 0,
+    exp: "Ezekiel y Linda Emanuel conceptualizan los 4 modelos: Paternalista, Informativo, Interpretativo y Deliberativo."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué modelo permite al médico decidir lo mejor para el paciente sin su participación?",
+    opts: [
+      "Modelo paternalista.",
+      "Modelo deliberativo.",
+      "Modelo interpretativo.",
+      "Modelo informativo."
+    ],
+    a: 0,
+    exp: "En el modelo paternalista el médico actúa como un tutor, decidiendo por el paciente bajo la premisa de su propio criterio."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué se recomienda evitar para utilizar un lenguaje claro con el paciente?",
+    opts: [
+      "Los tecnicismos médicos.",
+      "El contacto visual y la empatía.",
+      "Las explicaciones sencillas.",
+      "Las preguntas de seguimiento."
+    ],
+    a: 0,
+    exp: "Evitar el argot o tecnicismos ayuda a reducir confusiones y temores en el enfermo."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué es una barrera lingüística?",
+    opts: [
+      "Es la dificultad para comunicarse por diferencias de idioma o dialecto.",
+      "El rechazo voluntario de tratamiento por fe religiosa.",
+      "La falta de insumos o infraestructura en la clínica.",
+      "El desacuerdo sobre el precio de los medicamentos."
+    ],
+    a: 0,
+    exp: "La barrera lingüística se manifiesta ante diferencias idiomáticas entre profesional y usuario."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Cómo pueden influir las creencias religiosas en la atención médica?",
+    opts: [
+      "Pueden llevar al paciente a rechazar ciertos procedimientos o tratamientos.",
+      "Garantizan el éxito absoluto del tratamiento sin intervención médica.",
+      "Obligan al médico a renunciar a su cédula profesional.",
+      "Eliminan por completo las barreras lingüísticas."
+    ],
+    a: 0,
+    exp: "Ciertas convicciones ético-religiosas pueden oponerse a prácticas como transfusiones o cirugías."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué estrategia ayuda a superar las barreras culturales en la atención médica?",
+    opts: [
+      "Utilizar intérpretes y respetar las creencias del paciente.",
+      "Ignorar las sugerencias del paciente y avanzar el procedimiento.",
+      "Acelerar las consultas para evitar debates culturales.",
+      "Solicitar al paciente que renuncie a su fe para ser atendido."
+    ],
+    a: 0,
+    exp: "Contar con facilitadores lingüísticos y mostrar respeto por sus creencias supera los distanciamientos culturales."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué es la interculturalidad?",
+    opts: [
+      "Respeto e igualdad entre culturas.",
+      "La asimilación obligatoria de minorías hacia la cultura dominante.",
+      "La segregación de comunidades en centros médicos independientes.",
+      "La tolerancia pasiva sin interacción entre grupos."
+    ],
+    a: 0,
+    exp: "La interculturalidad busca relaciones horizontales fundadas en la igualdad y el respeto mutuo."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Por qué es importante la diversidad cultural en la salud?",
+    opts: [
+      "Para brindar una atención adecuada, humanizada y pertinente.",
+      "Para aumentar la burocracia dentro de las instituciones.",
+      "Para estandarizar las recetas médicas en un único idioma universal.",
+      "Para evitar consultas de medicina familiar."
+    ],
+    a: 0,
+    exp: "Reconocer la diversidad cultural asegura intervenciones adaptadas a la realidad psicosocial del paciente."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué es la interculturalidad en la salud?",
+    opts: [
+      "La colaboración y articulación entre la medicina occidental y tradicional.",
+      "La sustitución de la ciencia médica por remedios caseros.",
+      "El rechazo al método científico en zonas rurales.",
+      "Un programa exclusivo de capacitación teórica."
+    ],
+    a: 0,
+    exp: "En el ámbito sanitario, implica el diálogo constructivo entre la medicina alopática y los saberes ancestrales."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "Menciona dos objetivos principales de la interculturalidad en la salud:",
+    opts: [
+      "Generar confianza y mejorar la adherencia al tratamiento.",
+      "Reducir el tiempo de consulta y recortar gastos.",
+      "Eliminar la medicina alopática y cerrar clínicas urbanas.",
+      "Prohibir el uso de lenguas indígenas en consultorios."
+    ],
+    a: 0,
+    exp: "Fortalecer la confianza incrementa el cumplimiento de las indicaciones terapéuticas."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Por qué ningún modelo médico debe considerarse superior a otro de forma absoluta?",
+    opts: [
+      "Porque todos merecen respeto y aportan conocimientos sobre el bienestar humano.",
+      "Porque todos aplican exactamente los mismos métodos científicos.",
+      "Porque los conocimientos tradicionales no contienen errores.",
+      "Porque la ley prohíbe evaluar los modelos sanitarios."
+    ],
+    a: 0,
+    exp: "Reconocer el valor de los diferentes saberes promueve el diálogo ético y la inclusión."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué significa brindar una atención médica incluyente?",
+    opts: [
+      "Atender sin discriminación por origen, género, orientación o cultura.",
+      "Dar prioridad únicamente a los sectores de mayor ingreso.",
+      "Requerir la conversión religiosa antes del ingreso hospitalario.",
+      "Separar las instalaciones según el estrato socioeconómico."
+    ],
+    a: 0,
+    exp: "Atención incluyente significa garantizar derechos y servicios con equidad para todos."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Cómo debe actuar el médico ante las costumbres de una comunidad?",
+    opts: [
+      "Respetarlas sin prejuicios y buscar puntos de acuerdo terapéutico.",
+      "Juzgarlas como obsoletas e imponer su criterio.",
+      "Ignorarlas y omitir toda recomendación médica.",
+      "Notificar a las autoridades para prohibirlas."
+    ],
+    a: 0,
+    exp: "El profesional de la salud debe interactuar libre de estigmas para construir consensos favorables para la salud."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Por qué es fundamental la confidencialidad en la diversidad sexual dentro de la atención sanitaria?",
+    opts: [
+      "Para generar un entorno seguro, brindar confianza y evitar juicios o estigmas.",
+      "Para ocultar la información al expediente clínico institucional.",
+      "Para cobrar tarifas diferenciales de consulta.",
+      "Para evitar la participación de enfermería."
+    ],
+    a: 0,
+    exp: "Proteger la privacidad estimula que el paciente exprese libremente sus antecedentes de salud."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "Menciona tres ramas o dimensiones de la diversidad en los servicios de salud:",
+    opts: [
+      "Diversidad cultural, diversidad sexual y eliminación de barreras.",
+      "Diversidad de fármacos, de marcas y de precios.",
+      "Diversidad de horarios, de turnos y de especialidades.",
+      "Diversidad de edificios, de zonas y de laboratorios."
+    ],
+    a: 0,
+    exp: "Integrar la diversidad cultural, sexual y de accesibilidad garantiza un modelo inclusivo."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿En qué tres ámbitos influye el género en el proceso de salud-enfermedad?",
+    opts: [
+      "Determinantes de salud, conductas y respuesta del sistema sanitario.",
+      "Genética, masa muscular y tipo de sangre.",
+      "Costo de medicamentos, horarios y número de cama.",
+      "Tratamientos quirúrgicos, laboratorio y farmacia."
+    ],
+    a: 0,
+    exp: "El género determina roles socioculturales, conductas de riesgo y cómo responde el sistema de salud ante las necesidades particulares."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿En qué difieren el enfoque biológico estricto y la atención centrada en la persona?",
+    opts: [
+      "La atención centrada en la persona considera los valores, el contexto y las necesidades, no solo la patología.",
+      "El enfoque biológico es siempre de carácter intercultural.",
+      "La atención centrada en la persona ignora la fisiología y la anatomía.",
+      "No existe diferencia conceptual entre ambas."
+    ],
+    a: 0,
+    exp: "El modelo centrado en la persona transciende lo puramente somático, abordando la dimensión psicosocial y ética del ser humano."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Por qué importa el contexto sociocultural en la práctica médica?",
+    opts: [
+      "Porque influye decisivamente en cómo el paciente interpreta y vive su enfermedad.",
+      "Porque determina el tipo de seguro mercantil del usuario.",
+      "Porque permite clasificar a las personas sin revisarlas.",
+      "Porque sustituye el uso de estudios de laboratorio."
+    ],
+    a: 0,
+    exp: "Las vivencias y el entramado cultural moldean la percepción de los síntomas y la disposición al tratamiento."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Cómo se relacionan la autonomía y las decisiones compartidas en el acto médico?",
+    opts: [
+      "Se informa de forma objetiva y se respeta la decisión final libre del paciente.",
+      "Se obliga al paciente a seguir exactamente la indicación sin opinar.",
+      "Se transfiere toda la responsabilidad diagnóstica al paciente.",
+      "El médico renuncia a dar consejos éticos o médicos."
+    ],
+    a: 0,
+    exp: "La toma de decisiones compartida combina el saber técnico del médico con las preferencias autónomas del paciente."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué diferencia existe entre empatía cognitiva y empatía afectiva?",
+    opts: [
+      "Cognitiva: comprender intelectualmente las emociones. Afectiva: sentir o experimentar la emoción del otro.",
+      "Cognitiva: sentir dolor físico. Afectiva: evaluar síntomas.",
+      "Cognitiva: emitir recetas. Afectiva: realizar diagnóstico.",
+      "No hay diferencia entre ambos planos."
+    ],
+    a: 0,
+    exp: "La empatía cognitiva implica la perspectiva mental del estado ajeno, mientras que la afectiva resuena emocionalmente."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Por qué el concepto de empatía en salud incluye a la comunidad?",
+    opts: [
+      "Porque las creencias y el entorno social de la comunidad moldean la salud del individuo.",
+      "Porque las decisiones médicas se votan de forma comunitaria.",
+      "Porque los medicamentos se distribuyen a toda la calle.",
+      "Porque el médico debe vivir en la misma colonia."
+    ],
+    a: 0,
+    exp: "Comprender la comunidad de origen de la persona aclara determinantes y redes sociales clave para su recuperación."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué es la competencia cultural según Arthur Kleinman?",
+    opts: [
+      "Comprender el modelo explicativo del paciente sobre su propia enfermedad.",
+      "Aprender todas las lenguas indígenas en el internado.",
+      "Sustituir el tratamiento farmacológico por ceremonias.",
+      "Aprobar exámenes teóricos de antropología médica."
+    ],
+    a: 0,
+    exp: "Kleinman enfatiza indagarse por la perspectiva interna ('modelo explicativo') con el que el paciente resignifica su padecimiento."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué provocan los tecnicismos excesivos en la comunicación médica?",
+    opts: [
+      "Confusión, distanciamiento y ansiedad en el paciente.",
+      "Mayor velocidad de curación biológica.",
+      "Absoluta precisión en la toma de medicamentos.",
+      "Reducción total de las dudas."
+    ],
+    a: 0,
+    exp: "Un lenguaje incomprensible genera angustia y desapego al plan terapéutico."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué implica respetar la dignidad del paciente durante la consulta?",
+    opts: [
+      "Tratarlo como un sujeto integral y no como un simple número de diagnóstico.",
+      "Omitir el examen físico para no incomodarlo.",
+      "Dar la razón al paciente aunque arriesgue su vida.",
+      "Acelerar la atención para no hacerle perder tiempo."
+    ],
+    a: 0,
+    exp: "Reconocer la dignidad exige un trato personalizado, valorando la dimensión humana de cada individuo."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué papel tienen los valores del paciente al tomar decisiones terapéuticas?",
+    opts: [
+      "Se ponderan junto con la evidencia médica, sin imponer los valores del profesional.",
+      "Se ignoran por completo al carecer de validez científica.",
+      "Sustituyen completamente cualquier evidencia médica probada.",
+      "Son evaluados por un comité judicial externo."
+    ],
+    a: 0,
+    exp: "La bioética moderna requiere armonizar la mejor evidencia disponible con las convicciones del usuario."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué aporta el pluralismo médico en los sistemas de salud?",
+    opts: [
+      "Permite dialogar sobre prácticas complementarias con respeto y seguridad.",
+      "Aumenta la rivalidad entre profesionales sanitarios.",
+      "Prohíbe la investigación biomédica tradicional.",
+      "Sustituye a la red hospitalaria pública."
+    ],
+    a: 0,
+    exp: "El pluralismo reconoce la convivencia de saberes, buscando potenciar la seguridad del usuario a través del diálogo."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Cómo define Minuchin a la familia desde el punto de vista teórico?",
+    opts: [
+      "Como el grupo en el cual el individuo desarrolla su identidad e independencia, perteneciendo a subsistemas intra y extrafamiliares.",
+      "Como un conjunto de individuos registrados bajo el mismo contrato legal de propiedad.",
+      "Un grupo de personas unidas exclusivamente por lazos sanguíneos directos.",
+      "La suma de habitantes de una determinada región geográfica."
+    ],
+    a: 0,
+    exp: "Salvador Minuchin define la estructura familiar como una entidad dinámica de socialización e identidad individual."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué señala el comité de expertos de WONCA respecto a la medicina familiar?",
+    opts: [
+      "Que se debe reconocer la influencia de factores familiares sobre la salud para integrarlos en prevención y curación.",
+      "Que la familia no tiene relevancia en la evolución de las patologías crónicas.",
+      "Que solo deben atenderse urgencias individuales.",
+      "Que la consulta médica debe realizarse sin acompañantes."
+    ],
+    a: 0,
+    exp: "La WONCA enfatiza la trascendencia de la dinámica familiar tanto en el bienestar como en la enfermedad."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Cuál es la diferencia estructural principal entre una familia nuclear y una familia troncal?",
+    opts: [
+      "La nuclear consta únicamente de padres e hijos dependientes; la troncal incluye padres, un hijo casado con su descendencia compartiendo vivienda.",
+      "La nuclear se ubica en el campo y la troncal en zonas urbanas.",
+      "La troncal no tiene lazos consanguíneos entre sus integrantes.",
+      "La nuclear no posee subsistemas internos."
+    ],
+    a: 0,
+    exp: "La familia troncal cohabita compartiendo generaciones para preservar la continuidad del hogar o patrimonio."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿A qué se le denomina 'familia transnacional'?",
+    opts: [
+      "Al tipo de familia cuyos miembros se separan por migración pero se mantienen unidos mediante apoyo económico y comunicación virtual.",
+      "A familias diplomáticas que cambian constantemente de residencia.",
+      "A familias donde cada integrante habla un idioma distinto.",
+      "A comunidades con doble nacionalidad obligatoria."
+    ],
+    a: 0,
+    exp: "Las familias transnacionales mantienen lazos emocionales y de soporte económico superando las fronteras geográficas."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Cómo se le denomina al conjunto de personas, relaciones y vínculos que rodean a un individuo para brindarle soporte?",
+    opts: [
+      "Redes de apoyo social.",
+      "Sistemas de seguridad pública.",
+      "Subsistemas de jerarquía formal.",
+      "Grupos de presión económica."
+    ],
+    a: 0,
+    exp: "Las redes de apoyo social constituyen la urdimbre relacional de contención afectiva, material e informativa."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Cuáles son los cuatro tipos principales de apoyo que proporcionan las redes sociales según la literatura?",
+    opts: [
+      "Apoyo emocional, informativo, práctico o instrumental, y social.",
+      "Apoyo financiero, jurídico, farmacológico y residencial.",
+      "Apoyo primario, secundario, previo y posterior.",
+      "Apoyo verbal, gestual, escrito y digital."
+    ],
+    a: 0,
+    exp: "Las redes brindan contención emocional, guía o información, ayuda práctica/instrumental y sociabilidad compartida."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué características definen a las redes primarias de apoyo social?",
+    opts: [
+      "Constituyen el núcleo de socialización básica (familia, amigos), con máxima reciprocidad afectiva y filtro de diagnóstico.",
+      "Son organismos gubernamentales de asistencia pública.",
+      "Son contratos formales expedidos por la secretaría de salud.",
+      "Son grupos desconocidos de interacción fortuita en internet."
+    ],
+    a: 0,
+    exp: "Las redes primarias son el entorno afectivo más cercano, caracterizadas por solidaridad y contención inmediata."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿En qué consisten las redes terciarias de apoyo social?",
+    opts: [
+      "En estructuras jerárquicas, profesionales y burocráticas del Estado o sector privado destinadas a la atención formal.",
+      "En el círculo cercano compuesto por vecinos e intimos.",
+      "En los grupos de autoayuda informal de la comunidad.",
+      "En la interacción mediante plataformas digitales exclusivamente."
+    ],
+    a: 0,
+    exp: "Las redes terciarias abarcan las instituciones formales especializadas (hospitales, asistencias de gobierno)."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Qué tipo de apoyo social incluye la escucha, el acompañamiento y la comprensión afectiva?",
+    opts: [
+      "Apoyo emocional.",
+      "Apoyo instrumental.",
+      "Apoyo financiero.",
+      "Apoyo informativo."
+    ],
+    a: 0,
+    exp: "El apoyo emocional atiende el plano afectivo del individuo a través de la empatía y la contención."
+  },
+  {
+    type: "Opción Múltiple",
+    q: "¿Cuáles son dos instrumentos sociomédicos clave utilizados para evaluar el riesgo social y las redes del paciente?",
+    opts: [
+      "El Familiograma y el Ecomapa.",
+      "La Historia Clínica Electrónica y el Formulario 10-K.",
+      "La Electrocardiografía y el Recuento Plaquetario.",
+      "El Tamiz Ampliado y el Test de Apgar."
+    ],
+    a: 0,
+    exp: "El familiograma (genograma) y el ecomapa grafican la estructura familiar y las relaciones con el entorno comunitario."
+  }
+];
+
+// Variables de estado
+let currentExam = [];
+let userAnswers = {};
+
+function shuffle(array) {
+  let arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function startQuiz() {
+  // Selección aleatoria de 10 preguntas
+  currentExam = shuffle(questionBank).slice(0, 10);
+  userAnswers = {};
+
+  document.getElementById("startScreen").classList.add("hidden");
+  document.getElementById("resultScreen").classList.add("hidden");
+  document.getElementById("quizScreen").classList.remove("hidden");
+
+  renderQuestions();
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderQuestions() {
+  const container = document.getElementById("questionsContainer");
+  container.innerHTML = "";
+
+  currentExam.forEach((item, index) => {
+    const qCard = document.createElement("div");
+    qCard.className = "q-card";
+    qCard.id = `qCard_${index}`;
+
+    // Preparar opciones mezcladas reservando índice correcto original
+    const optsObj = item.opts.map((txt, idx) => ({ txt, originalIdx: idx }));
+    const shuffledOpts = shuffle(optsObj);
+
+    let optionsHtml = `<div class="options-grid ${item.opts.length > 4 ? '' : 'grid-2col'}">`;
+    shuffledOpts.forEach((opt, oIdx) => {
+      optionsHtml += `
+        <div class="option-item">
+          <input type="radio" name="q_${index}" id="q_${index}_opt_${oIdx}" value="${opt.originalIdx}" onchange="selectAnswer(${index}, ${opt.originalIdx})">
+          <label class="option-label" for="q_${index}_opt_${oIdx}">
+            <b>${String.fromCharCode(65 + oIdx)})</b> ${escapeHtml(opt.txt)}
+          </label>
+        </div>
+      `;
+    });
+    optionsHtml += `</div>`;
+
+    qCard.innerHTML = `
+      <span class="q-tag">Pregunta ${index + 1} de 10 • ${item.type}</span>
+      <div class="q-text">${escapeHtml(item.q)}</div>
+      ${optionsHtml}
+      <div class="explanation" id="exp_${index}"><b>Explicación:</b> ${escapeHtml(item.exp)}</div>
+    `;
+
+    container.appendChild(qCard);
+  });
+}
+
+function selectAnswer(qIndex, answerIndex) {
+  userAnswers[qIndex] = answerIndex;
+  updateProgress();
+}
+
+function updateProgress() {
+  const answeredCount = Object.keys(userAnswers).length;
+  const total = currentExam.length;
+  const pct = (answeredCount / total) * 100;
+
+  document.getElementById("progressBar").style.width = pct + "%";
+  document.getElementById("progressText").textContent = `${answeredCount} de ${total} respondidas`;
+  document.getElementById("submitBtn").disabled = answeredCount < total;
+}
+
+function finishQuiz() {
+  let correctCount = 0;
+
+  currentExam.forEach((item, index) => {
+    const card = document.getElementById(`qCard_${index}`);
+    const chosen = userAnswers[index];
+    const isCorrect = chosen === item.a;
+
+    if (isCorrect) correctCount++;
+
+    card.classList.add(isCorrect ? "correct" : "incorrect");
+
+    const inputs = card.querySelectorAll(`input[name="q_${index}"]`);
+    inputs.forEach(input => {
+      input.disabled = true;
+      const label = card.querySelector(`label[for="${input.id}"]`);
+      if (parseInt(input.value) === item.a) {
+        label.classList.add("is-correct");
+      }
+    });
+  });
+
+  const total = currentExam.length;
+  const scorePct = Math.round((correctCount / total) * 100);
+
+  document.getElementById("scoreCircle").textContent = `${scorePct}%`;
+  document.getElementById("resultTitle").textContent = scorePct >= 80 ? "¡Excelente Trabajo! 🎉" : scorePct >= 60 ? "¡Buen Intento! 💪" : "Repasa los Conceptos 📚";
+  document.getElementById("resultSub").textContent = `Obtuviste ${correctCount} respuestas correctas de ${total} preguntas.`;
+
+  renderReview();
+
+  document.getElementById("submitBtn").classList.add("hidden");
+  document.getElementById("resultScreen").classList.remove("hidden");
+
+  window.scrollTo({ top: document.getElementById("resultScreen").offsetTop - 40, behavior: 'smooth' });
+}
+
+function renderReview() {
+  const container = document.getElementById("reviewContainer");
+  container.innerHTML = "";
+
+  currentExam.forEach((item, index) => {
+    const chosen = userAnswers[index];
+    const isCorrect = chosen === item.a;
+
+    const div = document.createElement("div");
+    div.className = `review-item ${isCorrect ? 'good' : 'bad'}`;
+    div.innerHTML = `
+      <b>${index + 1}. ${escapeHtml(item.q)}</b><br>
+      <span>Tu respuesta: ${escapeHtml(item.opts[chosen])} ${isCorrect ? '✓' : '✗'}</span><br>
+      ${!isCorrect ? `<span>Respuesta correcta: <b>${escapeHtml(item.opts[item.a])}</b></span><br>` : ''}
+      <i style="color:var(--muted);">${escapeHtml(item.exp)}</i>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function cancelQuiz() {
+  if (confirm("¿Seguro que deseas cancelar este intento? Se perderán las respuestas seleccionadas.")) {
+    showStartScreen();
+  }
+}
+
+function showStartScreen() {
+  document.getElementById("quizScreen").classList.add("hidden");
+  document.getElementById("resultScreen").classList.add("hidden");
+  document.getElementById("startScreen").classList.remove("hidden");
+  document.getElementById("submitBtn").classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function escapeHtml(str) {
+  return str.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c]));
+}
+</script>
+
+<footer>
+  <p>© 2026 Alba. Todos los derechos reservados. Prohibida su reproducción total o parcial sin autorización previa.</p>
+</footer>
+</body>
+</html>
