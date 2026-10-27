@@ -343,7 +343,7 @@ footer{max-width:1100px;margin:auto;padding:0 22px 35px;color:#8a91a2;font-size:
   <div class="stats">
     <div class="stat"><b id="count">0</b> conceptos</div>
     <div class="stat"><b id="favCount">0</b> favoritos</div>
-    <div class="stat"><b id="examCount">100</b> preguntas de repaso</div>
+    <div class="stat"><b id="examCount">100</b> Examenes de repaso</div>
   </div>
 </section>
 
@@ -430,115 +430,614 @@ const originalConcepts = [
  {term:"Hipersensibilidad Tipo IV",def:"Hipersensibilidad retardada; tarda de 24 a 72 horas en manifestarse. En el apunte se relaciona con células T."},
  {term:"Antígeno D",def:"Es el antígeno más importante del sistema Rh según el documento, debido a su mayor capacidad para provocar una respuesta inmunitaria."},
  {term:"Vida útil de los glóbulos rojos",def:"120 días."},
+ // ==========================================
+// GRUPOS SANGUÍNEOS Y COMPATIBILIDAD
+// ==========================================
+ // ==========================================
+ // DICCIONARIO DE MEDICINA GENERAL
+ // 300 DEFINICIONES NUEVAS
+ // ==========================================
+
+ // ANATOMÍA Y FISIOLOGÍA
+ {term:"Anatomía humana",def:"Ciencia que estudia la estructura, forma, ubicación y relación de los órganos y tejidos del cuerpo humano."},
+ {term:"Fisiología humana",def:"Rama de la medicina que estudia cómo funcionan las células, tejidos, órganos y sistemas del organismo."},
+ {term:"Histología",def:"Estudio microscópico de los tejidos del cuerpo y de la organización de las células que los forman."},
+ {term:"Citología",def:"Disciplina que estudia las células, sus estructuras, funciones y alteraciones."},
+ {term:"Homeostasis",def:"Capacidad del organismo para mantener condiciones internas relativamente estables, como temperatura, pH y glucosa."},
+ {term:"Metabolismo",def:"Conjunto de reacciones químicas mediante las cuales el organismo obtiene energía y produce o degrada sustancias."},
+ {term:"Catabolismo",def:"Procesos metabólicos que descomponen moléculas complejas en otras más simples y liberan energía."},
+ {term:"Anabolismo",def:"Procesos metabólicos que utilizan energía para fabricar moléculas complejas necesarias para el crecimiento y la reparación."},
+ {term:"Tejido epitelial",def:"Tejido que recubre superficies corporales, reviste cavidades y forma glándulas con funciones de protección, absorción y secreción."},
+ {term:"Tejido conectivo",def:"Tejido que sostiene, une y protege estructuras corporales; incluye hueso, cartílago, grasa y tejido conjuntivo."},
+ {term:"Tejido muscular",def:"Tejido especializado en la contracción, responsable del movimiento corporal y de funciones internas como el bombeo cardíaco."},
+ {term:"Tejido nervioso",def:"Tejido formado principalmente por neuronas y células gliales que recibe, procesa y transmite información."},
+ {term:"Órgano",def:"Estructura compuesta por varios tejidos que trabajan coordinadamente para realizar funciones específicas."},
+ {term:"Sistema orgánico",def:"Conjunto de órganos relacionados que colaboran para realizar funciones esenciales del organismo."},
+ {term:"Cavidad torácica",def:"Espacio del tórax que contiene órganos como los pulmones, el corazón y estructuras de los grandes vasos."},
+ {term:"Cavidad abdominal",def:"Espacio corporal que alberga gran parte del aparato digestivo, además de otros órganos como los riñones."},
+ {term:"Peritoneo",def:"Membrana serosa que reviste la cavidad abdominal y cubre parcial o totalmente varios órganos abdominales."},
+ {term:"Pleura",def:"Membrana de dos capas que recubre los pulmones y la pared interna del tórax, facilitando el movimiento respiratorio."},
+ {term:"Pericardio",def:"Saco fibroseroso que rodea el corazón, lo protege y permite sus movimientos con menor fricción."},
+ {term:"Membrana celular",def:"Barrera formada principalmente por lípidos y proteínas que delimita la célula y regula el intercambio de sustancias."},
+
+ // SISTEMA CARDIOVASCULAR
+ {term:"Cardiología",def:"Especialidad médica dedicada al estudio, diagnóstico y tratamiento de las enfermedades del corazón y del sistema cardiovascular."},
+ {term:"Miocardio",def:"Capa muscular del corazón cuya contracción permite impulsar la sangre hacia la circulación pulmonar y sistémica."},
+ {term:"Endocardio",def:"Capa interna que recubre las cavidades cardíacas y las válvulas del corazón."},
+ {term:"Epicardio",def:"Capa externa de la pared cardíaca, relacionada con la hoja visceral del pericardio seroso."},
+ {term:"Aurícula cardíaca",def:"Cavidad superior del corazón que recibe sangre procedente de las venas y la dirige hacia un ventrículo."},
+ {term:"Ventrículo cardíaco",def:"Cavidad inferior del corazón que impulsa la sangre hacia la circulación pulmonar o sistémica."},
+ {term:"Válvula cardíaca",def:"Estructura que permite el flujo sanguíneo en una dirección y evita su retroceso entre cavidades o vasos."},
+ {term:"Sístole",def:"Fase del ciclo cardíaco en la que los ventrículos se contraen y expulsan sangre hacia las arterias."},
+ {term:"Diástole",def:"Fase del ciclo cardíaco en la que las cavidades se relajan y los ventrículos reciben sangre."},
+ {term:"Frecuencia cardíaca",def:"Número de latidos del corazón por minuto; varía según la edad, actividad física y estado de salud."},
+ {term:"Gasto cardíaco",def:"Volumen de sangre que el corazón bombea en un minuto; depende de la frecuencia cardíaca y del volumen sistólico."},
+ {term:"Presión arterial",def:"Fuerza que ejerce la sangre contra las paredes arteriales durante la circulación."},
+ {term:"Hipertensión arterial",def:"Elevación persistente de la presión arterial que aumenta el riesgo de enfermedad cardiovascular, renal y cerebrovascular."},
+ {term:"Hipotensión arterial",def:"Presión arterial anormalmente baja que puede provocar mareo, debilidad o disminución de la perfusión de los órganos."},
+ {term:"Arritmia",def:"Alteración de la frecuencia o del ritmo cardíaco causada por cambios en la generación o conducción de impulsos eléctricos."},
+ {term:"Taquicardia",def:"Aumento de la frecuencia cardíaca; en adultos, generalmente se define como más de 100 latidos por minuto en reposo."},
+ {term:"Bradicardia",def:"Frecuencia cardíaca inferior a 60 latidos por minuto en adultos; puede ser normal en algunas personas o indicar enfermedad."},
+ {term:"Isquemia",def:"Disminución del aporte sanguíneo a un tejido que puede ocasionar falta de oxígeno y daño celular."},
+ {term:"Infarto de miocardio",def:"Lesión o muerte de una parte del músculo cardíaco causada generalmente por una interrupción prolongada del flujo sanguíneo coronario."},
+ {term:"Aterosclerosis",def:"Enfermedad en la que se acumulan placas de grasa, colesterol y otras sustancias en las paredes de las arterias."},
+
+ // SISTEMA RESPIRATORIO
+ {term:"Neumología",def:"Especialidad médica dedicada a las enfermedades de los pulmones y del sistema respiratorio."},
+ {term:"Alvéolo pulmonar",def:"Pequeño saco de aire pulmonar donde ocurre el intercambio de oxígeno y dióxido de carbono con los capilares."},
+ {term:"Bronquio",def:"Vía aérea que conduce el aire desde la tráquea hacia los pulmones y se divide en ramas más pequeñas."},
+ {term:"Bronquiolo",def:"Pequeña vía aérea que distribuye el aire dentro de los pulmones y regula su paso hacia las regiones alveolares."},
+ {term:"Diafragma",def:"Músculo principal de la inspiración que separa las cavidades torácica y abdominal."},
+ {term:"Ventilación pulmonar",def:"Proceso mecánico mediante el cual el aire entra y sale de los pulmones durante la respiración."},
+ {term:"Perfusión pulmonar",def:"Flujo de sangre que circula por los capilares pulmonares para participar en el intercambio gaseoso."},
+ {term:"Difusión gaseosa",def:"Movimiento de gases a través de una membrana desde una zona de mayor presión parcial hacia otra de menor presión parcial."},
+ {term:"Hipoxia",def:"Estado en el que los tejidos reciben o utilizan una cantidad insuficiente de oxígeno."},
+ {term:"Hipoxemia",def:"Disminución anormal de la presión parcial de oxígeno en la sangre arterial."},
+ {term:"Disnea",def:"Sensación subjetiva de dificultad o incomodidad al respirar."},
+ {term:"Apnea",def:"Interrupción temporal de la respiración que puede ser voluntaria o deberse a una alteración médica."},
+ {term:"Cianosis",def:"Coloración azulada de la piel o las mucosas asociada generalmente a una cantidad elevada de hemoglobina desoxigenada."},
+ {term:"Espirometría",def:"Prueba de función pulmonar que mide volúmenes y flujos de aire durante maniobras respiratorias."},
+ {term:"Asma",def:"Enfermedad inflamatoria crónica de las vías respiratorias que provoca síntomas variables y limitación generalmente reversible del flujo aéreo."},
+ {term:"Neumonía",def:"Infección del tejido pulmonar que puede causar fiebre, tos, dificultad respiratoria y alteraciones en los alvéolos."},
+ {term:"Bronquitis",def:"Inflamación de los bronquios que suele manifestarse con tos y producción de moco."},
+ {term:"EPOC",def:"Enfermedad pulmonar obstructiva crónica caracterizada por limitación persistente del flujo aéreo, frecuentemente asociada al tabaquismo."},
+ {term:"Derrame pleural",def:"Acumulación anormal de líquido en el espacio entre las dos capas de la pleura."},
+ {term:"Embolia pulmonar",def:"Obstrucción de una arteria pulmonar, habitualmente por un coágulo que se desplaza desde una vena profunda."},
+
+ // SISTEMA DIGESTIVO
+ {term:"Gastroenterología",def:"Especialidad médica que estudia el aparato digestivo, el hígado, el páncreas y las vías biliares."},
+ {term:"Esófago",def:"Conducto muscular que transporta los alimentos desde la faringe hasta el estómago mediante movimientos peristálticos."},
+ {term:"Estómago",def:"Órgano muscular que almacena y mezcla los alimentos con ácido y enzimas para iniciar principalmente la digestión de proteínas."},
+ {term:"Intestino delgado",def:"Parte del aparato digestivo donde ocurre la mayor parte de la digestión química y absorción de nutrientes."},
+ {term:"Intestino grueso",def:"Segmento digestivo que absorbe agua y electrolitos y participa en la formación y almacenamiento de las heces."},
+ {term:"Hígado",def:"Órgano que metaboliza nutrientes, procesa sustancias, produce bilis y sintetiza proteínas como la albúmina y factores de coagulación."},
+ {term:"Páncreas",def:"Órgano con función exocrina digestiva y función endocrina, responsable entre otras tareas de producir insulina y glucagón."},
+ {term:"Vesícula biliar",def:"Pequeño órgano que almacena y concentra la bilis producida por el hígado y la libera durante la digestión."},
+ {term:"Bilis",def:"Líquido producido por el hígado que facilita la digestión y absorción de grasas mediante la emulsificación de lípidos."},
+ {term:"Peristaltismo",def:"Serie coordinada de contracciones musculares que desplaza el contenido a través del tubo digestivo."},
+ {term:"Absorción intestinal",def:"Paso de nutrientes, agua y electrolitos desde la luz intestinal hacia la sangre o la linfa."},
+ {term:"Reflujo gastroesofágico",def:"Retorno del contenido del estómago hacia el esófago que puede causar ardor y regurgitación."},
+ {term:"Gastritis",def:"Inflamación de la mucosa del estómago que puede relacionarse con infección, medicamentos u otros factores."},
+ {term:"Úlcera péptica",def:"Lesión de la mucosa del estómago o duodeno asociada frecuentemente a Helicobacter pylori o al uso de antiinflamatorios."},
+ {term:"Gastroenteritis",def:"Inflamación del estómago y los intestinos, generalmente infecciosa, que puede causar diarrea, vómito y dolor abdominal."},
+ {term:"Hepatitis",def:"Inflamación del hígado que puede deberse a virus, alcohol, medicamentos, trastornos autoinmunes u otras causas."},
+ {term:"Cirrosis hepática",def:"Enfermedad crónica caracterizada por fibrosis y alteración de la arquitectura del hígado, con posible pérdida de su función."},
+ {term:"Pancreatitis",def:"Inflamación del páncreas que puede ser aguda o crónica y causar dolor abdominal y alteraciones digestivas."},
+ {term:"Ictericia",def:"Coloración amarillenta de piel y mucosas causada por elevación de bilirrubina en la sangre."},
+ {term:"Estreñimiento",def:"Alteración de la evacuación caracterizada por heces duras, esfuerzo excesivo o disminución de la frecuencia habitual."},
+
+ // SISTEMA RENAL Y URINARIO
+ {term:"Nefrología",def:"Especialidad médica dedicada a las enfermedades de los riñones y a los trastornos del equilibrio de líquidos y electrolitos."},
+ {term:"Urología",def:"Especialidad médico-quirúrgica que trata enfermedades del aparato urinario y del sistema reproductor masculino."},
+ {term:"Nefrona",def:"Unidad funcional del riñón encargada de filtrar la sangre y modificar el filtrado para formar la orina."},
+ {term:"Glomérulo renal",def:"Red de capilares donde se filtra parte del plasma sanguíneo para iniciar la formación de la orina."},
+ {term:"Filtración glomerular",def:"Proceso por el que agua y solutos pequeños pasan desde los capilares glomerulares hacia la cápsula de Bowman."},
+ {term:"Tasa de filtración glomerular",def:"Estimación del volumen de líquido filtrado por los glomérulos por unidad de tiempo; se utiliza para valorar la función renal."},
+ {term:"Creatinina",def:"Producto del metabolismo muscular que se elimina principalmente por los riñones y se utiliza para evaluar su función."},
+ {term:"Urea",def:"Producto del metabolismo de proteínas que se forma en el hígado y se elimina principalmente mediante los riñones."},
+ {term:"Proteinuria",def:"Presencia de una cantidad anormalmente elevada de proteínas en la orina, que puede indicar daño renal."},
+ {term:"Hematuria",def:"Presencia de sangre en la orina, visible a simple vista o detectada mediante análisis."},
+ {term:"Disuria",def:"Dolor, ardor o molestia durante la micción, frecuente en infecciones urinarias y otras enfermedades."},
+ {term:"Poliuria",def:"Producción excesiva de orina, que en adultos suele considerarse superior a aproximadamente tres litros en 24 horas."},
+ {term:"Oliguria",def:"Disminución de la producción de orina que puede relacionarse con deshidratación, obstrucción o alteración renal."},
+ {term:"Anuria",def:"Producción de orina prácticamente ausente o extremadamente reducida, que requiere evaluación médica urgente."},
+ {term:"Infección urinaria",def:"Infección que afecta alguna parte del aparato urinario, como la uretra, la vejiga o los riñones."},
+ {term:"Cistitis",def:"Inflamación de la vejiga, frecuentemente causada por una infección bacteriana."},
+ {term:"Pielonefritis",def:"Infección del riñón y de la pelvis renal que puede causar fiebre, dolor lumbar y síntomas urinarios."},
+ {term:"Litiasis renal",def:"Formación de cálculos sólidos en los riñones o las vías urinarias debido a la cristalización de sustancias presentes en la orina."},
+ {term:"Diálisis",def:"Procedimiento que elimina productos de desecho y exceso de líquidos de la sangre cuando los riñones no pueden hacerlo adecuadamente."},
+ {term:"Insuficiencia renal",def:"Disminución de la capacidad de los riñones para filtrar desechos y mantener el equilibrio de líquidos, electrolitos y ácido-base."},
+
+ // SISTEMA NERVIOSO
+ {term:"Neurología",def:"Especialidad médica dedicada al diagnóstico y tratamiento de enfermedades del cerebro, la médula espinal, los nervios y los músculos."},
+ {term:"Neurona",def:"Célula especializada que recibe, integra y transmite información mediante señales eléctricas y químicas."},
+ {term:"Sinapsis",def:"Unión funcional mediante la cual una neurona se comunica con otra célula, utilizando señales químicas o eléctricas."},
+ {term:"Neurotransmisor",def:"Sustancia química liberada por una célula nerviosa que transmite señales a otra célula a través de una sinapsis."},
+ {term:"Mielina",def:"Capa aislante que recubre ciertos axones y acelera la conducción de los impulsos nerviosos."},
+ {term:"Corteza cerebral",def:"Capa externa del cerebro implicada en funciones como percepción, lenguaje, memoria, pensamiento y movimiento voluntario."},
+ {term:"Cerebelo",def:"Estructura cerebral que participa en la coordinación de movimientos, el equilibrio y el aprendizaje motor."},
+ {term:"Tronco encefálico",def:"Región que conecta el cerebro con la médula espinal y contiene centros esenciales para funciones como respiración y ritmo cardíaco."},
+ {term:"Médula espinal",def:"Parte del sistema nervioso central que transmite señales entre el encéfalo y el cuerpo y coordina ciertos reflejos."},
+ {term:"Sistema nervioso autónomo",def:"División del sistema nervioso que regula funciones involuntarias, como la actividad visceral, la frecuencia cardíaca y la digestión."},
+ {term:"Sistema nervioso simpático",def:"División autónoma que prepara al organismo para responder a situaciones de demanda o estrés."},
+ {term:"Sistema nervioso parasimpático",def:"División autónoma que favorece funciones de reposo, digestión y conservación de energía."},
+ {term:"Reflejo neurológico",def:"Respuesta automática y relativamente rápida ante un estímulo, mediada por circuitos nerviosos."},
+ {term:"Cefalea",def:"Dolor localizado en la cabeza que puede tener causas primarias, como migraña, o secundarias a otra enfermedad."},
+ {term:"Migraña",def:"Trastorno neurológico caracterizado por episodios recurrentes de dolor de cabeza, a menudo con náuseas y sensibilidad a luz o sonido."},
+ {term:"Epilepsia",def:"Enfermedad neurológica caracterizada por una predisposición persistente a presentar crisis epilépticas no provocadas."},
+ {term:"Convulsión",def:"Manifestación clínica que puede incluir movimientos involuntarios por actividad eléctrica cerebral anormal; no toda convulsión implica epilepsia."},
+ {term:"Accidente cerebrovascular",def:"Lesión cerebral causada por la interrupción del flujo sanguíneo o por la ruptura de un vaso sanguíneo cerebral."},
+ {term:"Enfermedad de Parkinson",def:"Trastorno neurodegenerativo asociado a pérdida de neuronas dopaminérgicas que puede producir temblor, rigidez y lentitud de movimiento."},
+ {term:"Enfermedad de Alzheimer",def:"Enfermedad neurodegenerativa que causa deterioro progresivo de la memoria y otras funciones cognitivas."},
+
+ // SISTEMA ENDOCRINO
+ {term:"Endocrinología",def:"Especialidad médica que estudia las glándulas endocrinas, las hormonas y las enfermedades relacionadas con su regulación."},
+ {term:"Hormona",def:"Mensajero químico producido por células especializadas que modifica la actividad de células u órganos diana."},
+ {term:"Hipófisis",def:"Glándula endocrina situada en la base del cerebro que participa en la regulación de otras glándulas y funciones corporales."},
+ {term:"Hipotálamo",def:"Región cerebral que integra señales nerviosas y hormonales y regula funciones como temperatura, sed, hambre y actividad hipofisaria."},
+ {term:"Tiroides",def:"Glándula endocrina del cuello que produce hormonas que regulan el metabolismo, el crecimiento y el desarrollo."},
+ {term:"Hipotiroidismo",def:"Trastorno en el que la glándula tiroides produce una cantidad insuficiente de hormonas tiroideas."},
+ {term:"Hipertiroidismo",def:"Trastorno caracterizado por exceso de producción o acción de hormonas tiroideas."},
+ {term:"Glándulas suprarrenales",def:"Glándulas ubicadas sobre los riñones que producen hormonas como cortisol, aldosterona y catecolaminas."},
+ {term:"Cortisol",def:"Hormona esteroidea producida por la corteza suprarrenal que participa en la respuesta al estrés y en la regulación metabólica e inflamatoria."},
+ {term:"Aldosterona",def:"Hormona que favorece la reabsorción renal de sodio y la eliminación de potasio, contribuyendo al control del volumen y la presión arterial."},
+ {term:"Insulina",def:"Hormona pancreática que facilita la captación de glucosa en determinados tejidos y contribuye a disminuir la glucosa sanguínea."},
+ {term:"Glucagón",def:"Hormona pancreática que aumenta la disponibilidad de glucosa, principalmente al estimular la producción hepática de glucosa."},
+ {term:"Diabetes mellitus",def:"Grupo de enfermedades caracterizadas por hiperglucemia persistente debido a alteraciones en la secreción de insulina, su acción o ambas."},
+ {term:"Hipoglucemia",def:"Concentración de glucosa sanguínea inferior al rango esperado que puede provocar sudoración, temblor, confusión o pérdida de conciencia."},
+ {term:"Hiperglucemia",def:"Elevación de la glucosa en sangre por encima de los valores esperados, asociada con frecuencia a diabetes mellitus."},
+ {term:"Glucemia",def:"Concentración de glucosa presente en la sangre en un momento determinado."},
+ {term:"Hemoglobina glucosilada",def:"Prueba que estima el promedio de glucosa sanguínea de los últimos dos a tres meses y ayuda a evaluar la diabetes."},
+ {term:"Paratiroides",def:"Pequeñas glándulas que producen hormona paratiroidea, fundamental para regular el calcio y el fosfato."},
+ {term:"Melatonina",def:"Hormona producida principalmente por la glándula pineal que participa en la regulación del ciclo sueño-vigilia."},
+ {term:"Osteoporosis",def:"Enfermedad esquelética caracterizada por disminución de la resistencia ósea y mayor riesgo de fracturas."},
+
+ // SISTEMA MUSCULOESQUELÉTICO
+ {term:"Traumatología",def:"Área médica que evalúa y trata lesiones del aparato locomotor producidas por traumatismos."},
+ {term:"Ortopedia",def:"Especialidad que previene, diagnostica y trata trastornos de huesos, articulaciones, músculos, tendones y ligamentos."},
+ {term:"Osteología",def:"Rama de la anatomía que estudia la estructura, desarrollo y función de los huesos."},
+ {term:"Articulación",def:"Unión entre dos o más huesos o entre hueso y cartílago que proporciona estabilidad y, según su tipo, movimiento."},
+ {term:"Cartílago",def:"Tejido conectivo resistente y flexible que amortigua fuerzas y reduce la fricción en ciertas articulaciones."},
+ {term:"Tendón",def:"Estructura de tejido conectivo que une el músculo al hueso y transmite la fuerza de contracción."},
+ {term:"Ligamento",def:"Banda de tejido conectivo que conecta principalmente huesos y contribuye a estabilizar las articulaciones."},
+ {term:"Fractura",def:"Pérdida de continuidad de un hueso causada por traumatismo, sobrecarga o debilidad ósea."},
+ {term:"Esguince",def:"Lesión de un ligamento por estiramiento excesivo o desgarro durante un movimiento articular."},
+ {term:"Luxación",def:"Desplazamiento de los huesos de una articulación que ocasiona pérdida de su alineación normal."},
+ {term:"Tendinitis",def:"Término utilizado para describir un trastorno de un tendón que puede incluir inflamación, dolor y alteraciones degenerativas."},
+ {term:"Artritis",def:"Inflamación de una o más articulaciones que puede producir dolor, rigidez, hinchazón y limitación funcional."},
+ {term:"Artrosis",def:"Enfermedad articular caracterizada por cambios degenerativos del cartílago y de otras estructuras de la articulación."},
+ {term:"Escoliosis",def:"Curvatura lateral anormal de la columna vertebral, que puede acompañarse de rotación vertebral."},
+ {term:"Osteomielitis",def:"Infección del hueso y de la médula ósea, causada con frecuencia por bacterias."},
+ {term:"Miositis",def:"Inflamación del tejido muscular que puede causar debilidad, dolor y elevación de enzimas musculares."},
+ {term:"Atrofia muscular",def:"Disminución del tamaño del músculo, relacionada con desuso, envejecimiento, desnutrición o enfermedades neuromusculares."},
+ {term:"Espasmo muscular",def:"Contracción involuntaria y repentina de un músculo que puede ocasionar dolor o limitación del movimiento."},
+ {term:"Osteoblasto",def:"Célula encargada de producir la matriz ósea y participar en la formación del hueso."},
+ {term:"Osteoclasto",def:"Célula especializada en degradar y reabsorber tejido óseo durante la remodelación del esqueleto."},
+
+ // SISTEMA INMUNITARIO E INFECCIONES
+ {term:"Inmunología",def:"Ciencia que estudia el sistema inmunitario y los mecanismos de defensa frente a microorganismos y sustancias extrañas."},
+ {term:"Inmunidad innata",def:"Defensa inmediata y no específica que incluye barreras, células y moléculas presentes desde el nacimiento."},
+ {term:"Inmunidad adaptativa",def:"Respuesta inmunitaria específica que reconoce antígenos y puede generar memoria frente a exposiciones posteriores."},
+ {term:"Linfocito B",def:"Célula del sistema inmunitario que puede diferenciarse en célula plasmática productora de anticuerpos."},
+ {term:"Linfocito T",def:"Célula inmunitaria que participa en la coordinación de respuestas defensivas o en la destrucción de células infectadas."},
+ {term:"Macrófago",def:"Célula inmunitaria que fagocita microorganismos y restos celulares y participa en la presentación de antígenos."},
+ {term:"Neutrófilo",def:"Leucocito que responde rápidamente a muchas infecciones, especialmente bacterianas, mediante fagocitosis y otros mecanismos."},
+ {term:"Eosinófilo",def:"Leucocito que participa en la defensa contra ciertos parásitos y en procesos alérgicos."},
+ {term:"Basófilo",def:"Leucocito que libera mediadores como histamina y participa en algunas respuestas alérgicas e inflamatorias."},
+ {term:"Citocina",def:"Proteína de señalización que regula la comunicación entre células, especialmente durante respuestas inmunitarias e inflamatorias."},
+ {term:"Interferón",def:"Grupo de proteínas de señalización que intervienen en la defensa antiviral y en la regulación de la respuesta inmunitaria."},
+ {term:"Sistema del complemento",def:"Conjunto de proteínas plasmáticas que ayudan a eliminar microorganismos y favorecen la inflamación y la opsonización."},
+ {term:"Fagocitosis",def:"Proceso mediante el cual ciertas células rodean, internalizan y degradan partículas, microorganismos o restos celulares."},
+ {term:"Inflamación",def:"Respuesta del tejido ante una lesión o agente dañino que busca eliminar la causa y favorecer la reparación."},
+ {term:"Inmunodeficiencia",def:"Alteración del sistema inmunitario que reduce la capacidad de defenderse contra infecciones u otras amenazas."},
+ {term:"Enfermedad autoinmunitaria",def:"Trastorno en el que la respuesta inmunitaria reconoce componentes propios y provoca daño en tejidos del organismo."},
+ {term:"Alergia",def:"Respuesta inmunitaria exagerada frente a una sustancia generalmente inocua para la mayoría de las personas."},
+ {term:"Vacuna",def:"Preparación biológica que estimula una respuesta inmunitaria específica para ayudar a prevenir una enfermedad."},
+ {term:"Antibiótico",def:"Medicamento que elimina bacterias o inhibe su multiplicación; no es eficaz contra las infecciones virales."},
+ {term:"Resistencia antimicrobiana",def:"Capacidad de un microorganismo para sobrevivir o multiplicarse pese a la exposición a un medicamento que antes era eficaz."},
+
+ // MICROBIOLOGÍA Y PARASITOLOGÍA
+ {term:"Microbiología",def:"Ciencia que estudia microorganismos como bacterias, virus, hongos y protozoos."},
+ {term:"Bacteriología",def:"Rama de la microbiología dedicada al estudio de las bacterias y su relación con la salud y la enfermedad."},
+ {term:"Virología",def:"Disciplina que estudia los virus, su estructura, replicación y relación con los organismos que infectan."},
+ {term:"Micología médica",def:"Área que estudia los hongos capaces de producir infecciones o enfermedades en los seres humanos."},
+ {term:"Parasitología médica",def:"Disciplina que estudia los parásitos humanos, sus ciclos de vida, las enfermedades que producen y su prevención."},
+ {term:"Bacteria",def:"Microorganismo unicelular procariota; algunas especies son beneficiosas, mientras que otras pueden causar infecciones."},
+ {term:"Virus",def:"Agente infeccioso que necesita una célula huésped para replicarse y puede infectar seres humanos, animales, plantas u otros organismos."},
+ {term:"Hongo patógeno",def:"Hongo capaz de causar enfermedad en el ser humano, especialmente cuando las defensas están debilitadas o existen condiciones favorables."},
+ {term:"Protozoo",def:"Organismo eucariota unicelular; algunas especies pueden actuar como parásitos y provocar enfermedades humanas."},
+ {term:"Microbiota",def:"Conjunto de microorganismos que habitan normalmente una zona del cuerpo, como el intestino, la piel o la boca."},
+ {term:"Patogenicidad",def:"Capacidad de un microorganismo para causar enfermedad en un huésped."},
+ {term:"Virulencia",def:"Grado de capacidad de un microorganismo para producir daño o enfermedad en un huésped."},
+ {term:"Periodo de incubación",def:"Tiempo transcurrido entre la adquisición de una infección y la aparición de sus primeros síntomas."},
+ {term:"Contagio",def:"Transmisión de un agente infeccioso de una fuente a un huésped susceptible por una vía determinada."},
+ {term:"Sepsis",def:"Disfunción orgánica potencialmente mortal causada por una respuesta desregulada del organismo frente a una infección."},
+ {term:"Bacteriemia",def:"Presencia de bacterias viables en el torrente sanguíneo, que no siempre implica sepsis."},
+ {term:"Esterilización",def:"Proceso destinado a destruir o eliminar todas las formas de vida microbiana, incluidas las esporas."},
+ {term:"Desinfección",def:"Proceso que elimina muchos microorganismos patógenos de objetos o superficies, aunque no necesariamente todas las esporas."},
+ {term:"Antisepsia",def:"Uso de sustancias antimicrobianas sobre tejidos vivos para reducir o eliminar microorganismos."},
+ {term:"Asepsia",def:"Conjunto de medidas destinadas a evitar la contaminación por microorganismos durante procedimientos o manipulaciones."},
+
+ // FARMACOLOGÍA
+ {term:"Farmacología",def:"Ciencia que estudia los medicamentos, sus efectos, mecanismos de acción, usos terapéuticos y riesgos."},
+ {term:"Farmacocinética",def:"Estudia lo que el organismo hace con un medicamento mediante los procesos de absorción, distribución, metabolismo y eliminación."},
+ {term:"Farmacodinamia",def:"Estudia los efectos de los medicamentos en el organismo y los mecanismos mediante los cuales producen sus acciones."},
+ {term:"Dosis terapéutica",def:"Cantidad de medicamento indicada para producir un efecto clínico esperado con un riesgo aceptable."},
+ {term:"Dosis tóxica",def:"Cantidad de una sustancia que puede producir efectos dañinos; depende del compuesto y de factores individuales."},
+ {term:"Biodisponibilidad",def:"Proporción de una dosis administrada que alcanza la circulación sistémica sin modificarse."},
+ {term:"Vida media farmacológica",def:"Tiempo que tarda la concentración de un medicamento en disminuir aproximadamente a la mitad durante una fase determinada de eliminación."},
+ {term:"Metabolismo farmacológico",def:"Transformación química de un medicamento, principalmente en el hígado, que puede facilitar su eliminación o modificar su actividad."},
+ {term:"Excreción farmacológica",def:"Eliminación de un medicamento o de sus metabolitos del organismo, principalmente por los riñones o la bilis."},
+ {term:"Efecto adverso",def:"Respuesta perjudicial o no deseada que aparece tras el uso de un medicamento a dosis habituales."},
+ {term:"Interacción farmacológica",def:"Modificación del efecto de un medicamento por la presencia de otro fármaco, alimento, suplemento o sustancia."},
+ {term:"Contraindicación",def:"Situación clínica en la que un medicamento o procedimiento debe evitarse porque puede representar un riesgo importante."},
+ {term:"Analgesia",def:"Disminución o eliminación de la percepción del dolor sin necesariamente producir pérdida de conciencia."},
+ {term:"Analgésico",def:"Medicamento utilizado para aliviar el dolor mediante distintos mecanismos de acción."},
+ {term:"Antiinflamatorio",def:"Medicamento o sustancia que reduce la respuesta inflamatoria; algunos también alivian el dolor y la fiebre."},
+ {term:"Antipirético",def:"Medicamento que ayuda a reducir la fiebre mediante la acción sobre los mecanismos de regulación de la temperatura."},
+ {term:"Anticoagulante",def:"Medicamento que reduce la formación o progresión de coágulos sanguíneos mediante la interferencia con la coagulación."},
+ {term:"Antiagregante plaquetario",def:"Medicamento que disminuye la activación o agregación de las plaquetas y reduce la formación de ciertos trombos."},
+ {term:"Broncodilatador",def:"Medicamento que relaja el músculo liso de las vías respiratorias y facilita el paso del aire."},
+ {term:"Diurético",def:"Medicamento que aumenta la eliminación renal de sodio y agua y puede utilizarse para tratar edema o hipertensión."},
+
+ // DIAGNÓSTICO Y SEMIOLOGÍA
+ {term:"Semiología médica",def:"Disciplina que estudia los signos y síntomas de las enfermedades y su interpretación clínica."},
+ {term:"Signo clínico",def:"Manifestación objetiva de una alteración de salud que puede observarse o medirse durante la evaluación."},
+ {term:"Síntoma",def:"Manifestación subjetiva que experimenta y comunica el paciente, como dolor, náuseas o mareo."},
+ {term:"Síndrome",def:"Conjunto de signos y síntomas que aparecen asociados y pueden tener distintas causas."},
+ {term:"Diagnóstico diferencial",def:"Proceso de comparar varias enfermedades posibles para determinar cuál explica mejor los hallazgos clínicos."},
+ {term:"Pronóstico",def:"Estimación de la evolución probable de una enfermedad y de sus posibles resultados."},
+ {term:"Anamnesis",def:"Entrevista clínica mediante la cual se recopilan síntomas, antecedentes y otros datos relevantes del paciente."},
+ {term:"Exploración física",def:"Evaluación del paciente mediante inspección, palpación, percusión y auscultación, según el sistema examinado."},
+ {term:"Inspección médica",def:"Observación sistemática del aspecto, la postura, la piel y otros signos visibles del paciente."},
+ {term:"Palpación",def:"Técnica de exploración que utiliza las manos para evaluar estructuras, temperatura, sensibilidad, consistencia o masas."},
+ {term:"Percusión médica",def:"Técnica que consiste en golpear suavemente una superficie corporal para valorar los sonidos producidos y orientar sobre estructuras subyacentes."},
+ {term:"Auscultación",def:"Escucha de sonidos internos del cuerpo, como los cardíacos, respiratorios e intestinales, habitualmente con un estetoscopio."},
+ {term:"Diagnóstico clínico",def:"Identificación de una enfermedad o condición a partir de la historia clínica, la exploración y las pruebas pertinentes."},
+ {term:"Diagnóstico por imagen",def:"Conjunto de técnicas que permiten visualizar estructuras internas para apoyar la detección y evaluación de enfermedades."},
+ {term:"Diagnóstico de laboratorio",def:"Evaluación de muestras biológicas mediante pruebas que aportan información sobre enfermedades, funciones orgánicas o respuesta al tratamiento."},
+ {term:"Sensibilidad diagnóstica",def:"Proporción de personas que tienen una enfermedad y cuya prueba resulta positiva."},
+ {term:"Especificidad diagnóstica",def:"Proporción de personas que no tienen una enfermedad y cuya prueba resulta negativa."},
+ {term:"Valor predictivo positivo",def:"Probabilidad de que una persona tenga la enfermedad cuando el resultado de la prueba es positivo."},
+ {term:"Valor predictivo negativo",def:"Probabilidad de que una persona no tenga la enfermedad cuando el resultado de la prueba es negativo."},
+ {term:"Diagnóstico presuntivo",def:"Conclusión clínica provisional basada en los datos disponibles y pendiente de confirmación cuando sea necesaria."},
+
+ // LABORATORIO CLÍNICO
+ {term:"Laboratorio clínico",def:"Servicio que analiza muestras biológicas para apoyar el diagnóstico, seguimiento, prevención y tratamiento de enfermedades."},
+ {term:"Biometría hemática",def:"Análisis de sangre que evalúa células sanguíneas, incluidos eritrocitos, leucocitos, plaquetas y diversos índices hematológicos."},
+ {term:"Hemoglobina",def:"Proteína de los eritrocitos que transporta oxígeno y contribuye al transporte de dióxido de carbono y al equilibrio ácido-base."},
+ {term:"Hematocrito",def:"Porcentaje del volumen de sangre ocupado por los eritrocitos."},
+ {term:"Recuento leucocitario",def:"Medición del número de leucocitos en una muestra sanguínea, útil para evaluar infecciones y otros trastornos."},
+ {term:"Recuento plaquetario",def:"Medición del número de plaquetas en sangre, importante para valorar alteraciones de la hemostasia."},
+ {term:"Glucosa sérica",def:"Concentración de glucosa medida en suero o plasma para evaluar el metabolismo de los carbohidratos."},
+ {term:"Perfil lipídico",def:"Conjunto de pruebas que suele incluir colesterol total, colesterol HDL, colesterol LDL y triglicéridos."},
+ {term:"Bilirrubina",def:"Pigmento producido durante la degradación del grupo hemo que se procesa principalmente en el hígado y se elimina por la bilis."},
+ {term:"Transaminasas",def:"Enzimas, como ALT y AST, cuya elevación en sangre puede indicar lesión celular, especialmente hepática, aunque no es específica."},
+ {term:"Electrolitos séricos",def:"Medición de minerales ionizados como sodio, potasio y cloruro, esenciales para el equilibrio hídrico y la función celular."},
+ {term:"Electroforesis",def:"Técnica de laboratorio que separa moléculas cargadas, como proteínas o ácidos nucleicos, mediante un campo eléctrico."},
+ {term:"Cultivo microbiológico",def:"Procedimiento que permite favorecer el crecimiento de microorganismos de una muestra para identificarlos y, cuando corresponde, estudiar su sensibilidad."},
+ {term:"Antibiograma",def:"Prueba que evalúa la sensibilidad o resistencia de un microorganismo frente a determinados antimicrobianos."},
+ {term:"Examen general de orina",def:"Análisis que evalúa características físicas, químicas y microscópicas de la orina para detectar posibles alteraciones."},
+ {term:"Gasometría arterial",def:"Prueba que mide parámetros como pH, presión de oxígeno y presión de dióxido de carbono en sangre arterial."},
+ {term:"Proteína C reactiva",def:"Proteína que aumenta durante procesos inflamatorios y puede utilizarse para apoyar la evaluación y el seguimiento clínico."},
+ {term:"Velocidad de sedimentación globular",def:"Prueba que mide la rapidez con que sedimentan los eritrocitos y puede aumentar en distintos procesos inflamatorios."},
+ {term:"Troponina",def:"Proteína cardíaca cuya elevación en sangre puede indicar lesión del músculo cardíaco y debe interpretarse con el contexto clínico."},
+ {term:"Lactato",def:"Sustancia producida durante el metabolismo celular cuya concentración sanguínea puede aumentar en situaciones como hipoperfusión o alteraciones metabólicas."},
+
+ // DERMATOLOGÍA Y SENTIDOS
+ {term:"Dermatología",def:"Especialidad médica dedicada a las enfermedades de la piel, el cabello, las uñas y algunas mucosas."},
+ {term:"Epidermis",def:"Capa más externa de la piel, formada principalmente por queratinocitos, que contribuye a proteger el organismo."},
+ {term:"Dermis",def:"Capa de tejido conectivo situada debajo de la epidermis que contiene vasos, nervios, folículos y glándulas."},
+ {term:"Hipodermis",def:"Capa situada debajo de la dermis, rica en tejido adiposo, que amortigua, almacena energía y ayuda al aislamiento térmico."},
+ {term:"Melanina",def:"Pigmento producido por melanocitos que contribuye al color de la piel, el cabello y los ojos y protege frente a radiación ultravioleta."},
+ {term:"Dermatitis",def:"Inflamación de la piel que puede causar enrojecimiento, picazón, sequedad o lesiones."},
+ {term:"Psoriasis",def:"Enfermedad inflamatoria crónica que puede provocar placas cutáneas bien delimitadas con escamas."},
+ {term:"Acné",def:"Enfermedad inflamatoria del folículo pilosebáceo que puede producir comedones, pápulas, pústulas y nódulos."},
+ {term:"Melanoma",def:"Tipo de cáncer originado en melanocitos que puede diseminarse y requiere detección y evaluación oportunas."},
+ {term:"Cicatrización",def:"Proceso de reparación de un tejido lesionado mediante fases que incluyen hemostasia, inflamación, proliferación y remodelación."},
+ {term:"Oftalmología",def:"Especialidad médica que estudia y trata enfermedades de los ojos y del sistema visual."},
+ {term:"Conjuntiva",def:"Membrana mucosa que recubre la superficie anterior de la esclerótica y la cara interna de los párpados."},
+ {term:"Córnea",def:"Estructura transparente situada en la parte anterior del ojo que protege y contribuye a enfocar la luz."},
+ {term:"Retina",def:"Tejido sensible a la luz situado en la parte posterior del ojo que convierte estímulos luminosos en señales nerviosas."},
+ {term:"Glaucoma",def:"Grupo de enfermedades que dañan el nervio óptico y pueden provocar pérdida visual, a menudo asociadas a presión intraocular elevada."},
+ {term:"Catarata",def:"Opacidad del cristalino que reduce la claridad de la visión."},
+ {term:"Otorrinolaringología",def:"Especialidad que diagnostica y trata enfermedades del oído, la nariz, los senos paranasales, la faringe y la laringe."},
+ {term:"Otitis",def:"Inflamación del oído que puede deberse a una infección u otras causas y presentarse en distintas regiones del órgano."},
+ {term:"Tinnitus",def:"Percepción de zumbidos u otros sonidos sin una fuente sonora externa correspondiente."},
+ {term:"Hipoacusia",def:"Disminución de la capacidad auditiva que puede ser conductiva, neurosensorial o mixta."},
+
+ // GINECOLOGÍA Y OBSTETRICIA
+ {term:"Ginecología",def:"Especialidad médica dedicada a la salud del aparato reproductor femenino y a sus enfermedades."},
+ {term:"Obstetricia",def:"Área médica que atiende el embarazo, el parto y el periodo posterior al nacimiento."},
+ {term:"Ovulación",def:"Liberación de un ovocito desde un folículo ovárico durante el ciclo reproductivo."},
+ {term:"Menstruación",def:"Sangrado periódico que ocurre cuando el endometrio se desprende al no establecerse un embarazo."},
+ {term:"Endometrio",def:"Mucosa que recubre el interior del útero y experimenta cambios durante el ciclo menstrual."},
+ {term:"Fecundación",def:"Proceso en el que un espermatozoide se fusiona con un ovocito y origina un cigoto."},
+ {term:"Implantación embrionaria",def:"Proceso mediante el cual el embrión en desarrollo se adhiere e introduce en el endometrio uterino."},
+ {term:"Placenta",def:"Órgano temporal del embarazo que permite el intercambio de gases, nutrientes y productos de desecho entre la madre y el feto."},
+ {term:"Cordón umbilical",def:"Estructura que conecta al feto con la placenta y contiene vasos sanguíneos que participan en la circulación fetoplacentaria."},
+ {term:"Preeclampsia",def:"Trastorno del embarazo caracterizado por hipertensión de nueva aparición después de las 20 semanas y otros signos de afectación orgánica o placentaria."},
+ {term:"Eclampsia",def:"Aparición de convulsiones asociadas a preeclampsia que no se explican por otra causa."},
+ {term:"Diabetes gestacional",def:"Alteración de la regulación de la glucosa diagnosticada durante el embarazo que puede aumentar riesgos maternos y fetales."},
+ {term:"Parto",def:"Proceso mediante el cual el feto, la placenta y las membranas salen del útero al finalizar el embarazo."},
+ {term:"Puerperio",def:"Periodo posterior al parto durante el cual el organismo materno experimenta cambios para regresar progresivamente a su estado previo al embarazo."},
+ {term:"Lactancia materna",def:"Alimentación del lactante con leche humana, que aporta nutrientes y componentes inmunológicos."},
+ {term:"Amenorrea",def:"Ausencia de menstruación que puede relacionarse con embarazo, alteraciones hormonales u otras condiciones."},
+ {term:"Dismenorrea",def:"Dolor asociado a la menstruación que puede variar en intensidad y tener diferentes causas."},
+ {term:"Endometriosis",def:"Enfermedad en la que tejido similar al endometrio crece fuera de la cavidad uterina y puede causar dolor e infertilidad."},
+ {term:"Síndrome de ovario poliquístico",def:"Trastorno hormonal que puede asociarse con irregularidad menstrual, exceso de andrógenos y alteraciones metabólicas."},
+ {term:"Menopausia",def:"Etapa que se identifica retrospectivamente tras 12 meses consecutivos sin menstruación, sin otra causa fisiológica o patológica."},
+
+ // PEDIATRÍA Y GERIATRÍA
+ {term:"Pediatría",def:"Especialidad médica que atiende la salud, el desarrollo y las enfermedades de los niños y adolescentes."},
+ {term:"Neonatología",def:"Subespecialidad dedicada al cuidado de los recién nacidos, especialmente de los prematuros o con enfermedades."},
+ {term:"Recién nacido",def:"Denominación del niño durante los primeros 28 días posteriores al nacimiento."},
+ {term:"Prematuridad",def:"Nacimiento ocurrido antes de completar las 37 semanas de gestación."},
+ {term:"Apgar",def:"Evaluación rápida del recién nacido al minuto y a los cinco minutos, basada en frecuencia cardíaca, respiración, tono, respuesta refleja y coloración."},
+ {term:"Crecimiento infantil",def:"Aumento de las dimensiones corporales del niño que se evalúa mediante medidas como peso, talla y perímetro cefálico."},
+ {term:"Desarrollo psicomotor",def:"Adquisición progresiva de habilidades motoras, cognitivas, comunicativas y sociales durante la infancia."},
+ {term:"Deshidratación infantil",def:"Pérdida excesiva de agua y electrolitos en un niño, que puede producirse por diarrea, vómitos o ingesta insuficiente."},
+ {term:"Ictericia neonatal",def:"Coloración amarillenta de la piel y las mucosas del recién nacido por aumento de bilirrubina."},
+ {term:"Vacunación infantil",def:"Administración de vacunas durante la infancia conforme al esquema correspondiente para prevenir enfermedades infecciosas."},
+ {term:"Geriatría",def:"Especialidad médica que atiende las necesidades de salud de las personas mayores, considerando funcionalidad y enfermedades múltiples."},
+ {term:"Fragilidad geriátrica",def:"Estado de vulnerabilidad asociado a una disminución de las reservas fisiológicas y mayor riesgo de complicaciones ante factores estresantes."},
+ {term:"Sarcopenia",def:"Trastorno caracterizado por disminución de la fuerza muscular y de la cantidad o calidad del músculo, asociado con limitaciones funcionales."},
+ {term:"Demencia",def:"Síndrome caracterizado por deterioro adquirido de funciones cognitivas que afecta la independencia en las actividades cotidianas."},
+ {term:"Polifarmacia",def:"Uso simultáneo de varios medicamentos; puede ser apropiado, pero requiere revisión de beneficios, riesgos e interacciones."},
+
+ // PSIQUIATRÍA Y SALUD MENTAL
+ {term:"Psiquiatría",def:"Especialidad médica dedicada a la evaluación, diagnóstico, tratamiento y prevención de los trastornos mentales."},
+ {term:"Psicología clínica",def:"Disciplina que evalúa y trata dificultades emocionales, conductuales y cognitivas mediante métodos psicológicos."},
+ {term:"Ansiedad",def:"Estado de preocupación, tensión o temor que puede acompañarse de síntomas físicos y convertirse en trastorno cuando es persistente o incapacitante."},
+ {term:"Depresión",def:"Trastorno del estado de ánimo que puede incluir tristeza persistente, pérdida de interés y cambios en sueño, energía, apetito o concentración."},
+ {term:"Trastorno bipolar",def:"Trastorno del estado de ánimo que presenta episodios de manía o hipomanía y, con frecuencia, episodios depresivos."},
+ {term:"Esquizofrenia",def:"Trastorno mental que puede afectar la percepción, el pensamiento, la expresión emocional y el funcionamiento cotidiano."},
+ {term:"Insomnio",def:"Dificultad persistente para iniciar o mantener el sueño, o despertar antes de lo deseado, con repercusiones durante el día."},
+ {term:"Estrés",def:"Respuesta física y psicológica ante demandas percibidas que requieren adaptación."},
+ {term:"Memoria",def:"Función cognitiva que permite codificar, almacenar y recuperar información."},
+ {term:"Atención",def:"Proceso cognitivo que permite seleccionar y mantener el enfoque en información relevante."},
+ {term:"Delirio",def:"Alteración aguda y fluctuante de la atención y la conciencia, generalmente debida a una condición médica, medicamentos o sustancias."},
+ {term:"Alucinación",def:"Experiencia perceptiva que ocurre sin un estímulo externo correspondiente y que se siente como real para quien la experimenta."},
+ {term:"Fobia",def:"Miedo intenso y persistente ante un objeto o situación que provoca evitación y puede interferir con la vida diaria."},
+ {term:"Trastorno de pánico",def:"Trastorno caracterizado por ataques de pánico recurrentes e inesperados y preocupación persistente o cambios conductuales relacionados."},
+ {term:"Salud mental",def:"Estado de bienestar que permite afrontar tensiones, desarrollar capacidades, mantener relaciones y participar en la vida cotidiana."},
+
+ // NUTRICIÓN Y METABOLISMO
+ {term:"Nutrición clínica",def:"Área que evalúa las necesidades nutricionales y utiliza la alimentación como parte de la prevención y el tratamiento de enfermedades."},
+ {term:"Macronutrientes",def:"Nutrientes requeridos en cantidades relativamente grandes, como carbohidratos, proteínas y grasas."},
+ {term:"Micronutrientes",def:"Vitaminas y minerales necesarios en pequeñas cantidades para el funcionamiento normal del organismo."},
+ {term:"Proteína",def:"Macromolécula formada por aminoácidos que cumple funciones estructurales, enzimáticas, inmunitarias y de transporte."},
+ {term:"Carbohidrato",def:"Nutriente que constituye una fuente importante de energía y se encuentra en alimentos como cereales, frutas y legumbres."},
+ {term:"Lípido",def:"Grupo de moléculas que incluye grasas y otros compuestos esenciales para almacenar energía, formar membranas y producir señales celulares."},
+ {term:"Vitamina",def:"Compuesto orgánico necesario en pequeñas cantidades para funciones metabólicas que generalmente debe obtenerse de la alimentación."},
+ {term:"Mineral nutricional",def:"Elemento inorgánico esencial para funciones como la formación ósea, la transmisión nerviosa y el equilibrio de líquidos."},
+ {term:"Índice de masa corporal",def:"Indicador calculado dividiendo el peso en kilogramos entre la talla en metros al cuadrado; no mide directamente la grasa corporal."},
+ {term:"Obesidad",def:"Enfermedad crónica caracterizada por exceso de adiposidad que puede afectar la salud y aumentar el riesgo de otras enfermedades."},
+ {term:"Desnutrición",def:"Estado causado por ingesta o aprovechamiento insuficiente de energía o nutrientes, con consecuencias para la salud y la función corporal."},
+ {term:"Anorexia",def:"Término que puede referirse a la disminución o pérdida del apetito; no es sinónimo por sí solo de anorexia nerviosa."},
+ {term:"Bulimia nerviosa",def:"Trastorno alimentario caracterizado por episodios recurrentes de atracones y conductas compensatorias inapropiadas."},
+ {term:"Balance energético",def:"Relación entre la energía ingerida mediante alimentos y bebidas y la energía utilizada por el organismo."},
+ {term:"Índice glucémico",def:"Medida que compara la rapidez con la que un alimento con carbohidratos eleva la glucosa sanguínea respecto a un alimento de referencia."},
+
+ // URGENCIAS Y MEDICINA CRÍTICA
+ {term:"Medicina de urgencias",def:"Área médica que evalúa y trata problemas agudos que requieren atención rápida para prevenir complicaciones graves."},
+ {term:"Triaje",def:"Proceso de clasificación de pacientes según la gravedad y urgencia de su condición para priorizar la atención."},
+ {term:"Paro cardiorrespiratorio",def:"Interrupción de la circulación efectiva y de la respiración normal que requiere respuesta inmediata."},
+ {term:"Reanimación cardiopulmonar",def:"Conjunto de maniobras de emergencia destinadas a mantener circulación y oxigenación durante un paro cardíaco."},
+ {term:"Desfibrilación",def:"Administración de una descarga eléctrica controlada para tratar determinados ritmos cardíacos potencialmente mortales."},
+ {term:"Shock circulatorio",def:"Estado de insuficiente perfusión tisular que impide aportar adecuadamente oxígeno y nutrientes a los órganos."},
+ {term:"Shock hipovolémico",def:"Tipo de shock causado por una disminución importante del volumen circulante, como puede ocurrir en una hemorragia."},
+ {term:"Shock séptico",def:"Forma grave de sepsis con alteraciones circulatorias y metabólicas que aumenta considerablemente el riesgo de muerte."},
+ {term:"Hemorragia",def:"Pérdida de sangre desde los vasos sanguíneos hacia el exterior o hacia espacios internos del cuerpo."},
+ {term:"Traumatismo craneoencefálico",def:"Lesión del cuero cabelludo, cráneo o encéfalo causada por una fuerza externa."},
+ {term:"Quemadura",def:"Lesión de la piel u otros tejidos causada por calor, sustancias químicas, electricidad, radiación u otros agentes."},
+ {term:"Anafilaxia",def:"Reacción de hipersensibilidad sistémica grave y de inicio rápido que puede comprometer la respiración o la circulación."},
+ {term:"Intoxicación",def:"Alteración de la salud causada por exposición a una sustancia tóxica por ingestión, inhalación, contacto u otra vía."},
+ {term:"Antídoto",def:"Sustancia que previene, neutraliza o reduce los efectos tóxicos de un agente específico o de un grupo de sustancias."},
+ {term:"Triage hospitalario",def:"Clasificación clínica inicial que determina la prioridad asistencial según los signos, síntomas y riesgos del paciente."},
+
+ // CIRUGÍA, ANESTESIA Y REHABILITACIÓN
+ {term:"Cirugía general",def:"Especialidad médico-quirúrgica que realiza procedimientos para tratar diversas enfermedades, especialmente de órganos abdominales y tejidos blandos."},
+ {term:"Anestesiología",def:"Especialidad que se ocupa de la anestesia, el control del dolor, la vigilancia de funciones vitales y la atención perioperatoria."},
+ {term:"Anestesia general",def:"Estado farmacológicamente inducido de inconsciencia y falta de respuesta a estímulos, con necesidad de vigilancia y soporte apropiados."},
+ {term:"Anestesia local",def:"Técnica que bloquea temporalmente la sensibilidad en una zona limitada del cuerpo sin inducir necesariamente pérdida de conciencia."},
+ {term:"Anestesia regional",def:"Técnica que bloquea la sensibilidad en una región corporal mediante la acción sobre nervios o estructuras nerviosas específicas."},
+ {term:"Analgesia posoperatoria",def:"Control del dolor después de una intervención quirúrgica mediante medidas farmacológicas y no farmacológicas."},
+ {term:"Herida quirúrgica",def:"Incisión o lesión producida durante una intervención que requiere cuidados para favorecer la cicatrización y prevenir infecciones."},
+ {term:"Infección del sitio quirúrgico",def:"Infección que aparece en la zona de una intervención quirúrgica y puede afectar piel, tejidos profundos u órganos."},
+ {term:"Sutura",def:"Técnica o material utilizado para aproximar tejidos y favorecer su reparación después de una lesión o intervención."},
+ {term:"Rehabilitación médica",def:"Proceso destinado a optimizar la función, la autonomía y la participación de una persona afectada por enfermedad o lesión."},
+ {term:"Fisioterapia",def:"Disciplina sanitaria que utiliza ejercicio terapéutico y otras intervenciones físicas para mejorar movimiento, función y capacidad física."},
+ {term:"Terapia ocupacional",def:"Disciplina que ayuda a desarrollar o recuperar habilidades necesarias para realizar actividades cotidianas con la mayor independencia posible."},
+ {term:"Cuidados paliativos",def:"Atención integral destinada a mejorar la calidad de vida de pacientes con enfermedades graves y de sus familias."},
+ {term:"Medicina preventiva",def:"Área que busca reducir la aparición de enfermedades, detectarlas tempranamente y prevenir sus complicaciones."},
+ {term:"Medicina familiar",def:"Especialidad que brinda atención integral y continua a personas de diferentes edades, considerando su contexto familiar y comunitario."},
+
+ // EPIDEMIOLOGÍA Y SALUD PÚBLICA
+ {term:"Epidemiología",def:"Ciencia que estudia la distribución y los determinantes de los eventos relacionados con la salud en las poblaciones."},
+ {term:"Incidencia",def:"Número de casos nuevos de una enfermedad en una población en riesgo durante un periodo definido."},
+ {term:"Prevalencia",def:"Proporción de personas de una población que presentan una enfermedad o condición en un momento o periodo determinado."},
+ {term:"Mortalidad",def:"Frecuencia de muertes en una población durante un periodo específico, expresada mediante medidas adecuadas."},
+ {term:"Morbilidad",def:"Frecuencia de enfermedades o problemas de salud en una población."},
+ {term:"Factor de riesgo",def:"Característica, exposición o condición asociada con una mayor probabilidad de desarrollar una enfermedad."},
+ {term:"Factor protector",def:"Característica o condición que disminuye la probabilidad de presentar una enfermedad o sufrir un resultado adverso."},
+ {term:"Brote epidemiológico",def:"Aumento de casos de una enfermedad por encima de lo esperado en un lugar y periodo determinados."},
+ {term:"Endemia",def:"Presencia habitual o persistente de una enfermedad o agente infeccioso en una población o región."},
+ {term:"Epidemia",def:"Aumento de casos de una enfermedad por encima de lo esperado en una población o área determinada."},
+ {term:"Pandemia",def:"Epidemia que se extiende a varios países o continentes y afecta a un gran número de personas."},
+ {term:"Vigilancia epidemiológica",def:"Recopilación, análisis e interpretación continua de datos de salud para orientar acciones de prevención y control."},
+ {term:"Tamizaje",def:"Aplicación de pruebas a personas aparentemente sanas para identificar a quienes podrían necesitar evaluación diagnóstica adicional."},
+ {term:"Promoción de la salud",def:"Proceso que permite a las personas y comunidades aumentar el control sobre los factores que influyen en su salud."},
+ {term:"Prevención primaria",def:"Medidas destinadas a evitar la aparición de una enfermedad, como vacunación, educación sanitaria y reducción de exposiciones dañinas."},
+ {term:"Prevención secundaria",def:"Acciones dirigidas a detectar enfermedades en etapas tempranas y tratarlas oportunamente."},
+ {term:"Prevención terciaria",def:"Intervenciones orientadas a reducir complicaciones, discapacidad y consecuencias de una enfermedad ya establecida."},
+ {term:"Determinantes sociales de la salud",def:"Condiciones en que las personas nacen, crecen, viven, trabajan y envejecen que influyen en sus oportunidades de salud."},
+ {term:"Salud pública",def:"Esfuerzo organizado de la sociedad para proteger, promover y mejorar la salud de las poblaciones."},
+ {term:"Bioética",def:"Campo que analiza los principios y dilemas éticos relacionados con la medicina, la investigación y las ciencias de la vida."},
+{term:"Grupo sanguíneo A+",def:"Presenta el antígeno A y el antígeno D del sistema Rh en los eritrocitos. Tiene anticuerpos anti-B en el plasma. Puede recibir glóbulos rojos de A+, A-, O+ y O-. Puede donar glóbulos rojos a personas A+ y AB+."},
+
+{term:"Grupo sanguíneo A-",def:"Presenta el antígeno A, pero no el antígeno D del sistema Rh. Tiene anticuerpos anti-B en el plasma. Puede recibir glóbulos rojos de A- y O-. Puede donar glóbulos rojos a personas A-, A+, AB- y AB+."},
+
+{term:"Grupo sanguíneo B+",def:"Presenta los antígenos B y D en los eritrocitos, además de anticuerpos anti-A en el plasma. Puede recibir glóbulos rojos de B+, B-, O+ y O-. Puede donar glóbulos rojos a personas B+ y AB+."},
+
+{term:"Grupo sanguíneo B-",def:"Presenta el antígeno B, pero carece del antígeno D. Tiene anticuerpos anti-A en el plasma. Puede recibir glóbulos rojos de B- y O-. Puede donar glóbulos rojos a personas B-, B+, AB- y AB+."},
+
+{term:"Grupo sanguíneo AB+",def:"Presenta los antígenos A, B y D en los eritrocitos. Normalmente no tiene anticuerpos anti-A ni anti-B en el plasma. Puede recibir glóbulos rojos de los ocho grupos sanguíneos: O-, O+, A-, A+, B-, B+, AB- y AB+. Puede donar glóbulos rojos únicamente a personas AB+."},
+
+{term:"Grupo sanguíneo AB-",def:"Presenta los antígenos A y B, pero no el antígeno D. Normalmente no tiene anticuerpos anti-A ni anti-B en el plasma. Puede recibir glóbulos rojos de AB-, A-, B- y O-. Puede donar glóbulos rojos a personas AB- y AB+."},
+
+{term:"Grupo sanguíneo O+",def:"No presenta los antígenos A ni B en los eritrocitos, pero sí presenta el antígeno D del sistema Rh. Tiene anticuerpos anti-A y anti-B en el plasma. Puede recibir glóbulos rojos de O+ y O-. Puede donar glóbulos rojos a personas O+, A+, B+ y AB+."},
+
+{term:"Grupo sanguíneo O-",def:"No presenta los antígenos A, B ni D en los eritrocitos. Tiene anticuerpos anti-A y anti-B en el plasma. Puede recibir glóbulos rojos únicamente de O-. Sus eritrocitos se consideran donantes universales para transfusiones de glóbulos rojos en el sistema ABO/Rh, aunque deben realizarse las pruebas de compatibilidad correspondientes."},
+
+{term:"Sistema ABO",def:"Sistema de clasificación sanguínea basado principalmente en la presencia o ausencia de los antígenos A y B en la superficie de los eritrocitos. Sus cuatro grupos principales son A, B, AB y O. Es fundamental para determinar la compatibilidad en las transfusiones sanguíneas."},
+
+{term:"Sistema Rh",def:"Sistema de clasificación sanguínea que incluye varios antígenos, entre ellos el D, que es el más importante para determinar si una persona es Rh positivo o Rh negativo. La presencia del antígeno D indica Rh positivo; su ausencia indica Rh negativo."},
+
+{term:"Factor Rh positivo",def:"Se presenta cuando los eritrocitos poseen el antígeno D del sistema Rh. Se representa con el signo positivo (+), como en A+, B+, AB+ y O+. La compatibilidad depende tanto del sistema ABO como del Rh."},
+
+{term:"Factor Rh negativo",def:"Se presenta cuando los eritrocitos carecen del antígeno D. Se representa con el signo negativo (-), como en A-, B-, AB- y O-. En las transfusiones de glóbulos rojos, las personas Rh negativas generalmente deben recibir sangre Rh negativa para reducir el riesgo de sensibilización."},
+
+{term:"Antígeno A",def:"Molécula presente en la superficie de los eritrocitos de los grupos sanguíneos A y AB. El sistema inmunitario de una persona que no posee este antígeno puede reconocerlo como extraño si recibe glóbulos rojos incompatibles."},
+
+{term:"Antígeno B",def:"Molécula presente en la superficie de los eritrocitos de los grupos sanguíneos B y AB. Su presencia permite identificar el grupo sanguíneo y determinar la compatibilidad con otros grupos del sistema ABO."},
+
+{term:"Antígeno D",def:"Principal antígeno utilizado para clasificar la sangre como Rh positiva o Rh negativa. Su presencia en los eritrocitos indica Rh positivo. La exposición de una persona Rh negativa a eritrocitos Rh positivos puede provocar sensibilización y producción de anticuerpos anti-D."},
+
+{term:"Anticuerpos anti-A",def:"Anticuerpos dirigidos contra el antígeno A. Se encuentran normalmente en el plasma de las personas con grupos sanguíneos B y O. Si reaccionan con eritrocitos que poseen el antígeno A, pueden provocar aglutinación y hemólisis."},
+
+{term:"Anticuerpos anti-B",def:"Anticuerpos dirigidos contra el antígeno B. Se encuentran normalmente en el plasma de las personas con grupos sanguíneos A y O. Pueden reaccionar contra eritrocitos que presentan el antígeno B y causar una reacción transfusional."},
+
+{term:"Anticuerpos anti-D",def:"Anticuerpos que pueden producir las personas Rh negativas después de exponerse al antígeno D mediante una transfusión incompatible o durante el embarazo. No suelen estar presentes de manera natural; su formación puede causar hemólisis en exposiciones posteriores."},
+
+{term:"Donante universal de glóbulos rojos",def:"El grupo O negativo se considera el donante universal de glóbulos rojos en el sistema ABO/Rh porque sus eritrocitos no presentan los antígenos A, B ni D. Sin embargo, existen otros antígenos sanguíneos y siempre se deben seguir los protocolos de transfusión y realizar las pruebas necesarias."},
+
+{term:"Receptor universal de glóbulos rojos",def:"El grupo AB positivo se considera el receptor universal de glóbulos rojos dentro del sistema ABO/Rh porque presenta los antígenos A, B y D y normalmente no tiene anticuerpos anti-A ni anti-B. Aun así, requiere pruebas de compatibilidad antes de la transfusión."},
+
+{term:"Compatibilidad sanguínea",def:"Es la capacidad de dos muestras de sangre para utilizarse en una transfusión sin provocar una reacción inmunológica peligrosa. Depende del sistema ABO, del factor Rh, de otros antígenos eritrocitarios y de las pruebas pretransfusionales."},
+
+{term:"Incompatibilidad sanguínea",def:"Ocurre cuando los anticuerpos del receptor reaccionan contra los antígenos de los eritrocitos transfundidos. Puede causar aglutinación, hemólisis, fiebre, hipotensión, daño renal y otras complicaciones potencialmente mortales."},
+
+{term:"Aglutinación sanguínea",def:"Es la agrupación de eritrocitos que ocurre cuando determinados anticuerpos se unen a sus antígenos correspondientes en la superficie celular. En las pruebas de tipificación sanguínea, permite identificar reacciones frente a los reactivos anti-A, anti-B o anti-D."},
+
+{term:"Hemólisis transfusional",def:"Es la destrucción de los eritrocitos transfundidos o del propio receptor debido a una reacción inmunológica u otras causas. Una transfusión ABO incompatible puede provocar hemólisis intravascular grave y constituir una emergencia médica."},
+
+{term:"Prueba de compatibilidad cruzada",def:"Prueba pretransfusional en la que se evalúa la compatibilidad entre el plasma o suero del receptor y los eritrocitos del donante, según el método utilizado. Ayuda a detectar incompatibilidades antes de administrar una transfusión."},
+
+{term:"Tipificación sanguínea",def:"Procedimiento de laboratorio que identifica el grupo ABO y el factor Rh mediante reactivos específicos. Se basa en observar si los eritrocitos presentan aglutinación al entrar en contacto con anticuerpos conocidos."},
+
+{term:"Transfusión de glóbulos rojos",def:"Procedimiento médico que administra concentrados de eritrocitos para mejorar la capacidad de transporte de oxígeno de la sangre. La selección de la unidad depende del grupo ABO, el Rh, las pruebas de compatibilidad y la situación clínica del paciente."},
+
+{term:"Compatibilidad ABO",def:"Es la compatibilidad determinada por los antígenos A y B de los eritrocitos del donante y los anticuerpos presentes en el receptor. Una incompatibilidad ABO puede desencadenar una reacción hemolítica grave."},
+
+{term:"Compatibilidad Rh",def:"Es la compatibilidad relacionada principalmente con el antígeno D del sistema Rh. La administración de eritrocitos Rh positivos a una persona Rh negativa puede generar sensibilización, especialmente si ocurre exposición previa o durante el embarazo."},
+
+{term:"Frecuencia de los grupos sanguíneos",def:"La frecuencia de A, B, AB y O, así como de Rh positivo y negativo, varía entre poblaciones y regiones geográficas. El grupo O positivo suele ser frecuente en muchas poblaciones, pero la distribución exacta depende de la población estudiada."},
+
+{term:"Grupo sanguíneo y embarazo",def:"La incompatibilidad Rh puede presentarse cuando una madre Rh negativa lleva un feto Rh positivo. Si la madre desarrolla anticuerpos anti-D, estos pueden atravesar la placenta y destruir eritrocitos fetales. La prevención y el seguimiento médico reducen el riesgo de enfermedad hemolítica fetal y neonatal."},
+
+{term:"Incompatibilidad Rh materno-fetal",def:"Situación en la que una madre Rh negativa puede desarrollar anticuerpos contra el antígeno D de un feto Rh positivo. La sensibilización puede producirse durante el embarazo, el parto o determinados eventos obstétricos, y puede afectar embarazos posteriores."},
+
+{term:"Inmunoglobulina anti-D",def:"Preparación de anticuerpos utilizada para prevenir la sensibilización al antígeno D en personas Rh negativas en situaciones obstétricas indicadas. Su administración se determina según las recomendaciones clínicas y las circunstancias de cada embarazo."},
+
+{term:"Vida útil de los glóbulos rojos",def:"Los eritrocitos circulan aproximadamente 120 días antes de ser retirados principalmente por el bazo y el hígado. Su vida útil no determina el grupo sanguíneo, pero sus membranas contienen los antígenos utilizados para identificarlo."},
  {term:"Formación de glóbulos rojos antes del nacimiento",def:"El órgano principal señalado en el documento es el hígado."},
- {term:"Formación de glóbulos rojos después del nacimiento",def:"Se producen en la médula ósea."}
+ {term:"Formación de glóbulos rojos después del nacimiento",def:"Se producen en la médula ósea."},
+ 
+ // GRUPOS SANGUÍNEOS Y COMPATIBILIDAD
+ {term:"Grupo sanguíneo A+",def:"Presenta el antígeno A y el antígeno D del sistema Rh en los eritrocitos. Tiene anticuerpos anti-B en el plasma. Puede recibir glóbulos rojos de A+, A-, O+ y O-. Puede donar glóbulos rojos a personas A+ y AB+."},
+ {term:"Grupo sanguíneo A-",def:"Presenta el antígeno A, pero no el antígeno D del sistema Rh. Tiene anticuerpos anti-B en el plasma. Puede recibir glóbulos rojos de A- y O-. Puede donar glóbulos rojos a personas A-, A+, AB- y AB+."},
+ {term:"Grupo sanguíneo B+",def:"Presenta los antígenos B y D en los eritrocitos, además de anticuerpos anti-A en el plasma. Puede recibir glóbulos rojos de B+, B-, O+ y O-. Puede donar glóbulos rojos a personas B+ y AB+."},
+ {term:"Grupo sanguíneo B-",def:"Presenta el antígeno B, pero carece del antígeno D. Tiene anticuerpos anti-A en el plasma. Puede recibir glóbulos rojos de B- y O-. Puede donar glóbulos rojos a personas B-, B+, AB- y AB+."},
+ {term:"Grupo sanguíneo AB+",def:"Presenta los antígenos A, B y D en los eritrocitos. Normalmente no tiene anticuerpos anti-A ni anti-B en el plasma. Puede recibir glóbulos rojos de los ocho grupos sanguíneos: O-, O+, A-, A+, B-, B+, AB- y AB+. Puede donar glóbulos rojos únicamente a personas AB+."},
+ {term:"Grupo sanguíneo AB-",def:"Presenta los antígenos A y B, pero no el antígeno D. Normalmente no tiene anticuerpos anti-A ni anti-B en el plasma. Puede recibir glóbulos rojos de AB-, A-, B- y O-. Puede donar glóbulos rojos a personas AB- y AB+."},
+ {term:"Grupo sanguíneo O+",def:"No presenta los antígenos A ni B en los eritrocitos, pero sí presenta el antígeno D del sistema Rh. Tiene anticuerpos anti-A y anti-B en el plasma. Puede recibir glóbulos rojos de O+ y O-. Puede donar glóbulos rojos a personas O+, A+, B+ y AB+."},
+ {term:"Grupo sanguíneo O-",def:"No presenta los antígenos A, B ni D en los eritrocitos. Tiene anticuerpos anti-A y anti-B en el plasma. Puede recibir glóbulos rojos únicamente de O-. Sus eritrocitos se consideran donantes universales para transfusiones de glóbulos rojos en el sistema ABO/Rh, aunque deben realizarse las pruebas de compatibilidad correspondientes."},
+ {term:"Sistema ABO",def:"Sistema de clasificación sanguínea basado principalmente en la presencia o ausencia de los antígenos A y B en la superficie de los eritrocitos. Sus cuatro grupos principales son A, B, AB y O. Es fundamental para determinar la compatibilidad en las transfusiones sanguíneas."},
+ {term:"Sistema Rh",def:"Sistema de clasificación sanguínea que incluye varios antígenos, entre ellos el D, que es el más importante para determinar si una persona es Rh positivo o Rh negativo. La presencia del antígeno D indica Rh positivo; su ausencia indica Rh negativo."},
+ {term:"Factor Rh positivo",def:"Se presenta cuando los eritrocitos poseen el antígeno D del sistema Rh. Se representa con el signo positivo (+), como en A+, B+, AB+ y O+. La compatibilidad depende tanto del sistema ABO como del Rh."},
+ {term:"Factor Rh negativo",def:"Se presenta cuando los eritrocitos carecen del antígeno D. Se representa con el signo negativo (-), como en A-, B-, AB- y O-. En las transfusiones de glóbulos rojos, las personas Rh negativas generalmente deben recibir sangre Rh negativa para reducir el riesgo de sensibilización."},
+ {term:"Antígeno A",def:"Molécula presente en la superficie de los eritrocitos de los grupos sanguíneos A y AB. El sistema inmunitario de una persona que no posee este antígeno puede reconocerlo como extraño si recibe glóbulos rojos incompatibles."},
+ {term:"Antígeno B",def:"Molécula presente en la superficie de los eritrocitos de los grupos sanguíneos B y AB. Su presencia permite identificar el grupo sanguíneo y determinar la compatibilidad con otros grupos del sistema ABO."},
+ {term:"Antígeno D",def:"Principal antígeno utilizado para clasificar la sangre como Rh positiva o Rh negativa. Su presencia en los eritrocitos indica Rh positivo. La exposición de una persona Rh negativa a eritrocitos Rh positivos puede provocar sensibilización y producción de anticuerpos anti-D."},
+ {term:"Anticuerpos anti-A",def:"Anticuerpos dirigidos contra el antígeno A. Se encuentran normalmente en el plasma de las personas con grupos sanguíneos B y O. Si reaccionan con eritrocitos que poseen el antígeno A, pueden provocar aglutinación y hemólisis."},
+ {term:"Anticuerpos anti-B",def:"Anticuerpos dirigidos contra el antígeno B. Se encuentran normalmente en el plasma de las personas con grupos sanguíneos A y O. Pueden reaccionar contra eritrocitos que presentan el antígeno B y causar una reacción transfusional."},
+ {term:"Anticuerpos anti-D",def:"Anticuerpos que pueden producir las personas Rh negativas después de exponerse al antígeno D mediante una transfusión incompatible o durante el embarazo. No suelen estar presentes de manera natural; su formación puede causar hemólisis en exposiciones posteriores."},
+ {term:"Donante universal de glóbulos rojos",def:"El grupo O negativo se considera el donante universal de glóbulos rojos en el sistema ABO/Rh porque sus eritrocitos no presentan los antígenos A, B ni D. Sin embargo, existen otros antígenos sanguíneos y siempre se deben seguir los protocolos de transfusión y realizar las pruebas necesarias."},
+ {term:"Receptor universal de glóbulos rojos",def:"El grupo AB positivo se considera el receptor universal de glóbulos rojos dentro del sistema ABO/Rh porque presenta los antígenos A, B y D y normalmente no tiene anticuerpos anti-A ni anti-B. Aun así, requiere pruebas de compatibilidad antes de la transfusión."},
+ {term:"Compatibilidad sanguínea",def:"Es la capacidad de dos muestras de sangre para utilizarse en una transfusión sin provocar una reacción inmunológica peligrosa. Depende del sistema ABO, del factor Rh, de otros antígenos eritrocitarios y de las pruebas pretransfusionales."},
+ {term:"Incompatibilidad sanguínea",def:"Ocurre cuando los anticuerpos del receptor reaccionan contra los antígenos de los eritrocitos transfundidos. Puede causar aglutinación, hemólisis, fiebre, hipotensión, daño renal y otras complicaciones potencialmente mortales."},
+ {term:"Aglutinación sanguínea",def:"Es la agrupación de eritrocitos que ocurre cuando determinados anticuerpos se unen a sus antígenos correspondientes en la superficie celular. En las pruebas de tipificación sanguínea, permite identificar reacciones frente a los reactivos anti-A, anti-B o anti-D."},
+ {term:"Hemólisis transfusional",def:"Es la destrucción de los eritrocitos transfundidos o del propio receptor debido a una reacción inmunológica u otras causas. Una transfusión ABO incompatible puede provocar hemólisis intravascular grave y constituir una emergencia médica."},
+ {term:"Prueba de compatibilidad cruzada",def:"Prueba pretransfusional en la que se evalúa la compatibilidad entre el plasma o suero del receptor y los eritrocitos del donante, según el método utilizado. Ayuda a detectar incompatibilidades antes de administrar una transfusión."},
+ {term:"Tipificación sanguínea",def:"Procedimiento de laboratorio que identifica el grupo ABO y el factor Rh mediante reactivos específicos. Se basa en observar si los eritrocitos presentan aglutinación al entrar en contacto con anticuerpos conocidos."},
+ {term:"Transfusión de glóbulos rojos",def:"Procedimiento médico que administra concentrados de eritrocitos para mejorar la capacidad de transporte de oxígeno de la sangre. La selección de la unidad depende del grupo ABO, el Rh, las pruebas de compatibilidad y la situación clínica del paciente."},
+ {term:"Compatibilidad ABO",def:"Es la compatibilidad determinada por los antígenos A y B de los eritrocitos del donante y los anticuerpos presentes en el receptor. Una incompatibilidad ABO puede desencadenar una reacción hemolítica grave."},
+ {term:"Compatibilidad Rh",def:"Es la compatibilidad relacionada principalmente con el antígeno D del sistema Rh. La administración de eritrocitos Rh positivos a una persona Rh negativa puede generar sensibilización, especialmente si ocurre exposición previa o durante el embarazo."},
+ {term:"Frecuencia de los grupos sanguíneos",def:"La frecuencia de A, B, AB y O, así como de Rh positivo y negativo, varía entre poblaciones y regiones geográficas. El grupo O positivo suele ser frecuente en muchas poblaciones, pero la distribución exacta depende de la población estudiada."},
+ {term:"Grupo sanguíneo y embarazo",def:"La incompatibilidad Rh puede presentarse cuando una madre Rh negativa lleva un feto Rh positivo. Si la madre desarrolla anticuerpos anti-D, estos pueden atravesar la placenta y destruir eritrocitos fetales. La prevención y el seguimiento médico reducen el riesgo de enfermedad hemolítica fetal y neonatal."},
+ {term:"Incompatibilidad Rh materno-fetal",def:"Situación en la que una madre Rh negativa puede desarrollar anticuerpos contra el antígeno D de un feto Rh positivo. La sensibilización puede producirse durante el embarazo, el parto o determinados eventos obstétricos, y puede afectar embarazos posteriores."},
+ {term:"Inmunoglobulina anti-D",def:"Preparación de anticuerpos utilizada para prevenir la sensibilización al antígeno D en personas Rh negativas en situaciones obstétricas indicadas. Su administración se determina según las recomendaciones clínicas y las circunstancias de cada embarazo."},
+ {term:"Vida útil de los glóbulos rojos",def:"Los eritrocitos circulan aproximadamente 120 días antes de ser retirados principalmente por el bazo y el hígado. Su vida útil no determina el grupo sanguíneo, pero sus membranas contienen los antígenos utilizados para identificarlo."}
 ];
 
 const examQuestions = [
- {q:"¿Qué es la sangre?",opts:["Un tejido conjuntivo especializado compuesto por células en una matriz líquida (plasma).","Un órgano formado únicamente por glóbulos rojos.","Un líquido compuesto únicamente por agua.","Una hormona producida por la médula ósea."],a:0},
- {q:"¿Dónde se forman los elementos celulares de la sangre según el documento?",opts:["En el hígado durante toda la vida.","En la médula ósea.","En los pulmones.","En los vasos sanguíneos."],a:1},
- {q:"¿Cuál es una función de los eritrocitos?",opts:["Transportar oxígeno.","Producir anticuerpos.","Destruir plaquetas.","Producir hormonas."],a:0},
- {q:"¿Por qué los eritrocitos pueden transportar oxígeno?",opts:["Porque contienen plaquetas.","Porque la hemoglobina contiene grupos hemo con hierro.","Porque producen plasma.","Porque atraviesan las paredes de todos los vasos."],a:1},
- {q:"¿Qué pueden hacer los leucocitos?",opts:["Transportar nutrientes al hígado.","Pasar a través de poros en las paredes de los capilares y dirigirse a sitios de infección.","Formar hemoglobina.","Producir únicamente plaquetas."],a:1},
- {q:"¿Qué papel desempeñan principalmente las plaquetas?",opts:["Transportar oxígeno.","Participar en la coagulación de la sangre.","Producir hormonas.","Transportar anticuerpos hacia los pulmones."],a:1},
- {q:"¿Qué es la sangre?",opts:["Un tejido conjuntivo especializado compuesto por células en una matriz líquida (plasma).","Un órgano formado únicamente por glóbulos rojos.","Un líquido compuesto únicamente por agua.","Una hormona producida por la médula ósea."],a:0},
- {q:"¿Dónde se forman los elementos celulares de la sangre según el documento?",opts:["En el hígado durante toda la vida.","En la médula ósea.","En los pulmones.","En los vasos sanguíneos."],a:1},
- {q:"¿Cuál es una función de los eritrocitos?",opts:["Transportar oxígeno.","Producir anticuerpos.","Destruir plaquetas.","Producir hormonas."],a:0},
- {q:"¿Qué es la sangre?",opts:["Un tejido conjuntivo especializado compuesto por células en una matriz líquida (plasma).","Un órgano formado únicamente por glóbulos rojos.","Un líquido compuesto únicamente por agua.","Una hormona producida por la médula ósea."],a:0},
- {q:"¿Dónde se forman los elementos celulares de la sangre según el documento?",opts:["En el hígado durante toda la vida.","En la médula ósea.","En los pulmones.","En los vasos sanguíneos."],a:1},
- {q:"¿Cuál es una función de los eritrocitos?",opts:["Transportar oxígeno.","Producir anticuerpos.","Destruir plaquetas.","Producir hormonas."],a:0},
- {q:"¿Por qué los eritrocitos pueden transportar oxígeno?",opts:["Porque contienen plaquetas.","Porque la hemoglobina contiene grupos hemo con hierro.","Porque producen plasma.","Porque atraviesan las paredes de todos los vasos."],a:1},
- {q:"¿Qué pueden hacer los leucocitos?",opts:["Transportar nutrientes al hígado.","Pasar a través de poros en las paredes de los capilares y dirigirse a sitios de infección.","Formar hemoglobina.","Producir únicamente plaquetas."],a:1},
- {q:"¿Qué papel desempeñan principalmente las plaquetas?",opts:["Transportar oxígeno.","Participar en la coagulación de la sangre.","Producir hormonas.","Transportar anticuerpos hacia los pulmones."],a:1},
- {q:"¿Qué es la sangre?",opts:["Un tejido conjuntivo especializado compuesto por células en una matriz líquida (plasma).","Un órgano formado únicamente por glóbulos rojos.","Un líquido compuesto únicamente por agua.","Una hormona producida por la médula ósea."],a:0},
- {q:"¿Dónde se forman los elementos celulares de la sangre según el documento?",opts:["En el hígado durante toda la vida.","En la médula ósea.","En los pulmones.","En los vasos sanguíneos."],a:1},
- {q:"¿Cuál es una función de los eritrocitos?",opts:["Transportar oxígeno.","Producir anticuerpos.","Destruir plaquetas.","Producir hormonas."],a:0},
- {q:"¿Por qué los eritrocitos pueden transportar oxígeno?",opts:["Porque contienen plaquetas.","Porque la hemoglobina contiene grupos hemo con hierro.","Porque producen plasma.","Porque atraviesan las paredes de todos los vasos."],a:1},
- {q:"¿Qué pueden hacer los leucocitos?",opts:["Transportar nutrientes al hígado.","Pasar a través de poros en las paredes de los capilares y dirigirse a sitios de infección.","Formar hemoglobina.","Producir únicamente plaquetas."],a:1},
- {q:"¿Qué papel desempeñan principalmente las plaquetas?",opts:["Transportar oxígeno.","Participar en la coagulación de la sangre.","Producir hormonas.","Transportar anticuerpos hacia los pulmones."],a:1},
- {q:"¿Qué es la sangre?",opts:["Un tejido conjuntivo especializado compuesto por células en una matriz líquida (plasma).","Un órgano formado únicamente por glóbulos rojos.","Un líquido compuesto únicamente por agua.","Una hormona producida por la médula ósea."],a:0},
- {q:"¿Dónde se forman los elementos celulares de la sangre según el documento?",opts:["En el hígado durante toda la vida.","En la médula ósea.","En los pulmones.","En los vasos sanguíneos."],a:1},
- {q:"¿Cuál es una función de los eritrocitos?",opts:["Transportar oxígeno.","Producir anticuerpos.","Destruir plaquetas.","Producir hormonas."],a:0},
- {q:"¿Por qué los eritrocitos pueden transportar oxígeno?",opts:["Porque contienen plaquetas.","Porque la hemoglobina contiene grupos hemo con hierro.","Porque producen plasma.","Porque atraviesan las paredes de todos los vasos."],a:1},
- {q:"¿Qué pueden hacer los leucocitos?",opts:["Transportar nutrientes al hígado.","Pasar a través de poros en las paredes de los capilares y dirigirse a sitios de infección.","Formar hemoglobina.","Producir únicamente plaquetas."],a:1},
- {q:"¿Qué papel desempeñan principalmente las plaquetas?",opts:["Transportar oxígeno.","Participar en la coagulación de la sangre.","Producir hormonas.","Transportar anticuerpos hacia los pulmones."],a:1},
- {q:"¿Por qué los eritrocitos pueden transportar oxígeno?",opts:["Porque contienen plaquetas.","Porque la hemoglobina contiene grupos hemo con hierro.","Porque producen plasma.","Porque atraviesan las paredes de todos los vasos."],a:1},
- {q:"¿Qué pueden hacer los leucocitos?",opts:["Transportar nutrientes al hígado.","Pasar a través de poros en las paredes de los capilares y dirigirse a sitios de infección.","Formar hemoglobina.","Producir únicamente plaquetas."],a:1},
- {q:"¿Qué papel desempeñan principalmente las plaquetas?",opts:["Transportar oxígeno.","Participar en la coagulación de la sangre.","Producir hormonas.","Transportar anticuerpos hacia los pulmones."],a:1},
- {q:"¿Qué es la sangre?",opts:["Un tejido conjuntivo especializado compuesto por células en una matriz líquida (plasma).","Un órgano formado únicamente por glóbulos rojos.","Un líquido compuesto únicamente por agua.","Una hormona producida por la médula ósea."],a:0},
- {q:"¿Dónde se forman los elementos celulares de la sangre según el documento?",opts:["En el hígado durante toda la vida.","En la médula ósea.","En los pulmones.","En los vasos sanguíneos."],a:1},
- {q:"¿Cuál es una función de los eritrocitos?",opts:["Transportar oxígeno.","Producir anticuerpos.","Destruir plaquetas.","Producir hormonas."],a:0},
- {q:"¿Por qué los eritrocitos pueden transportar oxígeno?",opts:["Porque contienen plaquetas.","Porque la hemoglobina contiene grupos hemo con hierro.","Porque producen plasma.","Porque atraviesan las paredes de todos los vasos."],a:1},
- {q:"¿Qué pueden hacer los leucocitos?",opts:["Transportar nutrientes al hígado.","Pasar a través de poros en las paredes de los capilares y dirigirse a sitios de infección.","Formar hemoglobina.","Producir únicamente plaquetas."],a:1},
- {q:"¿Qué papel desempeñan principalmente las plaquetas?",opts:["Transportar oxígeno.","Participar en la coagulación de la sangre.","Producir hormonas.","Transportar anticuerpos hacia los pulmones."],a:1},
- {q:"¿Qué es la sangre?",opts:["Un tejido conjuntivo especializado compuesto por células en una matriz líquida (plasma).","Un órgano formado únicamente por glóbulos rojos.","Un líquido compuesto únicamente por agua.","Una hormona producida por la médula ósea."],a:0},
- {q:"¿Dónde se forman los elementos celulares de la sangre según el documento?",opts:["En el hígado durante toda la vida.","En la médula ósea.","En los pulmones.","En los vasos sanguíneos."],a:1},
- {q:"¿Cuál es una función de los eritrocitos?",opts:["Transportar oxígeno.","Producir anticuerpos.","Destruir plaquetas.","Producir hormonas."],a:0},
- {q:"¿Por qué los eritrocitos pueden transportar oxígeno?",opts:["Porque contienen plaquetas.","Porque la hemoglobina contiene grupos hemo con hierro.","Porque producen plasma.","Porque atraviesan las paredes de todos los vasos."],a:1},
- {q:"¿Qué pueden hacer los leucocitos?",opts:["Transportar nutrientes al hígado.","Pasar a través de poros en las paredes de los capilares y dirigirse a sitios de infección.","Formar hemoglobina.","Producir únicamente plaquetas."],a:1},
- {q:"¿Qué papel desempeñan principalmente las plaquetas?",opts:["Transportar oxígeno.","Participar en la coagulación de la sangre.","Producir hormonas.","Transportar anticuerpos hacia los pulmones."],a:1},
- {q:"¿Qué es la sangre?",opts:["Un tejido conjuntivo especializado compuesto por células en una matriz líquida (plasma).","Un órgano formado únicamente por glóbulos rojos.","Un líquido compuesto únicamente por agua.","Una hormona producida por la médula ósea."],a:0},
- {q:"¿Dónde se forman los elementos celulares de la sangre según el documento?",opts:["En el hígado durante toda la vida.","En la médula ósea.","En los pulmones.","En los vasos sanguíneos."],a:1},
- {q:"¿Cuál es una función de los eritrocitos?",opts:["Transportar oxígeno.","Producir anticuerpos.","Destruir plaquetas.","Producir hormonas."],a:0},
- {q:"¿Por qué los eritrocitos pueden transportar oxígeno?",opts:["Porque contienen plaquetas.","Porque la hemoglobina contiene grupos hemo con hierro.","Porque producen plasma.","Porque atraviesan las paredes de todos los vasos."],a:1},
- {q:"¿Qué pueden hacer los leucocitos?",opts:["Transportar nutrientes al hígado.","Pasar a través de poros en las paredes de los capilares y dirigirse a sitios de infección.","Formar hemoglobina.","Producir únicamente plaquetas."],a:1},
- {q:"¿Qué papel desempeñan principalmente las plaquetas?",opts:["Transportar oxígeno.","Participar en la coagulación de la sangre.","Producir hormonas.","Transportar anticuerpos hacia los pulmones."],a:1},
- {q:"¿Qué es la sangre?",opts:["Un tejido conjuntivo especializado compuesto por células en una matriz líquida (plasma).","Un órgano formado únicamente por glóbulos rojos.","Un líquido compuesto únicamente por agua.","Una hormona producida por la médula ósea."],a:0},
- {q:"¿Dónde se forman los elementos celulares de la sangre según el documento?",opts:["En el hígado durante toda la vida.","En la médula ósea.","En los pulmones.","En los vasos sanguíneos."],a:1},
- {q:"¿Cuál es una función de los eritrocitos?",opts:["Transportar oxígeno.","Producir anticuerpos.","Destruir plaquetas.","Producir hormonas."],a:0},
- {q:"¿Por qué los eritrocitos pueden transportar oxígeno?",opts:["Porque contienen plaquetas.","Porque la hemoglobina contiene grupos hemo con hierro.","Porque producen plasma.","Porque atraviesan las paredes de todos los vasos."],a:1},
- {q:"¿Qué pueden hacer los leucocitos?",opts:["Transportar nutrientes al hígado.","Pasar a través de poros en las paredes de los capilares y dirigirse a sitios de infección.","Formar hemoglobina.","Producir únicamente plaquetas."],a:1},
- {q:"¿Qué papel desempeñan principalmente las plaquetas?",opts:["Transportar oxígeno.","Participar en la coagulación de la sangre.","Producir hormonas.","Transportar anticuerpos hacia los pulmones."],a:1},
- {q:"¿Por qué los eritrocitos pueden transportar oxígeno?",opts:["Porque contienen plaquetas.","Porque la hemoglobina contiene grupos hemo con hierro.","Porque producen plasma.","Porque atraviesan las paredes de todos los vasos."],a:1},
- {q:"¿Qué pueden hacer los leucocitos?",opts:["Transportar nutrientes al hígado.","Pasar a través de poros en las paredes de los capilares y dirigirse a sitios de infección.","Formar hemoglobina.","Producir únicamente plaquetas."],a:1},
- {q:"¿Qué papel desempeñan principalmente las plaquetas?",opts:["Transportar oxígeno.","Participar en la coagulación de la sangre.","Producir hormonas.","Transportar anticuerpos hacia los pulmones."],a:1},
- {q:"¿Qué es la sangre?",opts:["Un tejido conjuntivo especializado compuesto por células en una matriz líquida (plasma).","Un órgano formado únicamente por glóbulos rojos.","Un líquido compuesto únicamente por agua.","Una hormona producida por la médula ósea."],a:0},
- {q:"¿Por qué los eritrocitos pueden transportar oxígeno?",opts:["Porque contienen plaquetas.","Porque la hemoglobina contiene grupos hemo con hierro.","Porque producen plasma.","Porque atraviesan las paredes de todos los vasos."],a:1},
- {q:"¿Qué pueden hacer los leucocitos?",opts:["Transportar nutrientes al hígado.","Pasar a través de poros en las paredes de los capilares y dirigirse a sitios de infección.","Formar hemoglobina.","Producir únicamente plaquetas."],a:1},
- {q:"¿Qué papel desempeñan principalmente las plaquetas?",opts:["Transportar oxígeno.","Participar en la coagulación de la sangre.","Producir hormonas.","Transportar anticuerpos hacia los pulmones."],a:1},
- {q:"¿Por qué los eritrocitos pueden transportar oxígeno?",opts:["Porque contienen plaquetas.","Porque la hemoglobina contiene grupos hemo con hierro.","Porque producen plasma.","Porque atraviesan las paredes de todos los vasos."],a:1},
- {q:"¿Qué pueden hacer los leucocitos?",opts:["Transportar nutrientes al hígado.","Pasar a través de poros en las paredes de los capilares y dirigirse a sitios de infección.","Formar hemoglobina.","Producir únicamente plaquetas."],a:1},
- {q:"¿Qué papel desempeñan principalmente las plaquetas?",opts:["Transportar oxígeno.","Participar en la coagulación de la sangre.","Producir hormonas.","Transportar anticuerpos hacia los pulmones."],a:1},
- {q:"¿Por qué los eritrocitos pueden transportar oxígeno?",opts:["Porque contienen plaquetas.","Porque la hemoglobina contiene grupos hemo con hierro.","Porque producen plasma.","Porque atraviesan las paredes de todos los vasos."],a:1},
- {q:"¿Qué pueden hacer los leucocitos?",opts:["Transportar nutrientes al hígado.","Pasar a través de poros en las paredes de los capilares y dirigirse a sitios de infección.","Formar hemoglobina.","Producir únicamente plaquetas."],a:1},
- {q:"¿Qué papel desempeñan principalmente las plaquetas?",opts:["Transportar oxígeno.","Participar en la coagulación de la sangre.","Producir hormonas.","Transportar anticuerpos hacia los pulmones."],a:1},
- {q:"¿Qué contiene el plasma?",opts:["Solo glóbulos rojos.","Agua y solutos disueltos, además de moléculas orgánicas como metabolitos, hormonas, enzimas, anticuerpos y proteínas.","Solo hemoglobina.","Únicamente plaquetas."],a:1},
- {q:"¿Cuál es una función general del sistema circulatorio?",opts:["Mantener la homeostasis.","Producir alimentos.","Formar huesos.","Eliminar todos los eritrocitos."],a:0},
- {q:"¿Qué comprende la función de transporte del sistema circulatorio?",opts:["Transportar sustancias esenciales para el metabolismo celular.","Destruir todos los agentes patógenos.","Producir anticuerpos exclusivamente.","Regular únicamente la temperatura."],a:0},
- {q:"¿Qué describe la función nutritiva de la sangre?",opts:["Transporta productos absorbidos por la digestión a través del hígado para las células del cuerpo.","Destruye eritrocitos.","Produce plaquetas en los pulmones.","Transporta únicamente oxígeno."],a:0},
- {q:"¿Qué describe la función hormonal de la sangre?",opts:["Transporta hormonas desde su origen hasta los distintos tejidos.","Forma coágulos en todos los vasos.","Produce eritrocitos.","Destruye antígenos."],a:0},
- {q:"¿Cómo contribuye el sistema circulatorio a regular la temperatura?",opts:["Desviando sangre entre vasos más superficiales y más profundos.","Deteniendo toda circulación.","Eliminando el plasma.","Produciendo eritrocitos."],a:0},
- {q:"¿Qué protege contra la pérdida de sangre cuando los vasos se dañan?",opts:["La coagulación.","La digestión.","La hemólisis.","La antigenicidad."],a:0},
- {q:"¿Qué células participan en la inmunidad según el documento?",opts:["Leucocitos o glóbulos blancos.","Solo eritrocitos.","Solo plaquetas.","Células del plasma."],a:0},
- {q:"¿Qué es un antígeno?",opts:["Una sustancia o molécula reconocida específicamente por el sistema inmunitario que puede desencadenar una respuesta inmunitaria.","Una célula encargada de transportar oxígeno.","Una proteína exclusiva de las plaquetas.","Una hormona que regula la temperatura."],a:0},
- {q:"¿Dónde se encuentran los antígenos de los grupos sanguíneos?",opts:["En la superficie de los glóbulos rojos.","Únicamente dentro de los pulmones.","En la médula ósea exclusivamente.","En la superficie de las plaquetas."],a:0},
- {q:"¿Qué es un anticuerpo?",opts:["Una proteína del sistema inmunitario producida por los linfocitos B que reconoce y se une específicamente a un antígeno.","Un tipo de eritrocito.","Una sustancia que transporta oxígeno.","Una célula que produce plaquetas."],a:0},
- {q:"¿Qué es un aglutinógeno?",opts:["Un componente que se encuentra en la superficie de los glóbulos rojos y puede provocar aglutinación.","Una hormona producida por los eritrocitos.","Una proteína exclusiva del plasma que transporta oxígeno.","Un tipo de leucocito."],a:0},
- {q:"¿Qué es una aglutinina?",opts:["Un anticuerpo que tiene varios sitios de unión y puede producir agrupación de glóbulos rojos.","Un glóbulo rojo inmaduro.","Una hormona que regula la temperatura.","Un componente de la médula ósea."],a:0},
- {q:"¿Qué significa antigenicidad?",opts:["Capacidad de una sustancia para ser reconocida por el sistema inmunitario y provocar una respuesta inmunitaria.","Destrucción de glóbulos rojos.","Formación de plaquetas.","Transporte de nutrientes."],a:0},
- {q:"¿Qué es la hemólisis?",opts:["Destrucción de los glóbulos rojos con liberación de hemoglobina.","Formación de eritrocitos.","Agrupación de leucocitos.","Producción de anticuerpos."],a:0},
- {q:"¿Cuál es el antígeno más importante del sistema Rh señalado en el documento?",opts:["Antígeno A.","Antígeno B.","Antígeno D.","Antígeno C."],a:2},
- {q:"¿Cuál es la vida útil de los glóbulos rojos?",opts:["30 días.","60 días.","90 días.","120 días."],a:3},
- {q:"¿Cuál es el órgano principal señalado para la formación de glóbulos rojos antes del nacimiento?",opts:["Pulmón.","Hígado.","Riñón.","Corazón."],a:1},
- {q:"¿Dónde se producen los glóbulos rojos después del nacimiento?",opts:["En la médula ósea.","En el plasma.","En los pulmones.","En los vasos sanguíneos."],a:0},
- {q:"¿Qué es la diapedesis?",opts:["Proceso por el cual una célula sanguínea atraviesa la pared de un vaso sanguíneo.","Destrucción de los eritrocitos.","Producción de anticuerpos.","Agrupación de plaquetas."],a:0},
- {q:"¿Qué hace la eritropoyetina (EPO)?",opts:["Estimula la formación de proeritroblastos, favorece la maduración de células eritroides y aumenta la producción de eritrocitos cuando hay hipoxia.","Destruye eritrocitos envejecidos.","Disminuye la producción de plaquetas.","Produce anticuerpos."],a:0},
- {q:"¿Qué es la anemia?",opts:["Disminución de la concentración de hemoglobina por debajo de los niveles considerados normales para la edad, sexo y estado fisiológico.","Aumento de plaquetas.","Aumento de hemoglobina por encima de cualquier valor normal.","Destrucción de leucocitos."],a:0},
- {q:"¿Qué caracteriza a la anemia microcítica según el documento?",opts:["Deficiencia de B12.","Anemia ferropénica asociada con pérdida de hierro.","Destrucción excesiva de eritrocitos.","Aumento de plaquetas."],a:1},
- {q:"¿Qué caracteriza a la anemia normocítica según el documento?",opts:["Deficiencia de B12.","Pérdida de hierro.","Anemia hemolítica asociada con destrucción excesiva de eritrocitos.","Aumento del volumen de plasma."],a:2},
- {q:"¿Qué caracteriza a la anemia macrocítica según el documento?",opts:["Deficiencia de B12.","Pérdida de hierro.","Destrucción excesiva de eritrocitos.","Disminución de plaquetas."],a:0},
- {q:"¿Qué significa VCM?",opts:["Valor de coagulación media.","Volumen corpuscular medio.","Velocidad circulatoria máxima.","Volumen de coagulación medular."],a:1},
- {q:"¿Qué indica el VCM?",opts:["Qué tan grandes o pequeños están los eritrocitos en la biometría hemática.","Cuántos anticuerpos hay en el plasma.","La cantidad de hormonas en la sangre.","La velocidad de los leucocitos."],a:0},
- {q:"¿Qué es la trombocitopenia?",opts:["Disminución de plaquetas; el documento señala menor a 150,000.","Aumento de eritrocitos.","Aumento de hemoglobina.","Disminución de leucocitos únicamente."],a:0},
- {q:"¿Qué es la hipersensibilidad?",opts:["Una reacción exagerada del cuerpo que produce daño tisular.","La formación normal de eritrocitos.","El transporte de nutrientes.","La producción normal de plasma."],a:0},
- {q:"¿Qué caracteriza a la hipersensibilidad tipo I?",opts:["Es inmediata y ocurre en pocos minutos tras tocar el alérgeno o antígeno.","Tarda de 24 a 72 horas en manifestarse.","Se caracteriza por acumulación de complejos inmunes.","Es exclusivamente una disminución de plaquetas."],a:0},
- {q:"¿Qué caracteriza a la hipersensibilidad tipo II?",opts:["Los anticuerpos destruyen células propias por error.","Es una reacción retardada de 24 a 72 horas.","Solo implica acumulación de plasma.","Es una forma de anemia ferropénica."],a:0},
- {q:"¿Qué caracteriza a la hipersensibilidad tipo III?",opts:["Se relaciona con complejos inmunes y acumulación de cúmulos de anticuerpos.","Ocurre en pocos minutos al tocar un alérgeno.","Es causada por pérdida de hierro.","Es una disminución de plaquetas."],a:0},
- {q:"¿Qué caracteriza a la hipersensibilidad tipo IV?",opts:["Es retardada y tarda de 24 a 72 horas en manifestarse.","Ocurre en pocos minutos.","Es causada por destrucción de eritrocitos.","Es producida por falta de hierro."],a:0}
+ 
 ];
 
-const KEY="studydic_sangre_v1";
-let concepts = JSON.parse(localStorage.getItem(KEY)||"null") || originalConcepts.map(x=>({...x,id:crypto.randomUUID(),fav:false,custom:false}));
+const KEY="studydic_sangre_v2";
+
+// Eliminar conceptos duplicados por nombre
+const conceptosUnicos = new Set();
+
+const conceptosFiltrados = originalConcepts.filter(concepto => {
+  const nombre = concepto.term
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+
+  if (conceptosUnicos.has(nombre)) {
+    return false;
+  }
+
+  conceptosUnicos.add(nombre);
+  return true;
+});
+
+originalConcepts.length = 0;
+originalConcepts.push(...conceptosFiltrados);
+
+// ==========================================
+// CARGA Y ACTUALIZACIÓN AUTOMÁTICA
+// ==========================================
+let savedData = JSON.parse(localStorage.getItem(KEY) || "null");
+let concepts = [];
+
+if (!savedData) {
+  // Si nunca se ha abierto, usamos los originales del código
+  concepts = originalConcepts.map(x => ({...x, id: crypto.randomUUID(), fav: false, custom: false}));
+} else {
+  // FUERZA DE ACTUALIZACIÓN: Verificamos si hay nuevos conceptos en el código original que no estén en la memoria
+  let savedMap = new Map(savedData.map(item => [item.term.trim().toLowerCase(), item]));
+  
+  let merged = originalConcepts.map(orig => {
+    let keyTerm = orig.term.trim().toLowerCase();
+    if (savedMap.has(keyTerm)) {
+      let existing = savedMap.get(keyTerm);
+      // Mantenemos el estado de favorito o si era custom que ya tenía el usuario
+      return { ...orig, id: existing.id, fav: existing.fav, custom: existing.custom };
+    } else {
+      // ¡Concepto nuevo detectado en el código! Lo agregamos automáticamente
+      return { ...orig, id: crypto.randomUUID(), fav: false, custom: false };
+    }
+  });
+
+  // Conservamos también los conceptos personalizados que el usuario haya agregado manualmente desde el botón de la web
+  let customItems = savedData.filter(item => item.custom);
+  concepts = [...merged, ...customItems];
+}
+
 let currentTab="concepts";
 let query="";
 
@@ -547,7 +1046,7 @@ const examList=document.getElementById("examList");
 const search=document.getElementById("search");
 
 function save(){localStorage.setItem(KEY,JSON.stringify(concepts));}
-function normalize(s){return s.normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase();}
+function normalize(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();}
 function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
 
 function renderConcepts(){
@@ -610,7 +1109,6 @@ function shuffle(arr){
 }
 
 function prepareExam(){
-  // 15 preguntas por intento, tomadas del contenido del documento.
   const selected=shuffle(examQuestions).slice(0,15);
   examState={
     started:true,
@@ -651,7 +1149,6 @@ function finishExam(){
 
 function renderExam(){
   const q=normalize(query);
-  // Mientras se busca, fuera del modo examen se muestra el buscador normal.
   if(!examState.started){
     const filtered=examQuestions.filter(x=>normalize(x.q+" "+x.opts.join(" ")).includes(q));
     examList.innerHTML=`
@@ -670,7 +1167,8 @@ function renderExam(){
         </div>
         <div class="exam-note">En cada intento se seleccionan preguntas al azar y también se mezclan las opciones para que puedas practicar varias veces.</div>
     <div class="exam-start">
-    <button onclick="window.location.href='Selec.html'"
+    
+<button onclick="window.location.href='Selec.html'"
         style="
         border-radius: 999px;
         padding: 15px 35px;
@@ -681,6 +1179,7 @@ function renderExam(){
         ">
     Comenzar examen →
 </button>
+
 </div>
         ${q?`<div class="exam-note"><b>${filtered.length}</b> preguntas coinciden con tu búsqueda.</div>`:""}
       </div>`;
@@ -730,8 +1229,7 @@ function renderExam(){
   let answered=Object.keys(examState.answers).length;
   const total=examState.questions.length;
   const cards=examState.questions.map((question,i)=>{
-    const shuffledOpts=question.opts.map((text,index)=>({text,index})); // se conserva índice correcto
-    // Mezclamos solo una vez por render usando una propiedad persistente.
+    const shuffledOpts=question.opts.map((text,index)=>({text,index}));
     if(!question.optionOrder)question.optionOrder=shuffle(shuffledOpts.map(x=>x.index));
     const order=question.optionOrder;
     return `<article class="exam-card">
@@ -806,9 +1304,10 @@ document.getElementById("saveBtn").onclick=()=>{
 };
 
 document.getElementById("resetBtn").onclick=()=>{
-  concepts=originalConcepts.map(x=>({...x,id:crypto.randomUUID(),fav:false,custom:false}));
-  save();renderAll();
+  localStorage.removeItem(KEY);
+  location.reload();
 };
+
 document.getElementById("themeBtn").onclick=()=>{
   document.body.classList.toggle("dark");
   const dark=document.body.classList.contains("dark");
